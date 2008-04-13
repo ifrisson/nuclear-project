@@ -19,6 +19,7 @@ At the interface level, these are what we would like to see happen:
 
   * Easy creation of instruments by interconnecting basic blocks (nodes)
   * "Intelligent" connections, which can perform operations like scaling the data stream with a variety of curves, and handle the up- and down-sampling of streams (these will basically be specialized nodes)
+  * The ability to view the information stream going through any connection via various means (oscilloscope, spectral display, numeric display, etc.)
   * The nesting of nodes (ie, a node made of another graph of nodes) for the creation of custom DSP routines from basic building blocks without needing to code
 
 = General Implementation Ideas =
