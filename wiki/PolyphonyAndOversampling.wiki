@@ -7,6 +7,6 @@ This page is a continuation and summary of a previously private discussion betwe
 
 = Special Graph Regions =
 
-Perhaps one way to handle both polyphony and oversampling would be to have special regions of the graph, definable by the instrument creator, within which will be placed the nodes that will be affected by either the oversampler or the polyphony manager. For all except a strictly monophonic instrument, most nodes will go within the polyphony region. Anything nodes that need to be oversampled would then be placed within a special oversampling region, defined by the instrument designer.
+Perhaps one way to handle both polyphony and oversampling would be to have special regions of the graph, definable by the instrument creator, within which will be placed the nodes that will be affected by either the oversampler or the polyphony manager. For all except a strictly monophonic instrument, most nodes will go within the polyphony region. Any nodes that need to be oversampled would then be placed within a special oversampling region, defined by the instrument designer.
 
 This could work out well, because both polyphony and oversampling are, at their core, essentially just inner-most for() loops that run through all of their iterations per sample clock tick. For polyphony, another iteration of the loop would be created when new notes are pressed. For oversampling, a fixed number of loop iterations would run, defined by how many times the user wants to oversample those particular nodes.
