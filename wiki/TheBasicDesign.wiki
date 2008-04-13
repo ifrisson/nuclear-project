@@ -11,7 +11,7 @@ We'll start with a list of features and ideas we would like Nuclear to have:
 
   * Routing implemented using directed graph theory
   * Oversampling of local portions of the graph
-  * The ability to use the FAUST functional DSP programming language to create new processing blocks, as well as being able to use Python and C++
+  * The ability to create new processing blocks using FAUST, C++, Python, and visually using basic DSP building blocks
   * For nodes of the instrument (graph) to be able to read-access external control data, such as MIDI data or the master clock, at the whim of the instrument creator (user)
   * Management of polyphony
 
