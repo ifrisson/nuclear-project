@@ -1,0 +1,26 @@
+#summary This page is an on-going discussion of the basic design of the Nuclear Project.
+#labels Phase-Requirements,Phase-Implementation
+
+= Introduction =
+
+This page will serve as a living document on the design and the high-level implementation of the Nuclear Project. The first section will deal with what features to implement, and the second section will discuss the actual implementations in more detail.
+
+= Features =
+
+We'll start with a list of features and ideas we would like Nuclear to have:
+
+  * Routing implemented using directed graph theory
+  * Oversampling of local portions of the graph
+  * The ability to use the FAUST functional DSP programming language to create new processing blocks, as well as being able to use Python and C++
+  * For nodes of the instrument (graph) to be able to read-access external control data, such as MIDI data or the master clock, at the whim of the instrument creator (user)
+  * Management of polyphony
+
+At the interface level, these are what we would like to see happen:
+
+  * Easy creation of instruments by interconnecting basic blocks (nodes)
+  * "Intelligent" connections, which can perform operations like scaling the data stream with a variety of curves, and handle the up- and down-sampling of streams (these will basically be specialized nodes)
+  * The nesting of nodes (ie, a node made of another graph of nodes) for the creation of custom DSP routines from basic building blocks without needing to code
+
+= General Implementation Ideas =
+
+... to be filled in later.
