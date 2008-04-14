@@ -21,6 +21,7 @@ At the interface level, these are what we would like to see happen:
   * "Intelligent" connections, which can perform operations like scaling the data stream with a variety of curves, and handle the up- and down-sampling of streams (these will basically be specialized nodes)
   * The ability to view the information stream going through any connection via various means (oscilloscope, spectral display, numeric display, etc.)
   * The nesting of nodes (ie, a node made of another graph of nodes, which we'll call a _composite node_ for now) for the creation of custom DSP routines from basic building blocks without needing to code
+  * Allowing instrument makers to create their own GUIs for their instruments.
 
 = General Implementation Ideas =
 
@@ -38,5 +39,6 @@ At the interface level:
   * *Intelligent connections:* Intelligent connections would be implemented as special-purpose nodes underneath the interface. These nodes would be extremely useful things that would do stuff like scale signals along any number of different curves. Furthermore, as a connection is made, if the connector knows the allowable output range and curve of the previous node, and the allowable input range and curve of the next, that scaling can happen automatically. Of course, the user will be able to override that. This would allow a lot of flexibility in node design. I'm placing this description at the interface level because really, it's just about "disguising" a particular type of node.
   * *Viewing signal information:* This would be implemented purely at the interface level, allowing the user to, for example, single-click on a connection to see information pop up in a window, like numeric data, an oscilloscope, or a spectral display. These tools would aid in the design and troubleshooting of new instruments.
   * *Composite nodes:* A node can be coded from scratch, or it can be a collection of other nodes.The inputs and outputs of a composite node (there's a nice buzzword for you) would be determined simply by which of its internal nodes' connections aren't hooked up to anything internally. That way, a composite node can be treated simply as a single node in an instrument design. This can be accomplished purely at the interface level. At the graph level, it's really just more nodes getting plugged in.
+  * *Custom instrument GUIs:* We've discussed the idea of using Cairo to allow users to build custom interfaces for their instruments. Not much else has been said at this point. This and other pages on the subject will be updated/created as more decisions are made.
 
 The composite nodes represent some real power, as new DSP blocks can be created from existing ones, whether basic or composite themselves. So, basic blocks such as adders, multipliers, and delay lines can be implemented as base nodes, and used to build more complex processors.
