@@ -13,7 +13,7 @@ Although I will try to explain this as simply as possible, some knowledge of fun
 
 At the level of the finished synth/sampler (which I'll refer to as just the "synth" from now on), there would be no envelopes, LFOs, or any other automated control method for any parameter directly available. Instead, the user would set a parameter to the point he or she (I'll say "he" from now on, just to make things easier on me and because the English language doesn't provide a third-party gender-neutral pronoun) wants it at to start with, right-click on the parameter "knob" (or slider, or whatever other widget is provided), then set that as a key frame. Then the user sets the parameter widget to a new value that he wants, right-clicks, and sets that as another key frame.
 
-== Making a Basic Envelope ==
+== The Envelope, Please ==
 
 At this point, the user can now make a few decision about how the parameter will actually behave, given these two key frames. He can set a number of seconds from key-down that it'll take for the parameter to move from the first key frame to the second. He can also choose which curve the parameter will follow over this interval of time, whether that be linear, exponential, or something custom. This is called the _function_ of the key frame pair, and would be implemented as a mathematical function, with x or t as the controlling variable, and y as the output. At this point, for time-controlled key frame pairs f(t), further key frames can be defined on the same parameter and set sequentially to create even more complex envelopes.
 
