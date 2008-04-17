@@ -1,0 +1,15 @@
+#summary Layers of the engine architecture
+#labels Phase-Design
+
+= Engine architecture layers =
+
+Nuclear is neither a synthesizer nor a sampler. It's beyond that. Instead it let you define new synthesizer, sampler and effects which is called "engines" that it will act as an host for. This architecture has three layers.
+
+== Host ==
+The host is part of the Nuclear application (just like the engine editors). It provide audio I/O, MIDI I/O, UI and other common services for the engines (like sample streaming).
+
+== Engine ==
+The engine is what you create using the applications editors, it can either be a pure synthesis, some form of sample player or just an effect. An engine consist of a set of DSP files implementing various DSP blocks, a set of Python files implementing optional behavior (a.k.a. "scripting"), any custom graphic files for the UI and a XML file defining the actual engine (a.k.a. "how everything will fit together").
+
+== Instrument ==
+The instrument is what you load into the engine. For a pure synthesis or effect it's the equivalent of a "preset" and for a sample player it's the equivalent of a "virtual instrument". The exact implementation of the instrument depend on the engine.
