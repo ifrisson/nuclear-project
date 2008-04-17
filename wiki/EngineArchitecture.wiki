@@ -3,7 +3,7 @@
 
 = Engine architecture layers =
 
-Nuclear is neither a synthesizer nor a sampler. It's beyond that. Instead it let you define new synthesizer, sampler and effects which is called "engines" that it will act as an host for. This architecture has three layers.
+Nuclear is neither a synthesizer nor a sampler. It's beyond that. Instead it let you define new synthesizers, samplers and effects which is called "engines" that it will act as an host for. This architecture has three layers.
 
 == Host ==
 The host is part of the Nuclear application (just like the engine editors). It provide audio I/O, MIDI I/O, UI and other common services for the engines (like sample streaming).
