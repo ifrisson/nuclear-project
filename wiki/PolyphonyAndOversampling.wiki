@@ -10,3 +10,19 @@ This page is a continuation and summary of a previously private discussion betwe
 Perhaps one way to handle both polyphony and oversampling would be to have special regions of the graph, definable by the instrument creator, within which will be placed the nodes that will be affected by either the oversampler or the polyphony manager. For all except a strictly monophonic instrument, most nodes will go within the polyphony region. Any nodes that need to be oversampled would then be placed within a special oversampling region, defined by the instrument designer.
 
 This could work out well, because both polyphony and oversampling are, at their core, essentially just inner-most loops that run through all of their iterations per sample clock tick. For polyphony, another iteration of the loop would be created when new notes are pressed. For oversampling, a fixed number of loop iterations would run, defined by how many times the user wants to oversample those particular nodes.
+
+= Special Upsampling and Downsampling Nodes =
+
+One other way to handle oversampling, and possibly polyphony as well, is to implement special nodes that take advantage of certain properties of a directed graph.
+
+== Downsampling ==
+
+Imagine a node for downsampling, which implements a low-pass FIR filter and decimator, as is usual. When the graph is walked and this node encountered, this node will then ask for the input it needs in order to pass along its output to the following node. The difference, however, is that it must ask for N number of inputs, where N is the number of times this region of the graph is being oversampled, before it can send its one output along.
+
+== Upsampling ==
+
+The upsampling node works the same way, but in reverse. When it asks for and receives an input, it stores the input and then creates N-1 zeros, which are then run through a low-pass polyphase FIR interpolation filter, again as is usual for upsampling operations. Now, when it is asked for its output, it will output all of the samples in its buffer, and not have to ask for a new input for N number of outputs. Everything in between the upsampling node and downsampling node will now be oversampled, and none of the nodes in between will need to be specially designed for the task. They can behave as they always would.
+
+== What About Polyphony? ==
+
+It's possible to imagine how polyphony might also be handled in this same fashion. The difference is, the state for each node in between these new hypothetical polyphony management nodes will need to be saved for each polyphonic note to be played. The best way to handle this would be to create new objects of each node as they are required, and make sure they are appropriately connected. How this might be accomplished in the context of a directed graph is still the subject of many sleepless nights of this author.
