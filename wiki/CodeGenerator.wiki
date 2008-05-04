@@ -1,5 +1,5 @@
 #summary Design of the code generator.
-#labels Phase-Design
+#labels Phase-Design,CG
 
 = Introduction =
 
