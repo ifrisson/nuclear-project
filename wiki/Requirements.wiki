@@ -13,11 +13,12 @@ The revised idea is to create a framework to generate code from DSP and engine d
 
 = Required Features =
 
+ * Being able to create pure software synthesizers, sample players as well as effects and filters.
  * Output the engine as a JACK application, a Python module or as a DSSI, LV2, VSTi, Audio Unit or RTAS plugin.
- * Easy creation of engines by interconnecting basic DSP blocks in a processing graph.
+ * Easy creation of engines by interconnecting basic DSP blocks as nodes in a processing graph.
  * Oversampling of local portions of the graph
- * The ability to create new processing blocks using FAUST, C++, Python, and visually using basic DSP building blocks
- * For nodes of the engine to be able to read-access external control data, such as MIDI data or the master clock, at the whim of the engine creator.
+ * The ability to create new DSP blocks using FAUST, C++ or any other preferred language.
+ * Nodes of the engine have read-access external control data, such as MIDI data or the master clock via messages.
  * The ability to view the information stream going through any connection via various means (oscilloscope, spectral display, numeric display, etc.)
  * The nesting of nodes (i.e. a node made of another graph of nodes) for the creation of custom DSP routines from basic building blocks without needing to code.
  * Allowing instrument makers to create their own GUIs for their instruments.
