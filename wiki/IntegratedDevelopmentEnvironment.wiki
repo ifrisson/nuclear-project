@@ -1,5 +1,5 @@
 #summary Design of the IDE.
-#labels Phase-Design
+#labels Phase-Design,IDE
 
 = Introduction =
 
