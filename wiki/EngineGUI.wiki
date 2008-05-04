@@ -1,4 +1,4 @@
-#summary Custom engine GUIs.
+#summary How to deal with custom engine GUIs.
 #labels Phase-Design
 
 = Introduction =
