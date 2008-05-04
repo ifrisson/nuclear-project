@@ -1,4 +1,4 @@
-#summary Main design document.
+#summary Main design document for the current design.
 #labels Phase-Design
 
 = Introduction =
@@ -39,4 +39,3 @@ To be written...
 == Editors ==
 
 To be written...
-
