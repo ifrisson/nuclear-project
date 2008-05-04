@@ -35,4 +35,6 @@ I've debated whether to make this a building block node, as it can be constructe
 
 A comb filter consists of a split to a delay line, the output of which is then multiplied by a coefficient to control its gain before being added back into the original signal. More detail can be found at this [http://en.wikipedia.org/wiki/Comb_filter Wikipedia] article. Comb filters are useful for making reverbs.
 
-... More to be determined later ...
+= An Incomplete List =
+
+Although these will allow for the creation of many different DSP algorithms, for now, treat this as an incomplete list of the basic node types. Also, keep in mind that new nodes can be written very easily, and the nodes of more complex functionality can be included in node groups.
