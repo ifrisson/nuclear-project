@@ -13,28 +13,31 @@ The revised idea is to create a framework to generate code from DSP and engine d
 
 = Required Features =
 
- * Being able to create pure software synthesizers, sample players as well as effects and filters.
- * Output the engine as a:
- ** JACK application
- ** Python module
- ** DSSI plugin
- ** LV2 plguin
- ** VST/VSTi plugin
- ** Audio Unit plguin
- ** RTAS plugin.
- * Easy creation of engines by interconnecting basic DSP blocks as nodes in a processing graph.
- * Oversampling of local portions of the graph
- * The ability to create new DSP blocks using FAUST, C++ or any other preferred language.
- * Nodes of the engine have read-access external control data, such as MIDI data or the master clock via messages.
- * The ability to view the information stream going through any connection via various means (oscilloscope, spectral display, numeric display, etc.)
- * The nesting of nodes (i.e. a node made of another graph of nodes) for the creation of custom DSP routines from basic building blocks without needing to code.
- * Allowing instrument makers to create their own GUIs for their instruments.
+  * Being able to create:
+    * software synthesizers;
+    * sample players;
+    * effects and filters.
+  * Output the engine as;
+    * JACK application;
+    * Python module;
+    * DSSI plugin;
+    * LV2 plguin;
+    * VST/VSTi plugin;
+    * Audio Unit plguin;
+    * RTAS plugin.
+  * Easy creation of engines by interconnecting basic DSP blocks as nodes in a processing graph.
+  * Oversampling of local portions of the graph
+  * The ability to create new DSP blocks using FAUST, C++ or any other preferred language.
+  * Nodes of the engine have read-access external control data, such as MIDI data or the master clock via messages.
+  * The ability to view the information stream going through any connection via various means (oscilloscope, spectral display, numeric display, etc.)
+  * The nesting of nodes (i.e. a node made of another graph of nodes) for the creation of custom DSP routines from basic building blocks without needing to code.
+  * Allowing instrument makers to create their own GUIs for their instruments.
 
 = Example Projects =
 
 Example projects to be built with Nuclear serving as test cases:
 
- * Simple polyphonic synth -- The simplest possible test case. Create a simple polyphonic synth with a LFO modulated oscillator.
- * SFZ sample player -- Advanced test case. Require streaming sample playback.
- * Reaktor like application -- Similar to the origianl Nuclear plan but without the need for compilation by GCC to build instruments. Let the user create and edit a processing graph, use a prebuilt standard library of blocks and write new interpreted DSP blocks.
- * Guitar Rig like application -- Not an instrument, but an amplifier/cabinet simulator and effect rack. Test case for modeling of non-linear behavior.
+  * Simple polyphonic synth -- The simplest possible test case. Create a simple polyphonic synth with a LFO modulated oscillator.
+  * SFZ sample player -- Advanced test case. Require streaming sample playback.
+  * Reaktor like application -- Similar to the origianl Nuclear plan but without the need for compilation by GCC to build instruments. Let the user create and edit a processing graph, use a prebuilt standard library of blocks and write new interpreted DSP blocks.
+  * Guitar Rig like application -- Not an instrument, but an amplifier/cabinet simulator and effect rack. Test case for modeling of non-linear behavior.
