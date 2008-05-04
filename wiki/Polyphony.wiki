@@ -1,6 +1,8 @@
 #summary How to deal with polyphony.
 #labels Phase-Design
 
+= Introduction = 
+
 *Q:* What is a "voice"?
 
 *A:* All blocks that is needed by the voice to create a sound.
