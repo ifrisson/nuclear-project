@@ -5,7 +5,7 @@
 
 The Nuclear project sprung from a discussion over at the [https://bb.linuxsampler.org/viewtopic.php?f=5&t=101 LinuxSampler forum].
 
-Nuclear is neither a synthesizer nor a sampler. It's beyond that. Instead it let you define new synthesizers, samplers and effects which is called _engines_ that it will provide hosting for. The vision is to give virtual instrument makers and plugin developers a powerful tool to create powerful instruments without being limited by a single synthesizer/sample player or bogged down in implementation details common to all virtual instruments.
+Nuclear is neither a synthesizer nor a sampler. It's beyond that. Instead it let you define new synthesizers, samplers and effects which is called _engines_ that it will provide hosting for. The vision is to give virtual instrument makers and plugin developers a powerful tool to create instruments without being limited by a single synthesizer/sample player or bogged down in implementation details common to all virtual instruments.
 
 Original the idea was to create a single application that both engine creators and end-users used. A engine maker would use the built in GUI editors to create DSP blocks and connect them together in a processing graph. The DSP and processor graph declarations would be stored in platform independent formats. When a user loaded the engine, all DSP declarations would be compiled natively as modules and the processing graph would be built dynamically from the engine declaration file. This would require the end user having GCC installed and proper configured to be used by the application.
 
