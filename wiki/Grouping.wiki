@@ -1,4 +1,4 @@
-#summary How to handle grouping of blocks for reuse
+#summary How to handle grouping of blocks for reuse.
 #labels Phase-Design
 
 = Introduction =
