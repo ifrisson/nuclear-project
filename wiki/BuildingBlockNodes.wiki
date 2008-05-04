@@ -37,4 +37,4 @@ A comb filter consists of a split to a delay line, the output of which is then m
 
 = An Incomplete List =
 
-Although these will allow for the creation of many different DSP algorithms, for now, treat this as an incomplete list of the basic node types. Also, keep in mind that new nodes can be written very easily, and the nodes of more complex functionality can be included in node groups.
+Although these will allow for the creation of many different DSP algorithms, for now, treat this as an incomplete list of the basic node types. Also, keep in mind that new nodes can be written very easily, and that nodes of more complex functionality can be included in node groups.
