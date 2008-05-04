@@ -29,7 +29,7 @@ The revised idea is to create a framework to generate code from DSP and engine d
   * Creating engines by interconnecting DSP blocks as nodes in a processing graph.
   * [Oversampling Oversampling] of local portions of the graph.
   * Automatic handling of [Polyphony polyphony].
-  * Grouping of nodes for reuse to create custom DSP routines from basic building blocks without needing to code.
+  * [Grouping Grouping] of nodes for reuse to create custom DSP routines from basic building blocks without needing to code.
   * Use [http://opensoundcontrol.org OpenSound Control] to control the engine, voices and even individual nodes. Inspired by the [http://stud3.tuwien.ac.at/~e0725639/OSC-SYN.txt OSC 'SYN' namespace] proposal.
   * Ability to view the information stream going through any connection via various means (oscilloscope, spectral display, numeric display, etc.)
   * Allowing instrument makers to create their own GUIs for their instruments.
