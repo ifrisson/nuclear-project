@@ -1,4 +1,6 @@
 #summary How to handle grouping of blocks for reuse
 #labels Phase-Design
 
+= Introduction =
+
 The grouping of nodes for reuse to create custom DSP routines from basic building blocks without needing to code is part of the editor and code generator tiers.
