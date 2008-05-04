@@ -3,4 +3,4 @@
 
 = Introduction =
 
-The IDE will be developed in Python.
+Nuclear include an Integrated Development Environment for coding DSPs with FAUST, designing custom engine GUIs and visually program the processor graph. The IDE will be developed in Python.
