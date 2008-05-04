@@ -21,11 +21,11 @@ The revised idea is to create a framework to generate code from DSP and engine d
     * JACK application;
     * Python module;
     * DSSI plugin;
-    * LV2 plguin;
+    * LV2 plugin;
     * VST/VSTi plugin;
     * Audio Unit plguin;
     * RTAS plugin.
-  * Easy creation of engines by interconnecting basic DSP blocks as nodes in a processing graph.
+  * Creating engines by interconnecting DSP blocks as nodes in a processing graph.
   * Oversampling of local portions of the graph
   * The ability to create new DSP blocks using FAUST, C++ or any other preferred language.
   * Nodes of the engine have read-access external control data, such as MIDI data or the master clock via messages.
