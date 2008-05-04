@@ -18,9 +18,11 @@ The SDK provides containers and algorithms as a framework for the purpose of cre
 
 As long as we get the interface for it right the implementation can be improved and optimized later without breaking anything. A first iteration goal is to design a set of stable and working interfaces, later iterations will deal with improved implementations.
 
-The SDK has three major types:
+The SDK has four major types:
 
- * _Engine_. The outermost "shell". This is what you wrap a plugin or application around. Has signal input/outputs and can receive/sends messages. Container for voices, manage voices and mix down all voices for final output.
+* _Host_. A container for an engine. The SDK will provide a number of common hosts (JACK application, DSSI, LV2, VSTi, Audio Unit, RTAS, Python module, etc.). The host is responsible for interfacing with the outside world on behalf of the engine: input/output audio, setting parameters and translating MIDI into messages the engine understand.
+
+ * _Engine_. Has signal input/outputs and can receive/sends messages. Container for voices, manage voices and mix down all voices for final output.
 
  * _Voice_. A single instance of the processor graph, the signal path for a voice. Has signal input/outputs and can receive/sends messages. Container for one or more nodes.
 
