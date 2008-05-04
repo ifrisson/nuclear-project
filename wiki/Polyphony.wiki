@@ -1,5 +1,5 @@
-#summary How to deal with polyphony.
-#labels Phase-Design
+#summary How polyphony is implemented.
+#labels Phase-Documentation
 
 = Introduction = 
 
