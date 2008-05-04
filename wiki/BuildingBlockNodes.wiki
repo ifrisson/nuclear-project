@@ -25,10 +25,6 @@ This is a delay line of a length which is set at its time of initialization, in 
 
 This is a delay line whose length can be changes at the sample rate. It cannot be multi-tapped, however. This would be useful for creating chorus and flanging effects.
 
-=== Splitter ===
-
-This node does nothing more than split a single signal into two identical output signals. Depending on the design of the SDK, this may not be a required node, and if so will disappear from this documentation.
-
 === Comb Filter ===
 
 I've debated whether to make this a building block node, as it can be constructed from an adder, a multiplier, and a variable delay line. However, due to the extreme usefulness of comb filters, I've decided to make them an atomic unit.
