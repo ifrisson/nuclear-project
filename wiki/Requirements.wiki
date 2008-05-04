@@ -27,6 +27,7 @@ The revised idea is to create a framework to generate code from DSP block and en
     * [http://www.digidesign.com RTAS] plugin.
   * DSP blocks are declared in the [http://faust.grame.fr/ FAUST] language.
   * Creating engines by interconnecting DSP blocks as nodes in a processing graph.
+  * Processing graphs are declared in a XML schema.
   * [Oversampling Oversampling] of local portions of the graph.
   * Automatic handling of [Polyphony polyphony].
   * [Grouping Grouping] of nodes for reuse to create custom DSP routines from basic building blocks without needing to code.
