@@ -18,13 +18,13 @@ The revised idea is to create a framework to generate code from DSP and engine d
     * sample players;
     * effects and filters.
   * Output the engine as;
-    * JACK application;
-    * Python module;
-    * DSSI plugin;
-    * LV2 plugin;
-    * VST/VSTi plugin;
-    * Audio Unit plguin;
-    * RTAS plugin.
+    * [http://jackaudio.org JACK] application;
+    * [http://python.org Python] module;
+    * [http://dssi.sourceforge.net DSSI] plugin;
+    * [http://lv2plug.in LV2] plugin;
+    * [http://www.steinberg.net VST/VSTi] plugin;
+    * [http://developer.apple.com/documentation/MusicAudio/Conceptual/AudioUnitProgrammingGuide/ Audio Unit] plguin;
+    * [http://www.digidesign.com RTAS] plugin.
   * DSP blocks are declared in the [http://faust.grame.fr/ FAUST] language.
   * Creating engines by interconnecting DSP blocks as nodes in a processing graph.
   * Oversampling of local portions of the graph.
