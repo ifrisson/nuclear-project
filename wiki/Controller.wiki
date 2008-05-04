@@ -1,4 +1,4 @@
-#summary Controllers control the engine.
+#summary How to control the engine.
 #labels Phase-Design
 
 = Introduction =
