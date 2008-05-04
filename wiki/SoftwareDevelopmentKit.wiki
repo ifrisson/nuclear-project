@@ -1,5 +1,5 @@
 #summary The SDK design.
-#labels Phase-Design
+#labels Phase-Design,SDK
 
 = Introduction =
 
