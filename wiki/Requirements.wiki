@@ -39,3 +39,12 @@ A node can be coded from scratch, or it can be a collection of other nodes.The i
 
 == Engine GUI ==
 We've discussed the idea of using Cairo to allow users to build custom interfaces for their instruments. Not much else has been said at this point. This and other pages on the subject will be updated/created as more decisions are made.
+
+= Example Projects =
+
+Example projects to serve as test cases:
+
+ * Simple polyphonic synth -- The simplest possible test case. Create a simple polyphonic synth with a LFO modulated oscillator.
+ * SFZ sample player -- Advanced test case. Require streaming sample playback.
+ * Reaktor like application -- Similar to the origianl Nuclear plan but without the need for compilation by GCC to build instruments. Let the user create and edit a processing graph, use a prebuilt standard library of blocks and write new interpreted DSP blocks.
+ * Guitar Rig like application -- Not an instrument, but an amplifier/cabinet simulator and effect rack. Test case for modeling of non-linear behavior.
