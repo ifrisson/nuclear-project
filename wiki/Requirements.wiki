@@ -14,7 +14,14 @@ The revised idea is to create a framework to generate code from DSP and engine d
 = Required Features =
 
  * Being able to create pure software synthesizers, sample players as well as effects and filters.
- * Output the engine as a JACK application, a Python module or as a DSSI, LV2, VSTi, Audio Unit or RTAS plugin.
+ * Output the engine as a:
+ ** JACK application
+ ** Python module
+ ** DSSI plugin
+ ** LV2 plguin
+ ** VST/VSTi plugin
+ ** Audio Unit plguin
+ ** RTAS plugin.
  * Easy creation of engines by interconnecting basic DSP blocks as nodes in a processing graph.
  * Oversampling of local portions of the graph
  * The ability to create new DSP blocks using FAUST, C++ or any other preferred language.
