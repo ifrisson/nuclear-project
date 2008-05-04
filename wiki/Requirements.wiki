@@ -20,19 +20,22 @@ The revised idea is to create a framework to generate code from DSP and engine d
  * The nesting of nodes (i.e. a node made of another graph of nodes) for the creation of custom DSP routines from basic building blocks without needing to code.
  * Allowing instrument makers to create their own GUIs for their instruments.
 
-= General Implementation Ideas =
+== Routing == 
+This will work by having each node, implemented as a class, be responsible for asking each of its input nodes for their outputs. As each node needs to process a new input, these calls will pass back along the graph until the beginning of any number of parallel threads is reached.
 
-Let's elaborate on each of the last bullet points, one at a time:
+== DSP blocks ==
+Ideally, we would like to be able to edit code right in the main Nuclear application, and having Nuclear handle compilation and loading of dynamic modules. Alternatively, DSP processors can be made by using combinations of any other node, and saved as a node itself. This will likely be implemented more at the interface level than at the application level, as composite nodes are really just a form of clever information management.
 
- * *Routing:* This will work by having each node, implemented as a class, be responsible for asking each of its input nodes for their outputs. As each node needs to process a new input, these calls will pass back along the graph until the beginning of any number of parallel threads is reached.
- * *Oversampling:* The design discussion of this is happening in further detail on the PolyphonyAndOversampling page.
- * *Creating new processing blocks:* Ideally, we would like to be able to edit code right in the main Nuclear application, and having Nuclear handle compilation and loading of dynamic modules. Alternatively, DSP processors can be made by using combinations of any other node, and saved as a node itself. This will likely be implemented more at the interface level than at the application level, as composite nodes are really just a form of clever information management.
- * *Nodes accessing external data:* The idea here is for the nodes to be able to access and use external data, provided by the mother application, as atomic units. This will allow the coding of nodes that can implement new user-level features of any particular synthesizer and/or sampler. This can likely be done by the mother application passing a pointer containing the current value of the required external control to the node when the instrument creator sets up the connection.
- * *Polyphony:* This is also being dealt with separately on the PolyphonyAndOversampling page.
+== Controllers ==
+The idea here is for the nodes to be able to access and use external data, provided by the mother application, as atomic units. This will allow the coding of nodes that can implement new user-level features of any particular synthesizer and/or sampler. This can likely be done by the mother application passing a pointer containing the current value of the required external control to the node when the instrument creator sets up the connection.
 
-At the interface level:
+== GUI ==
+We're taking a serious look at using [http://wiki.drobilla.net/FlowCanvas FlowCanvas] as an easy method of drawing a graph-based programming GUI.
 
- * *A spiffy GUI:* We're taking a serious look at using [http://wiki.drobilla.net/FlowCanvas FlowCanvas] as an easy method of drawing a graph-based programming GUI.
- * *Viewing signal information:* This would be implemented purely at the interface level, allowing the user to, for example, single-click on a connection to see information pop up in a window, like numeric data, an oscilloscope, or a spectral display. These tools would aid in the design and troubleshooting of new instruments.
- * *Composite nodes:* A node can be coded from scratch, or it can be a collection of other nodes.The inputs and outputs of a composite node (there's a nice buzzword for you) would be determined simply by which of its internal nodes' connections aren't hooked up to anything internally. That way, a composite node can be treated simply as a single node in an instrument design. This can be accomplished purely at the interface level. At the graph level, it's really just more nodes getting plugged in. The composite nodes represent some real power, as new DSP blocks can be created from existing ones, whether basic or composite themselves. So, basic blocks such as adders, multipliers, and delay lines can be implemented as base nodes, and used to build more complex processors.
- * *Custom instrument GUIs:* We've discussed the idea of using Cairo to allow users to build custom interfaces for their instruments. Not much else has been said at this point. This and other pages on the subject will be updated/created as more decisions are made.
+Viewing signal information would be implemented purely at the interface level, allowing the user to, for example, single-click on a connection to see information pop up in a window, like numeric data, an oscilloscope, or a spectral display. These tools would aid in the design and troubleshooting of new instruments.
+
+== Composite nodes == 
+A node can be coded from scratch, or it can be a collection of other nodes.The inputs and outputs of a composite node (there's a nice buzzword for you) would be determined simply by which of its internal nodes' connections aren't hooked up to anything internally. That way, a composite node can be treated simply as a single node in an instrument design. This can be accomplished purely at the interface level. At the graph level, it's really just more nodes getting plugged in. The composite nodes represent some real power, as new DSP blocks can be created from existing ones, whether basic or composite themselves. So, basic blocks such as adders, multipliers, and delay lines can be implemented as base nodes, and used to build more complex processors.
+
+== Engine GUI ==
+We've discussed the idea of using Cairo to allow users to build custom interfaces for their instruments. Not much else has been said at this point. This and other pages on the subject will be updated/created as more decisions are made.
