@@ -1,4 +1,4 @@
-#summary Oversampling.
+#summary How to deal with oversampling.
 #labels Phase-Design
 
 = Introduction =
