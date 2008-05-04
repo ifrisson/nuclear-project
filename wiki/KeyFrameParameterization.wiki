@@ -1,5 +1,5 @@
 #summary This page continues some ideas about a way to control and route exposed internal parameters of a synthesis/sampling engine.
-#labels Phase-Requirements
+#labels Phase-Requirements,Project
 
 = Introduction =
 
