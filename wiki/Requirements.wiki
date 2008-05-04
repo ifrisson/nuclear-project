@@ -27,10 +27,10 @@ The revised idea is to create a framework to generate code from DSP and engine d
     * RTAS plugin.
   * Creating engines by interconnecting DSP blocks as nodes in a processing graph.
   * Oversampling of local portions of the graph
-  * The ability to create new DSP blocks using FAUST, C++ or any other preferred language.
+  * DSP blocks are declared in the FAUST language.
   * Nodes of the engine have read-access external control data, such as MIDI data or the master clock via messages.
-  * The ability to view the information stream going through any connection via various means (oscilloscope, spectral display, numeric display, etc.)
-  * The nesting of nodes (i.e. a node made of another graph of nodes) for the creation of custom DSP routines from basic building blocks without needing to code.
+  * Ability to view the information stream going through any connection via various means (oscilloscope, spectral display, numeric display, etc.)
+  * Grouping of nodes for reuse to create custom DSP routines from basic building blocks without needing to code.
   * Allowing instrument makers to create their own GUIs for their instruments.
 
 = Example Projects =
