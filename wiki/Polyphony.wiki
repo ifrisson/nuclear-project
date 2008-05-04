@@ -1,4 +1,4 @@
-#summary Small writeup on polyphony.
+#summary How to deal with polyphony.
 #labels Phase-Design
 
 *Q:* What is a "voice"?
