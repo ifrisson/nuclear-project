@@ -1,5 +1,5 @@
 #summary This page is an on-going discussion of the basic design of the Nuclear Project.
-#labels Phase-Requirements,Phase-Implementation
+#labels Phase-Requirements
 
 = Introduction =
 
