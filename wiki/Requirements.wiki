@@ -9,7 +9,7 @@ Nuclear is neither a synthesizer nor a sampler. It's beyond that. Instead it let
 
 Originally the idea was to create a single integrated application that both engine creators and end-users would use. An engine maker would use the built in GUI editors to create DSP blocks and connect them together in a processing graph. The DSP and processor graph declarations would be stored in platform independent formats. When a user loaded the engine all the DSP declarations would be compiled natively as modules and the processing graph would be built dynamically from the engine declaration file. This would require the end user having a compiler and build environment installed and properly configured to be used by the application.
 
-The revised idea is to create a framework to generate code from DSP and engine declarations that will be compiled and linked as a native library. The intended audience is developers who wish to create sample players, synthesizers and effects using a declarative method. To the end-user all hosts and engines appear and are used just like regular applications or plugins.
+The revised idea is to create a framework to generate code from DSP and engine [http://en.wikipedia.org/wiki/Declarative_programming declarations] that will be compiled and linked as a native library. The intended audience is developers who wish to create sample players, synthesizers and effects using a declarative method. To the end-user all hosts and engines appear and are used just like regular applications or plugins.
 
 = Required Features =
 
