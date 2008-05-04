@@ -36,8 +36,8 @@ There are two types of communications:
 
 == Code Generators ==
 
-To be written...
+The Nuclear [CodeGenerator code generator] take an engine declaration as a XML file as input and generate C++ code using the SDK that can be compiled into a native binary. The generator itself will be developed in Python.
 
 == Integrated Development Environment ==
 
-To be written...
+Nuclear include an [IntegratedDevelopmentEnvironment Integrated Development Environment] for coding DSPs with FAUST, designing custom engine GUIs and visually program the processor graph. The IDE will be developed in Python.
