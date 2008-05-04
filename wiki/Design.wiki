@@ -1,4 +1,4 @@
-#summary Main design document for the current design.
+#summary Main design document: How do we fulfill the requirements?
 #labels Phase-Design
 
 = Introduction =
