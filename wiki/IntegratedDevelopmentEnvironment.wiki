@@ -1,0 +1,6 @@
+#summary Design of the IDE.
+#labels Phase-Design
+
+= Introduction =
+
+The IDE will be developed in Python.
