@@ -20,7 +20,7 @@ As long as we get the interface for it right the implementation can be improved 
 
 The SDK has four major types:
 
-* _Host_. A container for an engine. The SDK will provide a number of common hosts (JACK application, DSSI, LV2, VSTi, Audio Unit, RTAS, Python module, etc.). The host is responsible for interfacing with the outside world on behalf of the engine: input/output audio, setting parameters and translating MIDI into messages the engine understand.
+ * _Host_. A container for an engine. The SDK will provide a number of common hosts (JACK application, DSSI, LV2, VSTi, Audio Unit, RTAS, Python module, etc.). The host is responsible for interfacing with the outside world on behalf of the engine: input/output audio, setting parameters and translating MIDI into messages the engine understand.
 
  * _Engine_. Has signal input/outputs and can receive/sends messages. Container for voices, manage voices and mix down all voices for final output.
 
