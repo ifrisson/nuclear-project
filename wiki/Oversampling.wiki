@@ -1,5 +1,5 @@
-#summary How to deal with oversampling.
-#labels Phase-Design
+#summary How oversampling is implemented.
+#labels Phase-Documentation
 
 = Introduction =
 
