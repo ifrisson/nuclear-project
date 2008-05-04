@@ -1,4 +1,4 @@
-#summary This page is an on-going discussion of the basic design of the Nuclear Project.
+#summary This page is an on-going discussion of the basic requirements of the Nuclear Project.
 #labels Phase-Requirements
 
 = Introduction =
