@@ -3,7 +3,7 @@
 
 = Introduction =
 
-One other way to handle oversampling, and possibly polyphony as well, is to implement special nodes that take advantage of certain properties of a directed graph.
+To handle oversampling we need to have special nodes that take advantage of certain properties of a directed graph.
 
 == Downsampling ==
 
