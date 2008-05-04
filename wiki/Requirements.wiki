@@ -42,7 +42,7 @@ We've discussed the idea of using Cairo to allow users to build custom interface
 
 = Example Projects =
 
-Example projects to serve as test cases:
+Example projects to be built with Nuclear serving as test cases:
 
  * Simple polyphonic synth -- The simplest possible test case. Create a simple polyphonic synth with a LFO modulated oscillator.
  * SFZ sample player -- Advanced test case. Require streaming sample playback.
