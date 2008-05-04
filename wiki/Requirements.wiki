@@ -34,7 +34,7 @@ The revised idea is to create a framework to generate code from DSP block and en
   * Use [http://opensoundcontrol.org OpenSound Control] to [Controller control] the engine, voices and even individual nodes. Inspired by the [http://stud3.tuwien.ac.at/~e0725639/OSC-SYN.txt OSC 'SYN' namespace] proposal.
   * Allowing engine makers to create their own [EngineGUI GUIs] for their instruments.
   * An [IntegratedDevelopmentEnvironment integrated development environment] for coding DSPs with FAUST, designing custom engine GUIs and visually program the processor graph.
-  * Use [http://www.cmake.org CMake] for build automation of the engines.
+  * Use [http://www.cmake.org/Wiki/CMake CMake] for build automation of the engines.
 
 = Example Projects =
 
