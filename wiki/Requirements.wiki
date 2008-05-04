@@ -11,7 +11,7 @@ Originally the idea was to create a single integrated application that both engi
 
 The revised idea is to create a framework to generate code from DSP block and engine [http://en.wikipedia.org/wiki/Declarative_programming declarations] that will be compiled and linked as a native library. The intended audience is developers who wish to create sample players, synthesizers and effects using a declarative method. To the end-user all hosts and engines appear and are used just like regular applications or plugins.
 
-= Required Features =
+= Features =
 
   * Being able to create:
     * software synthesizers;
