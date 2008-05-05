@@ -29,7 +29,7 @@ This is a delay line whose length can be changes at the sample rate. It cannot b
 
 === Integrator ===
 
-An integrator keeps a running summation of an input signal available as an output to other functions.
+An integrator keeps a running summation of an input signal available as an output to other nodes.
 
 === Comb Filter ===
 
