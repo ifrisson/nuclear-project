@@ -81,4 +81,4 @@ This will require a collection of nodes. Further research will need to be done. 
 
 = Conclusions =
 
-Nuclear should make possible the creation of a high-quality guitar processor that can create new and pleasing sounds that are familiar, but not quite so. Theoretically, it should also be possible to fairly closely simulate a number of amps, as long as those amps can be physically accessed and analyzed in the way needed.
+Nuclear should make possible the creation of a high-quality guitar processor that can create new and pleasing sounds that are somewhat familiar, but not quite so. Theoretically, it should also be possible to fairly closely simulate a number of amps, as long as those amps can be physically accessed and analyzed in the way needed.
