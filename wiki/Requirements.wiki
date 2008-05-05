@@ -18,6 +18,7 @@ The revised idea is to create a framework to generate code from DSP block and en
     * sample players;
     * effects and filters.
   * Output the engine as:
+    * Dynamically linked library;
     * [http://jackaudio.org JACK] application;
     * [http://python.org Python] module;
     * [http://dssi.sourceforge.net DSSI] plugin;
