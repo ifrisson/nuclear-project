@@ -7,4 +7,4 @@ Nuclear include an Integrated Development Environment for coding DSPs with FAUST
 
 We're taking a serious look at using [http://wiki.drobilla.net/FlowCanvas FlowCanvas] as an easy method of drawing a graph-based visual programming GUI.
 
-The IDE will come with a standard library of [BuildingBlockNodes DSP blocks].
+The IDE will come with a standard library of [AtomicNodes DSP blocks].
