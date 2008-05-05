@@ -25,7 +25,7 @@ This is a delay line of a length which is set at its time of initialization, in 
 
 === Variable Delay Line ===
 
-This is a delay line whose length can be changes at the sample rate. It cannot be multi-tapped, however. This would be useful for creating chorus and flanging effects.
+This is a delay line whose length can be changed at the sample rate. It cannot be multi-tapped, however. This would be useful for creating chorus and flanging effects.
 
 === Integrator ===
 
