@@ -31,12 +31,6 @@ This is a delay line whose length can be changed at the sample rate. It cannot b
 
 An integrator keeps a running summation of an input signal available as an output to other nodes.
 
-=== Comb Filter ===
-
-I've debated whether to make this a building block node, as it can be constructed from an adder, a multiplier, and a variable delay line. However, due to the extreme usefulness of comb filters, I've decided to make them an atomic unit.
-
-A comb filter consists of a split to a delay line, the output of which is then multiplied by a coefficient to control its gain before being added back into the original signal. More detail can be found at this [http://en.wikipedia.org/wiki/Comb_filter Wikipedia] article. Comb filters are useful for making reverbs.
-
 = An Incomplete List =
 
 Although these will allow for the creation of many different DSP algorithms, for now, treat this as an incomplete list of the basic node types. Also, keep in mind that new nodes can be written very easily, and that nodes of more complex functionality can be included in node groups.
