@@ -1,5 +1,5 @@
 #summary How polyphony is implemented.
-#labels Phase-Documentation
+#labels Phase-Requirements
 
 = Introduction = 
 
