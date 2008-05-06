@@ -1,5 +1,5 @@
 #summary Nuclear-powered guitar amp simulation and effects for the OSS world.
-#labels Phase-Documentation,Project
+#labels Phase-Requirements,Project
 
 = Introduction =
 
