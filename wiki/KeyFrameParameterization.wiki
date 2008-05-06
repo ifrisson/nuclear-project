@@ -3,7 +3,7 @@
 
 = Introduction =
 
-This page details some brainstorming I had about a way to control and route exposed internal parameters of a synthesis/sampling engine so that clever routing, linking, and processing of control signals could re-create any feature wanted in a synth.
+This page details some brainstorming I (Darren Landrum) had about a way to control and route exposed internal parameters of a synthesis/sampling engine so that clever routing, linking, and processing of control signals could re-create any feature wanted in a synth.
 
 The idea is based on the concept of setting key-frames on one or more exposed parameters, and animating between the two frames. The animation could be linear, or along a defined curve, and it could be controlled by a timer, or by an external control, including another key-frame pair. The idea was inspired by the way key-frame animation is done within 3D rendering software.
 
