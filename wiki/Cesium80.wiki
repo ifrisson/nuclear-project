@@ -1,0 +1,18 @@
+#summary Having a go at modeling the linear and non-linear character of the Yamaha CS80, or or at least get close...
+#labels Phase-Requirements,Project
+
+= Introduction =
+
+It was and continues to be a seminal instrument of the 70s and 80s. The CS series, including the CS80, was Yamaha's second shot at a synthesizer for the mass market after years of making pianos and organs. Their first go, the GX-1, was a USD$80,000 multi-keyboard monster, which you can see in action, helmed by Keith Emerson, in this [http://www.youtube.com/watch?v=0OLWgrr671g Youtube video].
+
+Eventually, the technology of the GX-1 trickled down into the CS80, which was 8-note polyphonic, fully analog, and cost about USD$8,000, brand new. Still pricey, but within the reach of many electronic artists of the day. Unfortunately, the release of the Sequential Circuits Prophet-5, at a mere $2,500, means the CS80 didn't do too well in the end, but it still found itself in the hands of Toto, Vangelis (who swore by it), and the [http://www.youtube.com/watch?v=-OWMGAiaNeQ BBC Radiophonics Workshop].
+
+Unfortunately, this document is not yet going to be the be-all-end-all of modeling this synth. The intent of this page is to "get the ball rolling", so to speak, and to serve as a repository on research for Nuclear, as well as to remind us of what kind of goals we're trying to achieve.
+
+= The Inspiration =
+
+Other than the original CS80, there is a software synth that made me believe this was a possible project. It was _not_ the Arturia CS80V. It was, instead, an inexpensive VSTi plug-in made by one man: the [http://www.stillwellaudio.com/?page_id=37 Olga], by Schwa. Just take a listen to the mp3 samples and you'll hear what I mean.
+
+= Research =
+
+[http://antti.smartelectronix.com/ Antti], of Smartelectronix, has a [http://dafx04.na.infn.it/WebProc/Proc/P_061.pdf paper] available on modeling the non-linear character of the Moog filter. While this is not quite what we're after for the CS80, but we can learn something from his approach.
