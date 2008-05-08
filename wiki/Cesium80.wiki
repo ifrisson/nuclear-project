@@ -19,7 +19,7 @@ Other than the original CS80, there is a software synth that made me believe thi
 
 = Considerations =
 
-All electronic circuits have non-linear behaviors, which result in forms of distortion. One of the goals of the electronic designer is to maximize the linear range of his design, and make sure that the device operates within those linear ranges as much as possible. Another goal is to make sure that when a device does get driven beyond its linear range, it does so "gracefully" (ie, with as little intermodulation distortion as possible). There are exceptions to these goals, of course, guitar amps being a famous example. A lot of tube mic preamps are also designed to be driven a little into their non-linear ranges for the purpose of adding "warmth" to a signal.
+All electronic circuits have non-linear behaviors, which result in forms of distortion. One of the goals of the electronic designer is to maximize the linear range of his design, and make sure that the device operates within those linear ranges as much as possible. Another goal is to make sure that when a device does get driven beyond its linear range, it does so "gracefully" (ie, with as little intermodulation distortion as possible). There are exceptions to these goals, of course, guitar amps being a famous example. Many tube mic preamps are also designed to be driven a little into their non-linear ranges for the purpose of adding "warmth" to a signal.
 
 Nevertheless, a lot of electronic devices, such as the CS80, have non-linear effects that are very pleasing to the ear. Whether the designers intended this or not is moot. Sound designers quickly learned how to take advantage of these effects to create sounds with a lot of character.
 
