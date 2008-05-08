@@ -15,4 +15,4 @@ Other than the original CS80, there is a software synth that made me believe thi
 
 = Research =
 
-[http://antti.smartelectronix.com/ Antti], of Smartelectronix, has a [http://dafx04.na.infn.it/WebProc/Proc/P_061.pdf paper] available on modeling the non-linear character of the Moog filter. While this is not quite what we're after for the CS80, but we can learn something from his approach.
+[http://antti.smartelectronix.com/ Antti], of Smartelectronix, has a [http://dafx04.na.infn.it/WebProc/Proc/P_061.pdf paper] available on modeling the non-linear character of the Moog filter. While this is not quite what we're after for the CS80, we can learn something from his approach.
