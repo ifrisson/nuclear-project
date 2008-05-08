@@ -11,7 +11,7 @@ Unfortunately, this document is not yet going to be the be-all-end-all of modeli
 
 = The Inspiration =
 
-Other than the original CS80, there is a software synth that made me believe this was a possible project. It was _not_ the Arturia CS80V. It was, instead, an inexpensive VSTi plug-in made by one man: the [http://www.stillwellaudio.com/?page_id=37 Olga], by Schwa. Just take a listen to the mp3 samples and you'll hear what I mean.
+Other than the original CS80, there is a software synth that made me believe this was a possible project. It is _not_ the Arturia CS80V. It is, instead, an inexpensive VSTi plug-in made by one man: the [http://www.stillwellaudio.com/?page_id=37 Olga], by Schwa. Just take a listen to the mp3 samples and you'll hear what I mean.
 
 = Research =
 
