@@ -22,3 +22,7 @@ The Nuclear [CodeGenerator code generator] take an engine declaration as a XML f
 == Integrated Development Environment ==
 
 Nuclear include an [IntegratedDevelopmentEnvironment Integrated Development Environment] for coding DSPs with FAUST, designing custom engine GUIs and visually program the processor graph. The IDE will be developed in Python.
+
+= See Also = 
+
+  * Requirements
