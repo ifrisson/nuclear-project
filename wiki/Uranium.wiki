@@ -39,7 +39,7 @@ I'd like to talk briefly about the kind of distortion we do *not* want to make. 
 
 Tubes tend to avoid a lot of intermodulation by approaching their saturation point slowly, ie, the tops and the bottoms of the wave don't get chopped off so much as they get rounded off. Solid-state tends to be less forgiving, though there are ways to design solid-state distortion circuits that are more pleasing to the ear.
 
-You can read more at already-linked [http://www.geofex.com/effxfaq/distn101.htm Geofex FAQ].
+You can read more at the already-linked [http://www.geofex.com/effxfaq/distn101.htm Geofex FAQ].
 
 == Equalizers ==
 
