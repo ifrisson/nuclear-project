@@ -19,6 +19,12 @@ The waveshaping curve can also be determined by analysis of a real tube or solid
 
 As the application matures, I hope that all three methods will be represented and available to end-users.
 
+=== Possibility: Bezier-based Waveshaping? ===
+
+The heading says it all, really. I wonder if it would be possible to use Bezier functions to create waveshapers of just about any shape. It would certainly create a great deal of flexibility. It would also allow for modulating the actual curve of the waveshaper in real time, which could be useful.
+
+This will be worth looking into, I think.
+
 === Distortion Duty Cycle ===
 
 Here's some information about duty cycle-based distortion, as discussed in the Geofex FAQ entry on [http://www.geofex.com/effxfaq/distn101.htm distortion] (special thanks to R. G. Keen of geofex.com):
@@ -26,12 +32,6 @@ Here's some information about duty cycle-based distortion, as discussed in the G
   Duty Cycle: Based on an article in Electrical Engineering Times, continuously changes in the relative amounts of clipping between the positive and negative halves of the signal may be an important factor in distortion sound. This article (by Brian Murphy, interviewing John Murphy, who used to be chief engineer at Carvin; EET, October 3, 1994) outlines Murphy's ideas on the degree to which he can simulate tube distortion in solid state designs. He holds that if you filter properly, soft clip, and arrange for the duty cycle of the clipped signal to vary with varying signal levels, you get something very close to tube distortion. This is the basis of the "tube emulation" circuitry in Carvin's SX series of amps.
 
 In fact, here's a link to the [http://www.trueaudio.com/at_eetjlm.htm original article].
-
-=== Possibility: Bezier-based Waveshaping? ===
-
-The heading says it all, really. I wonder if it would be possible to use Bezier functions to create waveshapers of just about any shape. It would certainly create a great deal of flexibility. It would also allow for modulating the actual curve of the waveshaper in real time, which could be useful.
-
-This will be worth looking into, I think.
 
 === Intermodulation Distortion ===
 
