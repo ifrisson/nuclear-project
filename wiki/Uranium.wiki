@@ -19,6 +19,16 @@ The waveshaping curve can also be determined by analysis of a real tube or solid
 
 As the application matures, I hope that all three methods will be represented and available to end-users.
 
+=== Possibility: Bezier-based Waveshaping? ===
+
+The heading says it all, really. I wonder if it would be possible to use Bezier functions to create waveshapers of just about any shape. It would certainly create a great deal of flexibility. It would also allow for modulating the actual curve of the waveshaper in real time. This could be a way to implement duty cycle-based distortion, as discussed in the Geofex FAQ entry on [http://www.geofex.com/effxfaq/distn101.htm distortion] linked to earlier (special thanks to R. G. Keen of geofex.com):
+
+  Duty Cycle: Based on an article in Electrical Engineering Times, continuously changes in the relative amounts of clipping between the positive and negative halves of the signal may be an important factor in distortion sound. This article (by Brian Murphy, interviewing John Murphy, who used to be chief engineer at Carvin; EET, October 3, 1994) outlines Murphy's ideas on the degree to which he can simulate tube distortion in solid state designs. He holds that if you filter properly, soft clip, and arrange for the duty cycle of the clipped signal to vary with varying signal levels, you get something very close to tube distortion. This is the basis of the "tube emulation" circuitry in Carvin's SX series of amps.
+
+(In fact, here's a link to the [http://www.trueaudio.com/at_eetjlm.htm original article].)
+
+This will be worth looking into, I think.
+
 === Intermodulation Distortion ===
 
 I'd like to talk briefly about the kind of distortion we do *not* want to make. Intermodulation distortion is the creation of frequencies in the signal that are *not* harmonics of any part of the original signal. A large part of the reason for the difference between solid-state distortion and tube distortion has to do with intermodulation artifacts.
@@ -74,15 +84,9 @@ It will be likely that a node will be made for each added order of Chebyshev pol
 
 The hyperbolic functions are a little simpler, and will likely be implement as polynomial approximations, one per function. Depending on the order of the approximation, these will also require oversampling to avoid aliasing.
 
-=== Possibility: Bezier-based Waveshaping? ===
+== Bezier Waveshaper ==
 
-The heading says it all, really. I wonder if it would be possible to use Bezier functions to create waveshapers of just about any shape. It would certainly create a great deal of flexibility. It would also allow for modulating the actual curve of the waveshaper in real time. This could be a way to implement duty cycle-based distortion, as discussed in the Geofex FAQ entry on [http://www.geofex.com/effxfaq/distn101.htm distortion] linked to earlier (special thanks to R. G. Keen of geofex.com):
-
-  Duty Cycle: Based on an article in Electrical Engineering Times, continuously changes in the relative amounts of clipping between the positive and negative halves of the signal may be an important factor in distortion sound. This article (by Brian Murphy, interviewing John Murphy, who used to be chief engineer at Carvin; EET, October 3, 1994) outlines Murphy's ideas on the degree to which he can simulate tube distortion in solid state designs. He holds that if you filter properly, soft clip, and arrange for the duty cycle of the clipped signal to vary with varying signal levels, you get something very close to tube distortion. This is the basis of the "tube emulation" circuitry in Carvin's SX series of amps.
-
-(In fact, here's a link to the [http://www.trueaudio.com/at_eetjlm.htm original article].)
-
-This will be worth looking into, I think.
+Should it prove possible, these could be really valuable.
 
 == 4-Pole Filters ==
 
