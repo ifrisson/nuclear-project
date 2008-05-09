@@ -76,7 +76,7 @@ The hyperbolic functions are a little simpler, and will likely be implement as p
 
 === Possibility: Bezier-based Waveshaping? ===
 
-The heading says it all, really. I wonder if it would be possible to use Bezier functions to create waveshapers of just about any shape. It would certainly create a great deal of flexibility.
+The heading says it all, really. I wonder if it would be possible to use Bezier functions to create waveshapers of just about any shape. It would certainly create a great deal of flexibility. It would also allow for modulating the actual curve of the waveshaper in real time. This will be worth looking into, I think.
 
 == 4-Pole Filters ==
 
