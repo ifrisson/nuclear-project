@@ -74,6 +74,10 @@ It will be likely that a node will be made for each added order of Chebyshev pol
 
 The hyperbolic functions are a little simpler, and will likely be implement as polynomial approximations, one per function. Depending on the order of the approximation, these will also require oversampling to avoid aliasing.
 
+=== Possibility: Bezier-based Waveshaping? ===
+
+The heading says it all, really. I wonder if it would be possible to use Bezier functions to create waveshapers of just about any shape. It would certainly create a great deal of flexibility.
+
 == 4-Pole Filters ==
 
 Nodes will need to be created for 4-pole low-pass, high-pass, and band-pass filters. This is the kind of thing FAUST excels at.
