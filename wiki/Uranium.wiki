@@ -9,7 +9,7 @@ Uranium will also serve as Nuclear's test case for non-linear processing of audi
 
 = Architecture =
 
-There will be four basic forms of processing available to route together in any number of ways: distortions, equalizers, effects, and cabinet simulations.
+There will be four basic forms of processing available to route together in any number of ways: distortions, equalizers, effects, and cabinet simulations. Technically, _distortion_ would be called an effect, but as guitarists generally treat the distortion of their signals separately from applying other effects, we will as well.
 
 == Distortions ==
 
