@@ -3,7 +3,7 @@
 
 = Introduction =
 
-The SDK provides containers and algorithms as a framework for the purpose of creating synth engines. It doesn't make any sound on it's own but take care of all the mind numbing details of dynamic memory allocation and signal routing. 
+The SDK provides containers and algorithms as a framework for the purpose of creating synth engines. It doesn't make any sound on it's own but take care of all the mind numbing details of memory allocation and signal routing. 
 
 As long as we get the interface for it right the implementation can be improved and optimized later without breaking anything. A first iteration goal is to design a set of stable and working interfaces, later iterations will deal with improving the actual implementation.
 
