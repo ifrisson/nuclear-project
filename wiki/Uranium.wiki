@@ -33,7 +33,14 @@ Two forms of equalizer will exist in Uranium. One will be in emulation of the ba
 
 == Effects ==
 
-... to be written...
+Obviously, there are many effects that could be created as part of the total package. There are literally hundreds of different designs for stomp-boxes, flangers, delays, and the like. Here are some classes of effects that would be nice to have:
+
+  * Flangers and Phasers
+  * Delays - simulating a tape-based delay, such as the Roland Space Echo, would be a fascinating challenge.
+  * Filters and Wahs
+  * Tremelo
+
+What kind of characters one would want these to have would determine the best approach to take for each one. Clearly, Uranium as a whole will be quite modular in nature.
 
 == Speaker and Cabinet Emulation ==
 
