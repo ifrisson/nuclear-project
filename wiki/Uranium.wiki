@@ -21,7 +21,7 @@ As the application matures, I hope that all three methods will be represented an
 
 === Possibility: Bezier-based Waveshaping? ===
 
-The heading says it all, really. I wonder if it would be possible to use Bezier functions to create waveshapers of just about any shape. It would certainly create a great deal of flexibility. It would also allow for modulating the actual curve of the waveshaper in real time. This could be a way to implement duty cycle-based distortion, as discussed in the Geofex FAQ entry on [http://www.geofex.com/effxfaq/distn101.htm distortion] linked to earlier (special thanks to R. G. Keen of geofex.com):
+The heading says it all, really. I wonder if it would be possible to use Bezier functions to create waveshapers of just about any shape. It would certainly create a great deal of flexibility. It would also allow for modulating the actual curve of the waveshaper in real time. This could be a way to implement duty cycle-based distortion, as discussed in the Geofex FAQ entry on [http://www.geofex.com/effxfaq/distn101.htm distortion] (special thanks to R. G. Keen of geofex.com):
 
   Duty Cycle: Based on an article in Electrical Engineering Times, continuously changes in the relative amounts of clipping between the positive and negative halves of the signal may be an important factor in distortion sound. This article (by Brian Murphy, interviewing John Murphy, who used to be chief engineer at Carvin; EET, October 3, 1994) outlines Murphy's ideas on the degree to which he can simulate tube distortion in solid state designs. He holds that if you filter properly, soft clip, and arrange for the duty cycle of the clipped signal to vary with varying signal levels, you get something very close to tube distortion. This is the basis of the "tube emulation" circuitry in Carvin's SX series of amps.
 
@@ -35,7 +35,7 @@ I'd like to talk briefly about the kind of distortion we do *not* want to make. 
 
 Tubes tend to avoid a lot of intermodulation by approaching their saturation point slowly, ie, the tops and the bottoms of the wave don't get chopped off so much as they get rounded off. Solid-state tends to be less forgiving, though there are ways to design solid-state distortion circuits that are more pleasing to the ear.
 
-You can read more at [http://www.geofex.com/effxfaq/distn101.htm this link].
+You can read more at already-linked [http://www.geofex.com/effxfaq/distn101.htm Geofex FAQ].
 
 == Equalizers ==
 
