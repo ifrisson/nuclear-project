@@ -37,7 +37,7 @@ Rather than stealing a bunch of text, I'll just link over to the very nice [http
   * 1 low-pass VCF, followed by 1 high-pass VCF, each 12dB/oct with resonance, each with a simple ASR-type envelope.
   * VCA with ADSR envelope.
   * LFOs for sweeps, vibrato, tremolo. (These were actually "global", but we'll ignore that fact for the purposes of our simulation.)
-  * The catch is that there were actually *two* of these "voices" per voice, independent of each other. Thus, each voice was running two patches at once.
+  * The catch is that there were actually *two* of these "voices" per voice, independent of each other. Thus, each voice was essentially running two patches at once.
 
 Globally, the CS80 had:
 
