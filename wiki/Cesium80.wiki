@@ -9,7 +9,7 @@ Eventually, the technology of the GX-1 trickled down into the CS80, which was 8-
 
 Unfortunately, this document is not yet going to be the be-all-end-all of modeling this synth. The intent of this page is to "get the ball rolling", so to speak, and to serve as a repository on research for Nuclear, as well as to remind us of what kind of goals we're trying to achieve.
 
-= A Note About This Article =
+== A Note About This Article ==
 
 I just want to point out that as of right now, this article is little more than brainstorming. It is my hope, though, that it will eventually evolve into an effective design document for a Nuclear-powered emulation of the sound of the famous CS80.
 
