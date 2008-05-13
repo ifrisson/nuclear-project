@@ -29,7 +29,7 @@ This is a delay line whose length can be changed at the sample rate. It cannot b
 
 === Summation ===
 
-This keeps a running summation of an input signal available as an output to other nodes.
+This keeps a running summation of an input signal available as an output to other nodes. This is the discrete equivalent to integration.
 
 === First Difference ===
 
@@ -39,7 +39,7 @@ This outputs the slope of the current point of the input signal, based upon runn
 y[n] = x[n] - x[n-1]
 }}}
 
-That output is then made available as a signal.
+That output is then made available as a signal. This is the discrete equivalent to differentiation.
 
 = An Incomplete List =
 
