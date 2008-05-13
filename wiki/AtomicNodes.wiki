@@ -35,7 +35,7 @@ This keeps a running summation of an input signal available as an output to othe
 y[n] = x[n] + y[n-1]
 }}}
 
-Notice that this uses the previous output sample as input to the function. That makes it easy to keep the integration going.
+Notice that this uses the previous output sample as an input to the function. That makes it easy to keep the integration going.
 
 === Differentiator ===
 
