@@ -25,7 +25,7 @@ How to make:
   * Multi-tapped Delay Line: Chain together the necessary number of variable lines, pulling off of the output of each one (automatic branching) and sending it to where it needs to go.
   * Comb filter: Branch off the output to be sent through the delay line, set the desired delay, send the output of the delay to a multiplier to reduce its amplitude, then add back into the main signal at the desired point.
 
-I'm wondering if this can be implemented as a FIR filter with a single sample impulse, wherein the impulse changes position on the fly. We'd essentially be using the latency properties that FIR filters have to our advantage. This would also make it even easier to make a comb filter, as the multiplier for the output (before the addition to the main signal) could be built into the FIR filter by lowering the amplitude of the single impulse.
+This would be one of the essential atomic elements of DSP, allowing the creation of filters (FIR, IIR, and comb), flangers, phasers, delays (the guitar effect kind), and reverbs (including the fancy shimmering modulation effects).
 
 === Integrator ===
 
