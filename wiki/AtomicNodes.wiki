@@ -27,9 +27,17 @@ This is a delay line of a length which is set at its time of initialization, in 
 
 This is a delay line whose length can be changed at the sample rate. It cannot be multi-tapped, however. This would be useful for creating chorus and flanging effects.
 
-=== Integrator ===
+=== Summation ===
 
-An integrator keeps a running summation of an input signal available as an output to other nodes.
+This keeps a running summation of an input signal available as an output to other nodes.
+
+=== First Difference ===
+
+This outputs the slope of the current point of the input signal, based upon running subtraction of the previous sample from the current sample:
+
+{{{
+y[n] = x[n] - x[n-1]
+}}}
 
 = An Incomplete List =
 
