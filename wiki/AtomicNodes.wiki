@@ -36,7 +36,7 @@ This keeps a running summation of an input signal available as an output to othe
 This outputs the slope of the current point of the input signal, based upon running subtraction of the previous sample from the current sample:
 
 {{{
-y[n] = x[n] - x[n - 1]
+y[n] = x[n] - x[n-1]
 }}}
 
 That output is then made available as a signal. This is the discrete equivalent to differentiation.
@@ -44,7 +44,7 @@ That output is then made available as a signal. This is the discrete equivalent 
 Another possibly more accurate way to implement this would be:
 
 {{{
-y[n] = x[n + 1] - x[n - 1]
+y[n] = x[n+1] - x[n-1]
 }}}
 
 This would create a latency of one sample, which would likely not matter at all.
