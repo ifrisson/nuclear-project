@@ -15,17 +15,21 @@ In no particular order:
 
 These should be pretty self-explanatory. Two signals enter, one signal leaves. Input signals can be constants, from user controls, or audio. There will be four separate nodes, one each for addition, subtraction, multiplication, and division. 
 
-=== Variable Delay Line ===
+=== Variable Tapped Delay Line ===
 
-This is a delay line whose length can be modulated in real time. You might be asking, though, where the other simple types of delay lines are. Well, what do you call a variable delay line whose length is _not_ modulated? A fixed delay line! This delay line can be of length 1 all the way up to any theoretical N in size, depending on hardware.
+This is a delay line whose length can be modulated in real time, and can be tapped as well. You might be asking, though, where the other simple types of delay lines are. Well, what do you call a variable delay line whose length is _not_ modulated? A fixed delay line! This delay line can be of length 1 all the way up to any theoretical N in size, depending on hardware.
 
 How to make:
 
   * Single Sample Delay Line: Set the delay to one sample and don't modulate.
-  * Multi-tapped Delay Line: Chain together the necessary number of variable lines, pulling off of the output of each one (automatic branching) and sending it to where it needs to go.
+  * Multi-tapped Line: This requires the use of the delay tap node, described below.
   * Comb filter: Branch off the output to be sent through the delay line, set the desired delay, send the output of the delay to a multiplier to reduce its amplitude, then add back into the main signal at the desired point.
 
 This would be one of the essential atomic elements of DSP, allowing the creation of filters (FIR, IIR, and comb), flangers, phasers, delays (the guitar effect kind), and reverbs (including the fancy shimmering modulation effects).
+
+=== Delay Tap ===
+
+This allows a delay line to be tapped at any point N along its length, returning 0 if the tap position doesn't exist. I'm still trying to figure out how this node will work within the logic of signals and graph theory.
 
 === Integrator ===
 
