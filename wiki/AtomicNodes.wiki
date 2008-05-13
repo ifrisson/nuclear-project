@@ -39,6 +39,8 @@ This outputs the slope of the current point of the input signal, based upon runn
 y[n] = x[n] - x[n-1]
 }}}
 
+That output is then made available as a signal.
+
 = An Incomplete List =
 
 Although these will allow for the creation of many different DSP algorithms, for now, treat this as an incomplete list of the basic node types. Also, keep in mind that new nodes can be written very easily, and that nodes of more complex functionality can be included in node groups.
