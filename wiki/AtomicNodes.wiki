@@ -33,7 +33,7 @@ This allows a delay line to be tapped at any point N along its length, returning
 
 === Single Sample Delay Line ===
 
-This is for applications that don't need the flexibility, such as simpler FIR filters. This simple single-sample delay line will offer higher CPU efficiency than using the more complex variable delay line will for delays one sample in size.
+This is for applications that don't need anything more complicated, such as simpler FIR filters. This simple single-sample delay line will offer higher CPU efficiency than using the more complex variable delay line for such a short time.
 
 === Integrator ===
 
