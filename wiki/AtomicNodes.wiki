@@ -13,19 +13,19 @@ In no particular order:
 
 === The Arithmetic Nodes ===
 
-These should be pretty self-explanatory. Two signals enter, one signal leaves. Input signals can be constants, from user controls, or audio. There will be four separate nodes, one each for addition, subtraction, multiplication, and division.
-
-=== Single Sample Delay Line ===
-
-This node simple holds onto the value input into it for one sample cycle, before it outputs it and then stores the next input. It has one input and one output. This node will be used mainly for the creating of FIR and IIR filters, although it might find other uses as well.
-
-=== Multi-Tapped Delay Line ===
-
-This is a delay line of a length which is set at its time of initialization, in samples (and perhaps in milliseconds as well). It can then be tapped at various points throughout its length to get the output of that particular point in the line. Also useful for making FIR filters. It can also serve as the basis for the basic delay effect with long enough delay times.
+These should be pretty self-explanatory. Two signals enter, one signal leaves. Input signals can be constants, from user controls, or audio. There will be four separate nodes, one each for addition, subtraction, multiplication, and division. 
 
 === Variable Delay Line ===
 
-This is a delay line whose length can be changed at the sample rate. It cannot be multi-tapped, however. This would be useful for creating chorus and flanging effects.
+This is a delay line whose length can be modulated in real time. You might be asking, though, where the other simple types of delay lines are. Well, what do you call a variable delay line whose length is _not_ modulated? A fixed delay line! This delay line can be of length 1 all the way up to any theoretical N in size, depending on hardware.
+
+How to make:
+
+  * Single Sample Delay Line: Set the delay to one sample and don't modulate.
+  * Multi-tapped Delay Line: Chain together the necessary number of variable lines, pulling off of the output of each one (automatic branching) and sending it to where it needs to go.
+  * Comb filter: Branch off the output to be sent through the delay line, set the desired delay, send the output of the delay to a multiplier to reduce its amplitude, then add back into the main signal at the desired point.
+
+I'm wondering if this can be implemented as a FIR filter with a single sample impulse, wherein the impulse changes position on the fly. We'd essentially be using the latency properties that FIR filters have to our advantage. This would also make it even easier to make a comb filter, as the multiplier for the output (before the addition to the main signal) could be built into the FIR filter by lowering the amplitude of the single impulse.
 
 === Integrator ===
 
