@@ -15,7 +15,7 @@ In no particular order:
 
 These should be pretty self-explanatory. Two signals enter, one signal leaves. Input signals can be constants, from user controls, or audio. There will be four separate nodes, one each for addition, subtraction, multiplication, and division. 
 
-=== Variable Tapped Delay Line ===
+=== Variable Delay Line ===
 
 This is a delay line whose length can be modulated in real time, and can be tapped as well. You might be asking, though, where the other simple types of delay lines are. Well, what do you call a variable delay line whose length is _not_ modulated? A fixed delay line! This delay line can be of length 1 all the way up to any theoretical N in size, depending on hardware.
 
