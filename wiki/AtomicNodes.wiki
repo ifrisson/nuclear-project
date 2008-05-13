@@ -27,11 +27,17 @@ This is a delay line of a length which is set at its time of initialization, in 
 
 This is a delay line whose length can be changed at the sample rate. It cannot be multi-tapped, however. This would be useful for creating chorus and flanging effects.
 
-=== Summation ===
+=== Integrator ===
 
-This keeps a running summation of an input signal available as an output to other nodes. This is the discrete equivalent to integration.
+This keeps a running summation of an input signal available as an output to other nodes:
 
-=== First Difference ===
+{{{
+y[n] = x[n] + y[n-1]
+}}}
+
+Notice that this uses the previous output sample as input to the function. That makes it easy to keep the integration going.
+
+=== Differentiator ===
 
 This outputs the slope of the current point of the input signal, based upon running subtraction of the previous sample from the current sample:
 
@@ -39,9 +45,7 @@ This outputs the slope of the current point of the input signal, based upon runn
 y[n] = x[n] - x[n-1]
 }}}
 
-That output is then made available as a signal. This is the discrete equivalent to differentiation.
-
-Another possibly more accurate way to implement this would be:
+That output is then made available as a signal. Another possibly more accurate way to implement this would be:
 
 {{{
 y[n] = (x[n+1] - x[n-1]) / 2
