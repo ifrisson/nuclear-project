@@ -59,7 +59,7 @@ That output is then made available as a signal. Another possibly more accurate w
 y[n] = (x[n+1] - x[n-1]) / 2
 }}}
 
-This would create a latency of one sample, which would likely not matter at all.
+This would create a latency of one sample. This might cause an issue on graphs with parallel paths. I'll have to work this out and elaborate on it.
 
 = An Incomplete List =
 
