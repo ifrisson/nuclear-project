@@ -21,6 +21,8 @@ Each block is a node. They are spaced equidistant along a grid of theoretically 
 
 The red lines are the signal flow (I would've picked a better color, but I was in a hurry). The red square in the lower left represents the _cursor_, which would be blinking. This highlights the active square, which in this example holds nothing. The cursor can be moved by keyboard or mouse. The right mouse button or the enter key can then be used to bring up a selection dialog for the node to be placed there.
 
+Hovering over (or perhaps single-clicking) an input or output would pop up an explanation of the port.
+
 I think this widget could be implement in PyGTK using Cairo, with no need for using Glade. Indeed, I think the entire GUI can be built in this way.
 
 In all reality, the graph for this distortion effect would be larger than this, as there would be controls for the bandpass filters routed in, and a final gain control as well (which would just be a multiplier with a user control as one input). This should be enough to show the example though.
