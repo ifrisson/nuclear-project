@@ -22,3 +22,5 @@ Each block is a node. They are spaced equidistant along a grid of theoretically 
 The red lines are the signal flow (I would've picked a better color, but I was in a hurry). The red square in the lower left represents the _cursor_, which would be blinking. This highlights the active square, which in this example holds nothing. The cursor can be moved by keyboard or mouse. The right mouse button or the enter key can then be used to bring up a selection dialog for the node to be placed there.
 
 I think this widget could be implement in PyGTK using Cairo, with no need for using Glade. Indeed, I think the entire GUI can be built in this way.
+
+Please forgive the rough graphics. I'm new to Inkscape.
