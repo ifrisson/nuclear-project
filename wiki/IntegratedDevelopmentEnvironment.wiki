@@ -8,3 +8,17 @@ Nuclear include an Integrated Development Environment for coding DSPs with FAUST
 We're taking a serious look at using [http://wiki.drobilla.net/FlowCanvas FlowCanvas] as an easy method of drawing a graph-based visual programming GUI.
 
 The IDE will come with a standard library of [AtomicNodes DSP blocks].
+
+= Proposed GUI Mockup =
+
+Here is a GUI idea mocked up by Darren Landrum:
+
+http://nuclearproject.googlepages.com/mockup.png
+
+This graph illustrates a simplified multi-band distortion. The input signal, in mono, first goes into an 8X up-sampler, then is split into a set of four bandpass filters. From there, each signal is individually distorted with a waveshaping function before being added back together, down-sampled, then output.
+
+Each block is a node. They are spaced equidistant along a grid of theoretically infinite size. The "notches and tabs" on each block are inputs and outputs, respectively. These can be places individually along any edge of the block. That way, graphs can flow in whatever direction makes the most sense for the specific graph, and for the programmer of said graph.
+
+The red lines are the signal flow (I would've picked a better color, but I was in a hurry). The red square in the lower left represents the _cursor_, which would be blinking. This highlights the active square, which in this example holds nothing. The cursor can be moved by keyboard or mouse. The right mouse button or the enter key can then be used to bring up a selection dialog for the node to be placed there.
+
+I think this widget could be implement in PyGTK using Cairo, with no need for using Glade. Indeed, I think the entire GUI can be built in this way.
