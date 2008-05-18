@@ -19,7 +19,7 @@ This graph illustrates a simplified multi-band distortion. The input signal, in 
 
 Each block is a node. They are spaced equidistant along a grid of theoretically infinite size. The "notches and tabs" on each block are inputs and outputs, respectively. These can be places individually along any edge of the block. That way, graphs can flow in whatever direction makes the most sense for the specific graph, and for the programmer of said graph.
 
-The red lines are the signal flow (I would've picked a better color, but I was in a hurry). The red square in the lower left represents the _cursor_, which would be blinking. This highlights the active square, which in this example holds nothing. The cursor can be moved by keyboard or mouse. The right mouse button or the enter key can then be used to bring up a selection dialog for the node to be placed there.
+The green lines are the signal flow. The red square in the lower left represents the _cursor_, which would be blinking. This highlights the active square, which in this example holds nothing. The cursor can be moved by keyboard or mouse. The right mouse button or the enter key can then be used to bring up a selection dialog for the node to be placed there.
 
 Hovering over (or perhaps single-clicking) an input or output would pop up an explanation of the port.
 
