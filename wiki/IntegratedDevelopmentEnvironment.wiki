@@ -23,4 +23,4 @@ The green lines are the signal flow. The red square in the lower left represents
 
 Hovering over (or perhaps single-clicking) an input or output would pop up an explanation of the port.
 
-I think this widget could be implement in PyGTK using Cairo, with no need for using Glade or FlowCanvas. Indeed, I think the entire GUI can be built in this way.
+I think this widget could be implement in PyGTK using Cairo, with no need for using Glade or !FlowCanvas. Indeed, I think the entire GUI can be built in this way.
