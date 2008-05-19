@@ -13,7 +13,11 @@ In no particular order:
 
 === The Arithmetic Nodes ===
 
-These should be pretty self-explanatory. Two signals enter, one signal leaves. Input signals can be constants, from user controls, or audio. There will be four separate nodes, one each for addition, subtraction, multiplication, and division. 
+These should be pretty self-explanatory. Two signals enter, one signal leaves. Input signals can be constants, from user controls, or audio. There will be four separate nodes, one each for addition, subtraction, multiplication, and division.
+
+=== Constant ===
+
+This outputs a signal of a constant value. This is not likely to be a commonly used node, but if you ever need it, it'll be nice that it's there.
 
 === Variable Delay Line ===
 
