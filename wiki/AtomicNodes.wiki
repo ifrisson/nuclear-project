@@ -13,13 +13,19 @@ In no particular order:
 
 === The Arithmetic Nodes ===
 
+http://nuclearproject.googlepages.com/arithmetic.png
+
 These should be pretty self-explanatory. Two signals enter, one signal leaves. Input signals can be constants, from user controls, or audio. There will be four separate nodes, one each for addition, subtraction, multiplication, and division.
 
 === Constant ===
 
+http://nuclearproject.googlepages.com/constant.png
+
 This outputs a signal of a constant value. This is not likely to be a commonly used node, but if you ever need it, it'll be nice that it's there.
 
 === Variable Delay Line ===
+
+http://nuclearproject.googlepages.com/delay_line.png
 
 This is a delay line whose length can be modulated in real time, and can be tapped as well. You might be asking, though, where the other simple types of delay lines are. Well, what do you call a variable delay line whose length is _not_ modulated? A fixed delay line! This delay line can be of length 1 all the way up to any theoretical N in size, depending on hardware.
 
@@ -33,13 +39,19 @@ This would be one of the essential atomic elements of DSP, allowing the creation
 
 === Delay Tap ===
 
+http://nuclearproject.googlepages.com/delay_tap.png
+
 This allows a delay line to be tapped at any point N along its length, returning 0 if the tap position doesn't exist. I'm still trying to figure out how this node will work within the logic of signals and graph theory.
 
 === Single Sample Delay Line ===
 
+http://nuclearproject.googlepages.com/single-sample_delay_line.png
+
 This is for applications that don't need anything more complicated, such as simpler FIR filters. This simple single-sample delay line will offer higher CPU efficiency than using the more complex variable delay line for such a short time.
 
 === Integrator ===
+
+http://nuclearproject.googlepages.com/integrator.png
 
 This keeps a running summation of an input signal available as an output to other nodes:
 
@@ -50,6 +62,8 @@ y[n] = x[n] + y[n-1]
 Notice that this uses the previous output sample as an input to the function. That makes it easy to keep the integration going.
 
 === Differentiator ===
+
+http://nuclearproject.googlepages.com/differentiator.png
 
 This outputs the slope of the current point of the input signal, based upon running subtraction of the previous sample from the current sample:
 
