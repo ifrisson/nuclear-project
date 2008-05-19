@@ -11,7 +11,7 @@ The IDE will come with a standard library of [AtomicNodes DSP blocks].
 
 = Proposed GUI Mockup =
 
-Here is a GUI idea mocked up by Darren Landrum:
+Here is a GUI idea mock-up (Darren Landrum):
 
 http://nuclearproject.googlepages.com/mockup.png
 
