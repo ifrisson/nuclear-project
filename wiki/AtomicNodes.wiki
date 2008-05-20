@@ -79,6 +79,12 @@ y[n] = (x[n+1] - x[n-1]) / 2
 
 This would create a latency of one sample. This might cause an issue on graphs with parallel paths. I'll have to work this out and elaborate on it.
 
+=== Time to Samples ===
+
+http://nuclearproject.googlepages.com/fs.png
+
+So, what do you do when you need to convert a time in milliseconds to a number of samples in a system with a user-defined sample rate? You break out the handy-dandy time-to-samples conversion node! This will have one input, one output, and do exactly what it says it does.
+
 = An Incomplete List =
 
 Although these will allow for the creation of many different DSP algorithms, for now, treat this as an incomplete list of the basic node types. Also, keep in mind that new nodes can be written very easily, and that nodes of more complex functionality can be included in node groups.
