@@ -85,6 +85,12 @@ http://nuclearproject.googlepages.com/fs.png
 
 So, what do you do when you need to convert a time in milliseconds to a number of samples in a system with a user-defined sample rate? You break out the handy-dandy time-to-samples conversion node! This will have one input, one output, and do exactly what it says it does.
 
+=== Samples to Time ===
+
+http://nuclearproject.googlepages.com/fs-1.png
+
+And here's one to do the exact opposite, when you need it. Input is in number of samples, output is time in milliseconds. I don't know yet if this will be a useful node, but for now, it won't hurt, I suppose.
+
 = An Incomplete List =
 
 Although these will allow for the creation of many different DSP algorithms, for now, treat this as an incomplete list of the basic node types. Also, keep in mind that new nodes can be written very easily, and that nodes of more complex functionality can be included in node groups.
