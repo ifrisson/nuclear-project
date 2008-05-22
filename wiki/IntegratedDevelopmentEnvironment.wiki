@@ -9,18 +9,8 @@ We're taking a serious look at using [http://wiki.drobilla.net/FlowCanvas FlowCa
 
 The IDE will come with a standard library of [AtomicNodes DSP blocks].
 
-= Proposed GUI Mockup =
+*NOTE:* I decided to remove the proposed GUI mock-up, on several bases, not the least of which that the ideas I had in mind would make it too difficult for third parties to contribute new nodes to the program. I'm going back to rethink my design. I do, however, still like one idea:
 
-Here is a GUI idea mock-up (Darren Landrum):
+  * The ability to change the locations of the icons representing the inputs and outputs of each node, so as to allow the drawing of any signal flow in a logical fashion.
 
-http://nuclearproject.googlepages.com/mockup.png
-
-This graph illustrates a no-frills feedback comb filter feeding an integrator for whatever reason (the reason being I felt like drawing an integrator). The signal comes into the adder, which won't add anything until a signal appears on its other input. The output of the adder then splits out to the input (which has been placed on the right edge) of a variable delay line (the bottom output is for taps, which aren't used here). The top input is the length of the line in samples, which is being determined by a constant, in this case, 2746. The output goes to a multiplier, whose other input is a user control that goes between 0 and 1, set to 0.58 in this example. The multiplier output then feeds back into the adder and the cycle starts all over again. The main input of the adder and the output of the integrator connect to other parts of the graph.
-
-Each block is a node. They are spaced equidistant along a grid of theoretically infinite size. The "notches and tabs" (the semi-circles) on each block are inputs and outputs, respectively. These can be placed individually along any edge of the block. That way, graphs can flow in whatever direction makes the most sense for the specific graph, and for the programmer of said graph.
-
-The green lines are the signal flow. The red square in the lower left represents the _cursor_, which would be blinking. This highlights the active square, which in this example holds nothing. The cursor can be moved by keyboard or mouse. The right mouse button or the enter key can then be used to bring up a selection dialog for the node to be placed there.
-
-Hovering over (or perhaps single-clicking) an input or output would pop up an explanation of the port.
-
-I think this widget could be implement in PyGTK using Cairo, with no need for using Glade or !FlowCanvas. Indeed, I think the entire GUI can be built in this way.
+I have a different idea on how to pursue this.
