@@ -1,0 +1,29 @@
+PROJECT(tutorial1)
+
+FILE(GLOB HEADERS *.h)
+FILE(GLOB SOURCES *.cpp)
+
+IF(CMAKE_HAS_SORT)
+  LIST(SORT HEADERS)
+  LIST(SORT SOURCES)
+ENDIF(CMAKE_HAS_SORT)
+
+SET(Libraries
+  juce
+  freetype
+  pthread
+  X11
+  GL
+  GLU
+  )
+
+INCLUDE_DIRECTORIES(
+  "/usr/include/juce"
+  )
+
+ADD_DEFINITIONS(
+  -DLINUX
+  )
+
+ADD_EXECUTABLE(tutorial1 ${SOURCES})
+TARGET_LINK_LIBRARIES(tutorial1 ${Libraries})
