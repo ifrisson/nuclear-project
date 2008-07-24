@@ -61,14 +61,6 @@ public:
 	void send_channel_pressure(int port, jack_midi_data_t channel, jack_midi_data_t pressure);
 	void send_pitch_bend(int port, jack_midi_data_t channel, jack_midi_data_t value_lo, jack_midi_data_t value_hi);
 
-	virtual void on_note_off(int port, jack_midi_data_t channel, jack_midi_data_t note, jack_midi_data_t velocity) {}
-	virtual void on_note_on(int port, jack_midi_data_t channel, jack_midi_data_t note, jack_midi_data_t velocity) {}
-	virtual void on_aftertouch(int port, jack_midi_data_t channel, jack_midi_data_t note, jack_midi_data_t velocity) {}
-	virtual void on_continous_controller(int port, jack_midi_data_t channel, jack_midi_data_t controller, jack_midi_data_t value) {}
-	virtual void on_patch_change(int port, jack_midi_data_t channel, jack_midi_data_t program) {}
-	virtual void on_channel_pressure(int port, jack_midi_data_t channel, jack_midi_data_t pressure) {}
-	virtual void on_pitch_bend(int port, jack_midi_data_t channel, jack_midi_data_t value_lo, jack_midi_data_t value_hi) {}
-
 	// audio
 	float* get_audio_in_samples(const int port);
 	float* get_audio_out_samples(const int port);
@@ -76,11 +68,20 @@ public:
 	jack_nframes_t sample_rate();
 	jack_nframes_t buffer_size();
 
-	virtual void on_process() = 0;
-
 	// client
 	void activate();
 	void deactivate();
+
+protected:
+	// callbacks
+	virtual void on_process() = 0;
+	virtual void on_note_off(int port, jack_midi_data_t channel, jack_midi_data_t note, jack_midi_data_t velocity) {}
+	virtual void on_note_on(int port, jack_midi_data_t channel, jack_midi_data_t note, jack_midi_data_t velocity) {}
+	virtual void on_aftertouch(int port, jack_midi_data_t channel, jack_midi_data_t note, jack_midi_data_t velocity) {}
+	virtual void on_continous_controller(int port, jack_midi_data_t channel, jack_midi_data_t controller, jack_midi_data_t value) {}
+	virtual void on_patch_change(int port, jack_midi_data_t channel, jack_midi_data_t program) {}
+	virtual void on_channel_pressure(int port, jack_midi_data_t channel, jack_midi_data_t pressure) {}
+	virtual void on_pitch_bend(int port, jack_midi_data_t channel, jack_midi_data_t value_lo, jack_midi_data_t value_hi) {}
 
 private:
 	friend int libjack_process_callback(jack_nframes_t, void*);
