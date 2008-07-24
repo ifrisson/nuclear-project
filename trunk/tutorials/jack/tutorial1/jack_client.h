@@ -62,8 +62,8 @@ public:
 	void send_pitch_bend(int port, jack_midi_data_t channel, jack_midi_data_t value_lo, jack_midi_data_t value_hi);
 
 	// audio
-	float* get_audio_in_samples(const int port);
-	float* get_audio_out_samples(const int port);
+	jack_default_audio_sample_t* get_audio_in_samples(const int port);
+	jack_default_audio_sample_t* get_audio_out_samples(const int port);
 
 	jack_nframes_t sample_rate();
 	jack_nframes_t buffer_size();
