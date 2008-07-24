@@ -296,20 +296,20 @@ JackClient::send_pitch_bend(int port, jack_midi_data_t channel, jack_midi_data_t
 	}
 }
 
-float*
+jack_default_audio_sample_t*
 JackClient::get_audio_in_samples(const int port)
 {
 	if (_processing && port < _audio_in_ports.size())
-		return (float *)jack_port_get_buffer(_audio_in_ports[port], buffer_size());
+		return (jack_default_audio_sample_t *)jack_port_get_buffer(_audio_in_ports[port], buffer_size());
 	else
 		return NULL;
 }
 
-float*
+jack_default_audio_sample_t*
 JackClient::get_audio_out_samples(const int port)
 {
 	if (_processing && port < _audio_out_ports.size())
-		return (float *)jack_port_get_buffer(_audio_out_ports[port], buffer_size());
+		return (jack_default_audio_sample_t *)jack_port_get_buffer(_audio_out_ports[port], buffer_size());
 	else
 		return NULL;
 }
