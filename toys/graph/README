@@ -1,0 +1,27 @@
+#include "engine.h"
+#include "voice.h"
+
+// create a concrete voice builder
+class my_voice_builder :
+      public nuclear::voice_builder
+{
+public:
+	void create_nodes()
+	{
+		voice->create_node("oscil", new oscil());
+	}
+
+	void connect_nodes()
+	{
+		voice->connect_node("oscil", "io", 0, 0);
+	}
+
+	port_t number_of_inputs() { return 0; }
+	port_t number_of_outputs() { return 1; }
+};
+
+// instance an engine with a 16 voice polyphony at 44.1 kHz sample rate
+nuclear::engine* my_engine = nuclear::engine("my_engine", new my_voice_builder(), 16, 44100);
+
+//
+engine->process();
