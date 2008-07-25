@@ -19,19 +19,21 @@
 
 #include "jack_client.h"
 
-class JackClientDemo :
+class Demo1 :
 	public JackClient
 {
 public:
-	JackClientDemo() :
-		JackClient("jack_client_demo")
+	Demo1() :
+		JackClient("demo1")
 	{
 		open_audio_out_ports(1);
 		open_midi_in_ports(1);
+		activate();
 	}
 
-	~JackClientDemo()
+	~Demo1()
 	{
+		deactivate();
 		close_audio_out_ports();
 		close_midi_in_ports();
 	}
@@ -45,8 +47,7 @@ public:
 int 
 main(int argc, char **argv)
 {
-	JackClientDemo* client = new JackClientDemo();
-	client->activate();
+	Demo1* client = new Demo1();
 
 	while (1)
 		sleep(1);
