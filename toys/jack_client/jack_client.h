@@ -25,7 +25,18 @@
 #include <jack/types.h>
 #include <jack/midiport.h>
 
+/////////////////////////////////////////////////////////////////////
+// Callback friends of JackClient
+
 int libjack_process_callback(jack_nframes_t, void*);
+void libjack_thread_init_callback(void*);
+void libjack_freewheel_callback(int, void*);
+int libjack_buffer_size_callback(jack_nframes_t, void*);
+int libjack_sample_rate_callback(jack_nframes_t, void*);
+int libjack_xrun_callback(void*);
+
+/////////////////////////////////////////////////////////////////////
+// JackClient
 
 class JackClient
 {
@@ -71,10 +82,18 @@ public:
 	// client
 	void activate();
 	void deactivate();
+	bool is_realtime();
 
 protected:
 	// callbacks
 	virtual void on_process() = 0;
+	virtual void on_thread_init() {}
+	virtual void on_freewheel_mode_enter() {}
+	virtual void on_freewheel_mode_exit() {}
+	virtual void on_sample_rate_change() {}
+	virtual void on_buffer_size_change() {}
+	virtual void on_xrun() {}
+
 	virtual void on_note_off(int port, jack_midi_data_t channel, jack_midi_data_t note, jack_midi_data_t velocity) {}
 	virtual void on_note_on(int port, jack_midi_data_t channel, jack_midi_data_t note, jack_midi_data_t velocity) {}
 	virtual void on_aftertouch(int port, jack_midi_data_t channel, jack_midi_data_t note, jack_midi_data_t velocity) {}
@@ -85,7 +104,18 @@ protected:
 
 private:
 	friend int libjack_process_callback(jack_nframes_t, void*);
+	friend void libjack_thread_init_callback(void*);
+	friend void libjack_freewheel_callback(int, void*);
+	friend int libjack_buffer_size_callback(jack_nframes_t, void*);
+	friend int libjack_sample_rate_callback(jack_nframes_t, void*);
+	friend int libjack_xrun_callback(void*);
+
 	int process_callback(jack_nframes_t nframes);
+	void thread_init_callback();
+	void freewheel_callback(int starting);
+	int buffer_size_callback(jack_nframes_t nframes);
+	int sample_rate_callback(jack_nframes_t nframes);
+	int xrun_callback();
 
 	std::vector<jack_port_t*> _audio_in_ports;
 	std::vector<jack_port_t*> _audio_out_ports;
