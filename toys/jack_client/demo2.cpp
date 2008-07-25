@@ -71,7 +71,7 @@ private:
 	{
 		int n = note;
 		if (n >= 0 && n <= 119)
-			return 440 * pow(2, (n-57)/12);
+			return 440.0 * pow(2.0, (n-69) / 12.0);
 		else
 			return 0.0;
 	}
