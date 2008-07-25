@@ -1,4 +1,4 @@
-project(jack_demo)
+project(jack_client)
 
 FILE(GLOB HEADERS *.h)
 FILE(GLOB SOURCES *.cpp)
@@ -14,5 +14,5 @@ SET(Libraries
   pthread
   )
 
-ADD_EXECUTABLE(jack_demo ${SOURCES})
-TARGET_LINK_LIBRARIES(jack_demo ${Libraries})
+ADD_EXECUTABLE(jack_client01 ${SOURCES})
+TARGET_LINK_LIBRARIES(jack_client01 ${Libraries})
