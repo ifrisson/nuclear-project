@@ -23,11 +23,47 @@
 #include <jack/jack.h>
 #include <jack/transport.h>
 
+/////////////////////////////////////////////////////////////////////
+// Callback friends of JackClient
+
 int 
 libjack_process_callback(jack_nframes_t nframes, void* arg) 
 {
         return static_cast<JackClient*>(arg)->process_callback(nframes);
 }
+
+void
+libjack_thread_init_callback(void* arg)
+{
+	static_cast<JackClient*>(arg)->thread_init_callback();
+}
+
+void 
+libjack_freewheel_callback(int starting, void* arg)
+{
+	static_cast<JackClient*>(arg)->freewheel_callback(starting);
+}
+
+int
+libjack_buffer_size_callback(jack_nframes_t nframes, void* arg)
+{
+	return static_cast<JackClient*>(arg)->buffer_size_callback(nframes);
+}
+
+int 
+libjack_sample_rate_callback(jack_nframes_t nframes, void* arg)
+{
+	return static_cast<JackClient*>(arg)->sample_rate_callback(nframes);
+}
+
+int 
+libjack_xrun_callback(void* arg)
+{
+	static_cast<JackClient*>(arg)->xrun_callback();
+}
+
+/////////////////////////////////////////////////////////////////////
+// JackClient
 
 JackClient::JackClient(const std::string client_name) :
 	_processing(false)
@@ -42,6 +78,8 @@ JackClient::JackClient(const std::string client_name) :
 		throw  "Failed to open JACK client";
 	
 	jack_set_process_callback(_client, libjack_process_callback, this);
+	jack_set_sample_rate_callback(_client, libjack_sample_rate_callback, this);
+	jack_set_thread_init_callback(_client, libjack_thread_init_callback, this);
 }
 
 JackClient::~JackClient()
@@ -151,18 +189,6 @@ JackClient::close_midi_out_ports()
 		jack_port_unregister(_client, *i);
 
 	_midi_out_ports.clear();
-}
-
-jack_nframes_t 
-JackClient::sample_rate()
-{
-	return jack_get_sample_rate(_client);
-}
-
-jack_nframes_t
-JackClient::buffer_size()
-{
-	return jack_get_buffer_size(_client);
 }
 
 void 
@@ -314,6 +340,38 @@ JackClient::get_audio_out_samples(const int port)
 		return NULL;
 }
 
+jack_nframes_t 
+JackClient::sample_rate()
+{
+	return jack_get_sample_rate(_client);
+}
+
+jack_nframes_t
+JackClient::buffer_size()
+{
+	return jack_get_buffer_size(_client);
+}
+
+void 
+JackClient::activate()
+{
+	if (jack_activate(_client))
+		throw "Cannot activate JACK client";
+}
+
+void
+JackClient::deactivate()
+{
+	if (jack_deactivate(_client)) 
+		throw "Cannot deactivate JACK client";
+}
+
+bool
+JackClient::is_realtime()
+{
+	return jack_is_realtime(_client) == 1 ? true : false;
+}
+
 int 
 JackClient::process_callback(jack_nframes_t nframes)
 {
@@ -389,16 +447,39 @@ JackClient::process_callback(jack_nframes_t nframes)
 	return 0;
 }
 
-void 
-JackClient::activate()
+void
+JackClient::thread_init_callback()
 {
-	if (jack_activate(_client))
-		throw "Cannot activate JACK client";
+	on_thread_init();
 }
 
 void
-JackClient::deactivate()
+JackClient::freewheel_callback(int starting)
 {
-	if (jack_deactivate(_client)) 
-		throw "Cannot deactivate JACK client";
+	if (starting != 0)
+		on_freewheel_mode_enter();
+	else
+		on_freewheel_mode_exit();
 }
+
+int 
+JackClient::sample_rate_callback(jack_nframes_t nframes)
+{
+	on_sample_rate_change();
+	return 0;
+}
+
+int
+JackClient::buffer_size_callback(jack_nframes_t nframes)
+{
+	on_buffer_size_change();
+	return 0;
+}
+
+int
+JackClient::xrun_callback()
+{
+	on_xrun();
+	return 0;
+}
+
