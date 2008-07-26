@@ -1,4 +1,7 @@
-// Simple JACK Client Demo
+#ifndef NUCLEAR_GRAPH_TYPES_H
+#define NUCLEAR_GRAPH_TYPES_H
+
+// Nuclear
 // Copyright (c) 2008, Anders Dahnielson
 //
 // Contact: anders@dahnielson.com
@@ -17,38 +20,35 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-#include "../../sdk/jack_client.h"
+#include <boost/cstdint.hpp>
+#include <string>
 
-class Demo1 :
-	public nuclear::jack_client
+namespace nuclear
 {
-public:
-	Demo1() :
-		nuclear::jack_client("demo1")
-	{
-		open_audio_out_ports(1);
-		open_midi_in_ports(1);
-		activate();
-	}
 
-	~Demo1()
-	{
-		deactivate();
-		close_audio_out_ports();
-		close_midi_in_ports();
-	}
+typedef bool bool_t;
 
-	void on_process()
-	{
-	}
-};
+typedef boost::int8_t int8_t;
+typedef boost::int16_t int16_t;
+typedef boost::int32_t int32_t;
+typedef boost::int64_t int64_t;
 
+typedef boost::uint8_t uint8_t;
+typedef boost::uint16_t uint16_t;
+typedef boost::uint32_t uint32_t;
+typedef boost::uint64_t uint64_t;
 
-int 
-main(int argc, char **argv)
-{
-	Demo1* client = new Demo1();
+typedef float float_t;
+typedef double double_t;
 
-	while (1)
-		sleep(1);
-}
+typedef std::string string_t;
+
+typedef boost::uint_32 voice_t;
+typedef boost::uint_32 port_t;
+typedef boost::uint_32 nframes_t;
+typedef boost::uint_64 tick_t;
+typedef float sample_t;
+
+} // !namespace nuclear
+
+#endif // !NUCLEAR_GRAPH_TYPES_H
