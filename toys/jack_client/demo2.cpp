@@ -18,7 +18,6 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 #include "jack_client.h"
-#include <iostream>
 #include <math.h>
 
 class Demo2 :
