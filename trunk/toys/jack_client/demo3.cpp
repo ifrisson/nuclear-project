@@ -112,7 +112,8 @@ protected:
 
 		jack_nframes_t n = buffer_size();
 		jack_default_audio_sample_t* dst = out;
-		while (n--) *dst++ *= 1.0 / _voices.size();
+		jack_default_audio_sample_t scale = 1.0 / _voices.size();
+		while (n--) *dst++ *= scale;
 
 		delete [] voice_buffer;
 	}
