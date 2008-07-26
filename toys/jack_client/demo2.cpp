@@ -17,15 +17,15 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-#include "jack_client.h"
+#include "../../sdk/jack_client.h"
 #include <math.h>
 
 class Demo2 :
-	public JackClient
+	public nuclear::jack_client
 {
 public:
 	Demo2() :
-		JackClient("demo2")
+		nuclear::jack_client("demo2")
 	{
 		open_audio_out_ports(1);
 		open_midi_in_ports(1);

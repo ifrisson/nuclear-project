@@ -17,7 +17,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-#include "jack_client.h"
+#include "../../sdk/jack_client.h"
 #include <math.h>
 
 class Voice
@@ -72,11 +72,11 @@ private:
 };
 
 class Demo3 :
-	public JackClient
+	public nuclear::jack_client
 {
 public:
 	Demo3() :
-		JackClient("demo3")
+		nuclear::jack_client("demo3")
 	{
 		for (int i = 0; i < 8; ++i)
 			_voices.push_back(new Voice());
