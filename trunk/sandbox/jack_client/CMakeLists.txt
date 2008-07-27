@@ -14,3 +14,6 @@ TARGET_LINK_LIBRARIES(demo2 ${Libraries})
 
 ADD_EXECUTABLE(demo3 demo3.cpp)
 TARGET_LINK_LIBRARIES(demo3 ${Libraries})
+
+ADD_EXECUTABLE(demo4 demo4.cpp)
+TARGET_LINK_LIBRARIES(demo4 ${Libraries})
