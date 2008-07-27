@@ -130,7 +130,7 @@ public:
 
 // Class generated from osci.dsp
 class mydsp : 
-	public dsp 
+	public dsp
 {
 private:
 	class SIG0 
@@ -305,19 +305,23 @@ protected:
 		if (out == NULL)
 			throw "get_audio_out_samples returned NULL!";
 
+		int nactive = 0;
 		jack_default_audio_sample_t* voice_buffer = new jack_default_audio_sample_t[buffer_size()];
-		for (int i = 0; i < _voices.size(); ++i)
+		for (std::vector<Voice*>::iterator i = _voices.begin(); i != _voices.end(); ++i)
 		{
-			_voices[i]->process(buffer_size(), voice_buffer);
+			if ((*i)->note_playing() == 0) continue;
+			else nactive++;
+
+			(*i)->process(buffer_size(), voice_buffer);
 			jack_nframes_t n = buffer_size();
 			jack_default_audio_sample_t* src = voice_buffer;
 			jack_default_audio_sample_t* dst = out;
-			while (n--) *dst++ += *src++;			
+			while (n--) *dst++ += *src++;
 		}
 
 		jack_nframes_t n = buffer_size();
 		jack_default_audio_sample_t* dst = out;
-		jack_default_audio_sample_t scale = 1.0 / _voices.size();
+		jack_default_audio_sample_t scale = nactive ? 1.0/nactive : 0.0;
 		while (n--) *dst++ *= scale;
 
 		delete [] voice_buffer;
