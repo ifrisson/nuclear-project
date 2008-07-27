@@ -146,7 +146,7 @@ private:
 int 
 main(int argc, char **argv)
 {
-	Demo3* client = new Demo3();
+	Demo3 client;
 
 	while (1)
 		sleep(1);

@@ -83,7 +83,7 @@ private:
 int 
 main(int argc, char **argv)
 {
-	Demo2* client = new Demo2();
+	Demo2 client;
 
 	while (1)
 		sleep(1);
