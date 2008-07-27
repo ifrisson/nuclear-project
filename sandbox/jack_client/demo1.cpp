@@ -47,7 +47,7 @@ public:
 int 
 main(int argc, char **argv)
 {
-	Demo1* client = new Demo1();
+	Demo1 client;
 
 	while (1)
 		sleep(1);
