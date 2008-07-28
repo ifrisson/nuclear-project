@@ -28,7 +28,7 @@ namespace nuclear
 class DSP
 {
 public:
-	virtual DSP(int16_t buffer_size) = 0;
+	virtual DSP() = 0;
 	virtual ~DSP() = 0;
 	virtual sample_t* main_process() = 0;
 };
