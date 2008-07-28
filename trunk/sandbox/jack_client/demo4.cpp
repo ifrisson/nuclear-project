@@ -18,40 +18,16 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 #include "../../sdk/jack_client.h"
+#include "../../sdk/dsp.h"
+#include "../../sdk/UI.h"
 #include <math.h>
 #include <map>
 
-class UI
-{
-public:
-		
-	UI() {}
-	virtual ~UI() {}
-	
-	// -- active widgets
-	
-	virtual void addButton(std::string label, float* zone) = 0;
-	virtual void addToggleButton(std::string label, float* zone) = 0;
-	virtual void addCheckButton(std::string label, float* zone) = 0;
-	virtual void addVerticalSlider(std::string label, float* zone, float init, float min, float max, float step) = 0;
-	virtual void addHorizontalSlider(std::string label, float* zone, float init, float min, float max, float step) = 0;
-	virtual void addNumEntry(std::string label, float* zone, float init, float min, float max, float step) = 0;
-	
-	// -- passive widgets
-	
-	virtual void addNumDisplay(std::string label, float* zone, int precision) = 0;
-	virtual void addTextDisplay(std::string label, float* zone, char* names[], float min, float max) = 0;
-	virtual void addHorizontalBargraph(std::string label, float* zone, float min, float max) = 0;
-	virtual void addVerticalBargraph(std::string label, float* zone, float min, float max) = 0;
-	
-	// -- frames and labels
-	
-	virtual void openFrameBox(std::string label) = 0;
-	virtual void openTabBox(std::string label) = 0;
-	virtual void openHorizontalBox(std::string label) = 0;
-	virtual void openVerticalBox(std::string label) = 0;
-	virtual void closeBox() = 0;
-};
+using nuclear::dsp;
+using nuclear::UI;
+
+// Include the generated file
+#include "osci.dsp.in"
 
 struct param {
 	float* fZone; float fMin; float fMax;
@@ -112,115 +88,6 @@ private:
 
 	std::map<std::string, param> _params;
 };
-
-class dsp 
-{
-protected:
-        int fSamplingFreq;
-public:
-        dsp() {}
-        virtual ~dsp() {}
-	
-        virtual int getNumInputs() = 0;
-        virtual int getNumOutputs() = 0;
-        virtual void buildUserInterface(UI* interface)  = 0;
-        virtual void init(int samplingRate) = 0;
-        virtual void compute(int len, float** inputs, float** outputs)  = 0;
-};
-
-// Class generated from osci.dsp
-class mydsp : 
-	public dsp
-{
-private:
-	class SIG0 
-	{
-	private:
-		int 	fSamplingFreq;
-		int 	iRec1[2];
-	public:
-		int getNumInputs() 	{ return 0; }
-		int getNumOutputs() 	{ return 1; }
-
-		void init(int samplingFreq) 
-		{
-			fSamplingFreq = samplingFreq;
-			for (int i=0; i<2; i++) iRec1[i] = 0;
-		}
-
-		void fill (int count, float output[]) 
-		{
-			for (int i=0; i<count; i++) {
-				iRec1[0] = (1 + iRec1[1]);
-				output[i] = sinf((9.587380e-05f * float((iRec1[0] - 1))));
-				// post processing
-				iRec1[1] = iRec1[0];
-			}
-		}
-	};
-	
-	float 	fslider0;
-	float 	fConst0;
-	float 	fRec0[2];
-	static float 	ftbl0[65537];
-	float 	fslider1;
-	float 	fRec2[2];
-public:
-	virtual int getNumInputs() 	{ return 0; }
-	virtual int getNumOutputs() 	{ return 1; }
-
-	static void classInit(int samplingFreq) 
-	{
-		SIG0 sig0;
-		sig0.init(samplingFreq);
-		sig0.fill(65537,ftbl0);
-	}
-
-	virtual void instanceInit(int samplingFreq) 
-	{
-		fSamplingFreq = samplingFreq;
-		fslider0 = 1000.000000f;
-		fConst0 = (1.000000f / float(fSamplingFreq));
-		for (int i=0; i<2; i++) fRec0[i] = 0;
-		fslider1 = 0.000000f;
-		for (int i=0; i<2; i++) fRec2[i] = 0;
-	}
-
-	virtual void init(int samplingFreq) 
-	{
-		classInit(samplingFreq);
-		instanceInit(samplingFreq);
-	}
-
-	virtual void buildUserInterface(UI* interface) 
-	{
-		interface->openVerticalBox("Oscillator");
-		interface->addHorizontalSlider("freq", &fslider0, 1000.000000f, 0.000000f, 24000.000000f, 0.100000f);
-		interface->addHorizontalSlider("volume", &fslider1, 0.000000f, -96.000000f, 0.000000f, 0.100000f);
-		interface->closeBox();
-	}
-
-	virtual void compute (int count, float** input, float** output) 
-	{
-		float* output0 = output[0];
-		float fSlow0 = (fConst0 * fslider0);
-		float fSlow1 = (9.999871e-04f * powf(10, (5.000000e-02f * fslider1)));
-		for (int i=0; i<count; i++) {
-			float fTemp0 = (fSlow0 + fRec0[1]);
-			fRec0[0] = (fTemp0 - floorf(fTemp0));
-			float fTemp1 = (65536.000000f * fRec0[0]);
-			int iTemp2 = int(fTemp1);
-			float fTemp3 = ftbl0[iTemp2];
-			fRec2[0] = (fSlow1 + (0.999000f * fRec2[1]));
-			output0[i] = (fRec2[0] * (fTemp3 + ((ftbl0[(1 + iTemp2)] - fTemp3) * (fTemp1 - floorf(fTemp1)))));
-			// post processing
-			fRec2[1] = fRec2[0];
-			fRec0[1] = fRec0[0];
-		}
-	}
-};
-
-float 	mydsp::ftbl0[65537];
 
 class Voice
 {
