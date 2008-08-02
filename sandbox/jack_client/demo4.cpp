@@ -19,9 +19,8 @@
 
 #include "../../sdk/jack_client.h"
 #include "../../sdk/dsp.h"
-#include "../../sdk/UI.h"
+#include "../../sdk/paramui.h"
 #include <math.h>
-#include <map>
 
 using nuclear::dsp;
 using nuclear::UI;
@@ -29,72 +28,12 @@ using nuclear::UI;
 // Include the generated file
 #include "osci.dsp.in"
 
-struct param {
-	float* fZone; float fMin; float fMax;
-	param(float* z, float a, float b) : fZone(z), fMin(a), fMax(b) {}
-};
-
-class DEMOUI :
-	public UI
-{
-public:
-	DEMOUI() : 
-		UI()
-	{
-	}
-
-	virtual ~DEMOUI() {}
-
-	virtual void addButton(std::string label, float* zone) {}
-	virtual void addToggleButton(std::string label, float* zone) {}
-	virtual void addCheckButton(std::string label, float* zone) {}
-	virtual void addVerticalSlider(std::string label, float* zone, float init, float min, float max, float step) {}
-
-	virtual void addHorizontalSlider(std::string label, float* zone, float init, float min, float max, float step) 
-	{
-		add_option(label, zone, min, max);
-	}
-
-	virtual void addNumEntry(std::string label, float* zone, float init, float min, float max, float step) {}
-	
-	virtual void addNumDisplay(std::string label, float* zone, int precision) {}
-	virtual void addTextDisplay(std::string label, float* zone, char* names[], float min, float max) {}
-	virtual void addHorizontalBargraph(std::string label, float* zone, float min, float max) {}
-	virtual void addVerticalBargraph(std::string label, float* zone, float min, float max) {}
-	
-	virtual void openFrameBox(std::string label) {}
-	virtual void openTabBox(std::string label) {}
-	virtual void openHorizontalBox(std::string label) {}
-	virtual void openVerticalBox(std::string label) {}
-	virtual void closeBox() {}
-
-	void set_option(std::string label, float value)
-	{
-		std::map<std::string, param>::iterator p = _params.find(label);
-		if (p == _params.end())
-			throw "Unrecognized option";
-
-		if (value >= p->second.fMin && value <= p->second.fMax)
-			*(p->second.fZone) = value;
-		else
-			std::cerr << "Can't set option " << label << ": " << value << " (" << p->second.fMin << ", " << p->second.fMax << ")" << std::endl;
-	}
-
-private:
-	void add_option(std::string label, float* zone, float min, float max)
-	{
-		_params.insert(std::make_pair(label, param(zone, min, max)));
-	}
-
-	std::map<std::string, param> _params;
-};
-
 class Voice
 {
 public:
 	Voice(jack_nframes_t srate) :
 		_note(0),
-		_interface(new DEMOUI())
+		_interface(new nuclear::paramui())
 	{
 		_dsp.init(srate);
 		_dsp.buildUserInterface(_interface);
@@ -140,7 +79,7 @@ private:
 	jack_midi_data_t _note;
 
 	mydsp _dsp;
-	DEMOUI* _interface;
+	nuclear::paramui* _interface;
 };
 
 class Demo4 :
