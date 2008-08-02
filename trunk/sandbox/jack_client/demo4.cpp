@@ -37,8 +37,8 @@ public:
 	{
 		_dsp.init(srate);
 		_dsp.buildUserInterface(_interface);
-		_interface->set_option("freq", 0.000000f);
-		_interface->set_option("volume", -96.000000f);
+		_interface->set_option("oscillator/freq", 0.000000f);
+		_interface->set_option("oscillator/volume", -96.000000f);
 	}
 
 	void process(jack_nframes_t nframes, jack_default_audio_sample_t* out)
@@ -50,15 +50,15 @@ public:
 	void note_on(jack_midi_data_t note)
 	{
 		_note = note;
-		_interface->set_option("freq", note_to_frequency(_note));
-		_interface->set_option("volume", 0.000000f);
+		_interface->set_option("oscillator/freq", note_to_frequency(_note));
+		_interface->set_option("oscillator/volume", 0.000000f);
 	}
 
 	void note_off()
 	{
 		_note = 0;
-		_interface->set_option("freq", 0.000000f);
-		_interface->set_option("volume", -96.000000f);
+		_interface->set_option("oscillator/freq", 0.000000f);
+		_interface->set_option("oscillator/volume", -96.000000f);
 	}
 
 	jack_midi_data_t note_playing()

@@ -64,7 +64,7 @@ public:
 
 	virtual void buildUserInterface(UI* interface) 
 	{
-		interface->openVerticalBox("Oscillator");
+		interface->openVerticalBox("oscillator");
 		interface->addHorizontalSlider("freq", &fslider0, 1000.000000f, 0.000000f, 24000.000000f, 0.100000f);
 		interface->addHorizontalSlider("volume", &fslider1, 0.000000f, -96.000000f, 0.000000f, 0.100000f);
 		interface->closeBox();
