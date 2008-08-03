@@ -17,10 +17,10 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-#include "../../sdk/jack_client.h"
 #include "../../sdk/dsp.h"
-#include "../../sdk/paramui.h"
 #include "../../sdk/voice.h"
+#include "../../sdk/common/jack_client.h"
+#include "../../sdk/common/paramui.h"
 #include <math.h>
 
 using nuclear::dsp;
