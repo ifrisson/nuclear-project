@@ -17,3 +17,6 @@ TARGET_LINK_LIBRARIES(demo3 ${Libraries})
 
 ADD_EXECUTABLE(demo4 demo4.cpp)
 TARGET_LINK_LIBRARIES(demo4 ${Libraries})
+
+ADD_EXECUTABLE(simple_monophonic simple_monophonic.cpp)
+TARGET_LINK_LIBRARIES(simple_monophonic ${Libraries})
