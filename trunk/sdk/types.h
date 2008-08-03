@@ -1,5 +1,5 @@
-#ifndef NUCLEAR_GRAPH_TYPES_H
-#define NUCLEAR_GRAPH_TYPES_H
+#ifndef NUCLEAR_TYPES_H
+#define NUCLEAR_TYPES_H
 
 // Nuclear
 // Copyright (c) 2008, Anders Dahnielson
@@ -43,12 +43,12 @@ typedef double double_t;
 
 typedef std::string string_t;
 
-typedef boost::uint_32 voice_t;
-typedef boost::uint_32 port_t;
-typedef boost::uint_32 nframes_t;
-typedef boost::uint_64 tick_t;
+typedef boost::uint32_t voice_t;
+typedef boost::uint32_t port_t;
+typedef boost::uint32_t nframes_t;
+typedef boost::uint64_t tick_t;
 typedef float sample_t;
 
 } // !namespace nuclear
 
-#endif // !NUCLEAR_GRAPH_TYPES_H
+#endif // !NUCLEAR_TYPES_H
