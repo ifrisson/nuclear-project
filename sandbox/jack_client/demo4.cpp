@@ -57,11 +57,11 @@ public:
 		_dsp.compute(nframes, inputs, outputs);
 	}
 
-	void play_note(jack_midi_data_t note)
+	void play_note(jack_midi_data_t note, jack_midi_data_t velocity)
 	{
 		_note = note;
 		_interface->set_option("oscillator/freq", note_to_frequency(_note));
-		_interface->set_option("oscillator/volume", 0.000000f);
+		_interface->set_option("oscillator/volume", velocity_to_amplitude(velocity));
 	}
 
 	void stop_note()
@@ -90,6 +90,12 @@ private:
 			return 440.0 * pow(2.0, (n-69) / 12.0);
 		else
 			return 0.0;
+	}
+
+	jack_default_audio_sample_t velocity_to_amplitude(jack_midi_data_t velocity)
+	{
+		int v = velocity;
+		return -96.000000f + 96.000000f / 127 * v;
 	}
 
 	jack_midi_data_t _note;
@@ -167,7 +173,7 @@ protected:
 		{
 			if ((*i)->note_playing() == 0)
 			{
-				(*i)->play_note(note);
+				(*i)->play_note(note, velocity);
 				break;
 			}
 		}

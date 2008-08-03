@@ -34,7 +34,7 @@ public:
         virtual ~voice() {}
 	
 	/// Start playing a note
-        virtual void play_note(uint8_t note) = 0;
+        virtual void play_note(uint8_t note, uint8_t velocity) = 0;
 	/// Stop playing the current note
 	virtual void stop_note() = 0;
 	/// Kill the note and free the voice immediately
