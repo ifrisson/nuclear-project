@@ -17,7 +17,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-#include "../../sdk/jack_client.h"
+#include "../../sdk/common/jack_client.h"
 
 class Demo1 :
 	public nuclear::jack_client
