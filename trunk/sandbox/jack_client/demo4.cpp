@@ -54,12 +54,7 @@ protected:
 		if (out == NULL)
 			throw "get_audio_out_samples returned NULL!";
 
-		jack_nframes_t n = buffer_size();
-		jack_default_audio_sample_t* dst = out;
-
-		dst = out;
-		n = buffer_size();
-		while (n--) *dst++ = 0.0f;
+		nuclear::init_buffer<jack_default_audio_sample_t>(buffer_size(), out);
 		
 		int nactive = 0;
 		jack_default_audio_sample_t** output = nuclear::allocate_buffers<jack_default_audio_sample_t>(1, buffer_size());
@@ -69,17 +64,11 @@ protected:
 			else nactive++;
 
 			(*i)->compute(buffer_size(), NULL, output);
-			jack_default_audio_sample_t* src = output[0];
-			dst = out;
-			n = buffer_size();
-			while (n--) *dst++ += *src++;
+			nuclear::mix_buffer<jack_default_audio_sample_t>(buffer_size(), output[0], out);
 		}
 
-		dst = out;
 		jack_default_audio_sample_t scale = nactive ? 1.0/nactive : 0.0;
-		n = buffer_size();
-		while (n--) *dst++ *= scale;
-
+		nuclear::scale_buffer<jack_default_audio_sample_t>(buffer_size(), scale, out);
 		nuclear::free_buffers<jack_default_audio_sample_t>(output);
 	}
 
