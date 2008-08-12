@@ -48,6 +48,7 @@ public:
 	paramui() :
 		UI()
 	{
+		_prefix.push("/");
 	}
 
 	~paramui()
@@ -132,10 +133,7 @@ private:
 
 	void add_namespace(std::string label)
 	{
-		if (_prefix.empty())
-			_prefix.push(label + "/");
-		else
-			_prefix.push(_prefix.top() + label + "/");
+		_prefix.push(_prefix.top() + label + "/");
 	}
 	
 	std::stack<std::string> _prefix;
