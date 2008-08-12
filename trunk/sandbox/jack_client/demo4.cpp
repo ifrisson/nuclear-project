@@ -20,6 +20,26 @@
 #include "osci_voice.h"
 #include "../../sdk/common/jack_client.h"
 
+template <typename T>
+T** allocate_buffers(int nRows, int nCols)
+{
+	T **ppi = new T*[nRows];
+	T *curPtr = new T[nRows * nCols];
+	for(int i = 0; i < nRows; ++i)
+	{
+		*(ppi + i) = curPtr;
+		curPtr += nCols;
+	}
+	return ppi;
+}
+	
+template <typename T>
+void free_buffers(T** buffers)
+{
+	delete [] *buffers;
+	delete [] buffers;
+}
+
 class Demo4 :
 	public nuclear::jack_client
 {
@@ -53,27 +73,31 @@ protected:
 		if (out == NULL)
 			throw "get_audio_out_samples returned NULL!";
 
+		jack_nframes_t n = buffer_size();
+		jack_default_audio_sample_t* dst = out;
+
+		dst = out;
+		while (n--) *dst++ = 0.0f;
+		
 		int nactive = 0;
-		jack_default_audio_sample_t* voice_buffer = new jack_default_audio_sample_t[buffer_size()];
-		jack_default_audio_sample_t* output[] = { voice_buffer };
+		jack_default_audio_sample_t** output = allocate_buffers<jack_default_audio_sample_t>(1, buffer_size());
+
 		for (std::vector<nuclear::voice*>::iterator i = _voices.begin(); i != _voices.end(); ++i)
 		{
 			if ((*i)->note_playing() == 0) continue;
 			else nactive++;
 
 			(*i)->compute(buffer_size(), NULL, output);
-			jack_nframes_t n = buffer_size();
-			jack_default_audio_sample_t* src = voice_buffer;
-			jack_default_audio_sample_t* dst = out;
+			jack_default_audio_sample_t* src = output[0];
+			dst = out;
 			while (n--) *dst++ += *src++;
 		}
 
-		jack_nframes_t n = buffer_size();
-		jack_default_audio_sample_t* dst = out;
+		dst = out;
 		jack_default_audio_sample_t scale = nactive ? 1.0/nactive : 0.0;
 		while (n--) *dst++ *= scale;
 
-		delete [] voice_buffer;
+		free_buffers<jack_default_audio_sample_t>(output);
 	}
 
 	void on_note_off(int port, jack_midi_data_t channel, jack_midi_data_t note, jack_midi_data_t velocity) 
