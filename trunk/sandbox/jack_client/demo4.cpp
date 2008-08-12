@@ -58,11 +58,11 @@ protected:
 		jack_default_audio_sample_t* dst = out;
 
 		dst = out;
+		n = buffer_size();
 		while (n--) *dst++ = 0.0f;
 		
 		int nactive = 0;
 		jack_default_audio_sample_t** output = nuclear::allocate_buffers<jack_default_audio_sample_t>(1, buffer_size());
-
 		for (std::vector<nuclear::voice*>::iterator i = _voices.begin(); i != _voices.end(); ++i)
 		{
 			if ((*i)->note_playing() == 0) continue;
@@ -71,11 +71,13 @@ protected:
 			(*i)->compute(buffer_size(), NULL, output);
 			jack_default_audio_sample_t* src = output[0];
 			dst = out;
+			n = buffer_size();
 			while (n--) *dst++ += *src++;
 		}
 
 		dst = out;
 		jack_default_audio_sample_t scale = nactive ? 1.0/nactive : 0.0;
+		n = buffer_size();
 		while (n--) *dst++ *= scale;
 
 		nuclear::free_buffers<jack_default_audio_sample_t>(output);
