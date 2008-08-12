@@ -43,6 +43,31 @@ void free_buffers(T** buffers)
 	delete [] buffers;
 }
 
+template <typename T>
+void init_buffer(int nCols, T* buffer)
+{
+	int n = nCols;
+	T* dst = buffer;
+	while (n--) *dst++ = 0;
+}
+
+template <typename T>
+void mix_buffer(int nCols, T* src_buffer, T* dst_buffer)
+{
+	int n = nCols;
+	T* src = src_buffer;
+	T* dst = dst_buffer;
+	while (n--) *dst++ += *src++;
+}
+
+template <typename T>
+void scale_buffer(int nCols, float scale, T* buffer)
+{
+	int n = nCols;
+	T* dst = buffer;
+	while (n--) *dst++ *= scale;
+}
+
 } // !namespace nuclear
 
 #endif // !NUCLEAR_UTILITY_H
