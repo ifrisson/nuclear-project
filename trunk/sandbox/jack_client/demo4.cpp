@@ -19,26 +19,7 @@
 
 #include "osci_voice.h"
 #include "../../sdk/common/jack_client.h"
-
-template <typename T>
-T** allocate_buffers(int nRows, int nCols)
-{
-	T **ppi = new T*[nRows];
-	T *curPtr = new T[nRows * nCols];
-	for(int i = 0; i < nRows; ++i)
-	{
-		*(ppi + i) = curPtr;
-		curPtr += nCols;
-	}
-	return ppi;
-}
-	
-template <typename T>
-void free_buffers(T** buffers)
-{
-	delete [] *buffers;
-	delete [] buffers;
-}
+#include "../../sdk/common/utility.h"
 
 class Demo4 :
 	public nuclear::jack_client
@@ -80,7 +61,7 @@ protected:
 		while (n--) *dst++ = 0.0f;
 		
 		int nactive = 0;
-		jack_default_audio_sample_t** output = allocate_buffers<jack_default_audio_sample_t>(1, buffer_size());
+		jack_default_audio_sample_t** output = nuclear::allocate_buffers<jack_default_audio_sample_t>(1, buffer_size());
 
 		for (std::vector<nuclear::voice*>::iterator i = _voices.begin(); i != _voices.end(); ++i)
 		{
@@ -97,7 +78,7 @@ protected:
 		jack_default_audio_sample_t scale = nactive ? 1.0/nactive : 0.0;
 		while (n--) *dst++ *= scale;
 
-		free_buffers<jack_default_audio_sample_t>(output);
+		nuclear::free_buffers<jack_default_audio_sample_t>(output);
 	}
 
 	void on_note_off(int port, jack_midi_data_t channel, jack_midi_data_t note, jack_midi_data_t velocity) 
