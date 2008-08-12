@@ -21,12 +21,12 @@
 #include "../../sdk/common/jack_client.h"
 #include "../../sdk/common/utility.h"
 
-class Demo4 :
+class SimplePolyphonic :
 	public nuclear::jack_client
 {
 public:
-	Demo4() :
-		nuclear::jack_client("demo4")
+	SimplePolyphonic() :
+		nuclear::jack_client("polysynth")
 	{
 		for (int i = 0; i < 8; ++i)
 		{
@@ -40,7 +40,7 @@ public:
 		activate();
 	}
 
-	~Demo4()
+	~SimplePolyphonic()
 	{
 		deactivate();
 		close_audio_out_ports();
@@ -99,7 +99,7 @@ private:
 int 
 main(int argc, char **argv)
 {
-	Demo4 client;
+	SimplePolyphonic client;
 
 	while (1)
 		sleep(1);
