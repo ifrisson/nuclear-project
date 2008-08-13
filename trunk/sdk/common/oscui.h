@@ -45,6 +45,7 @@ public:
 
 	~oscui()
 	{
+		lo_server_thread_free(_thread);
 	}
 
 private:
