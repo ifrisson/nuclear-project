@@ -24,6 +24,7 @@
 #include <string>
 #include <stack>
 #include <map>
+#include <iostream>
 
 namespace nuclear
 {
@@ -119,7 +120,10 @@ public:
 	{
 		std::map<std::string, param>::iterator p = _params.find(label);
 		if (p == _params.end())
-			throw "Unrecognized option";
+		{
+			std::cerr << "Unrecognized option" << std::endl;
+			return;
+		}
 
 		if (value >= p->second.min && value <= p->second.max)
 			*(p->second.zone) = value;
