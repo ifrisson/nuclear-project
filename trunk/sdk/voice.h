@@ -41,6 +41,8 @@ public:
 	virtual void kill_note() = 0;
 	/// Return the note playing or 0 if voice is inactive
 	virtual uint8_t note_playing() = 0;
+	/// Return the note time stamp or 0 if voice is inactive
+	virtual double_t note_timestamp() = 0;
 };
 
 } // !namespace nuclear

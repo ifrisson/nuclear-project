@@ -24,6 +24,7 @@
 #include "../../sdk/voice.h"
 #include "../../sdk/common/paramui.h"
 #include <math.h>
+#include <ctime>
 
 using nuclear::dsp;
 using nuclear::UI;
@@ -65,6 +66,7 @@ public:
 
 	void play_note(nuclear::uint8_t note, nuclear::uint8_t velocity)
 	{
+		_timestamp = std::clock();
 		_note = note;
 		_interface->set_option("/oscillator/freq", note_to_frequency(_note));
 		_interface->set_option("/oscillator/volume", velocity_to_amplitude(velocity));
@@ -72,6 +74,7 @@ public:
 
 	void stop_note()
 	{
+		_timestamp = 0;
 		_note = 0;
 		_interface->set_option("/oscillator/freq", 0.000000f);
 		_interface->set_option("/oscillator/volume", -96.000000f);
@@ -86,6 +89,11 @@ public:
 	nuclear::uint8_t note_playing()
 	{
 		return _note;
+	}
+
+	nuclear::double_t note_timestamp()
+	{
+		return _timestamp;
 	}
 
 private:
@@ -105,6 +113,7 @@ private:
 	}
 
 	nuclear::uint8_t _note;
+	nuclear::double_t _timestamp;
 
 	mydsp _dsp;
 	nuclear::paramui* _interface;
