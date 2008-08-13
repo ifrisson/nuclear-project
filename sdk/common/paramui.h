@@ -121,12 +121,14 @@ public:
 		std::map<std::string, param>::iterator p = _params.find(label);
 		if (p == _params.end())
 		{
-			std::cerr << "Unrecognized option" << std::endl;
+			std::cerr << "Unrecognized option " << label << std::endl;
 			return;
 		}
 
 		if (value >= p->second.min && value <= p->second.max)
 			*(p->second.zone) = value;
+		else
+			std::cerr << "Option " << label << " value " << value << " out of range (" <<  p->second.min << "-" <<  p->second.max << ")" << std::endl;
 	}
 
 private:
