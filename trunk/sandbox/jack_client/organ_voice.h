@@ -46,11 +46,6 @@ public:
 	int getNumInputs() { return 0; }
 	int getNumOutputs() { return 1;	}
 
-	void buildUserInterface(UI* interface)
-	{
-		_dsp.buildUserInterface(interface);
-	}
-
 	void init(int srate)
 	{
 		_dsp.init(srate);

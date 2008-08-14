@@ -1,5 +1,5 @@
-#ifndef NUCLEAR_VOICE_H
-#define NUCLEAR_VOICE_H
+#ifndef NUCLEAR_PROCESSOR_H
+#define NUCLEAR_PROCESSOR_H
 
 // Nuclear
 // Copyright (c) 2008, Anders Dahnielson
@@ -20,31 +20,21 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-#include "types.h"
-#include "processor.h"
-
 namespace nuclear
 {
 
-class voice :
-	public processor
+class processor
 {
 public:
-        voice() {}
-        virtual ~voice() {}
+        processor() {}
+        virtual ~processor() {}
 	
-	/// Start playing a note
-        virtual void play_note(uint8_t note, uint8_t velocity) = 0;
-	/// Stop playing the current note
-	virtual void stop_note() = 0;
-	/// Kill the note and free the voice immediately
-	virtual void kill_note() = 0;
-	/// Return the note playing or 0 if voice is inactive
-	virtual uint8_t note_playing() = 0;
-	/// Return the note time stamp or 0 if voice is inactive
-	virtual double_t note_timestamp() = 0;
+        virtual int getNumInputs() = 0;
+        virtual int getNumOutputs() = 0;
+        virtual void init(int srate) = 0;
+        virtual void compute(int nframes, float** inputs, float** outputs)  = 0;
 };
 
 } // !namespace nuclear
 
-#endif // !NUCLEAR_VOICE_H
+#endif // !NUCLEAR_PROCESSOR_H

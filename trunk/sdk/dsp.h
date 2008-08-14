@@ -20,22 +20,20 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
+#include "processor.h"
+
 namespace nuclear
 {
 
 class UI;
 
-class dsp 
+class dsp :
+	public processor
 {
 public:
         dsp() {}
         virtual ~dsp() {}
-	
-        virtual int getNumInputs() = 0;
-        virtual int getNumOutputs() = 0;
         virtual void buildUserInterface(UI* interface)  = 0;
-        virtual void init(int srate) = 0;
-        virtual void compute(int nframes, float** inputs, float** outputs)  = 0;
 
 protected:
         int fSamplingFreq;
