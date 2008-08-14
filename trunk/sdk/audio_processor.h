@@ -20,19 +20,26 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
+#include "types.h"
+
 namespace nuclear
 {
 
+/// Process audio using zero or more inputs/outputs
 class audio_processor
 {
 public:
         audio_processor() {}
         virtual ~audio_processor() {}
 	
-        virtual int getNumInputs() = 0;
-        virtual int getNumOutputs() = 0;
-        virtual void init(int srate) = 0;
-        virtual void compute(int nframes, float** inputs, float** outputs)  = 0;
+	/// Return number of audio input ports
+        virtual port_t get_num_audio_inputs() = 0;
+	/// Return number of audio output ports
+        virtual port_t get_num_audio_outputs() = 0;
+	/// Initiate processor, must be called at least once before processing
+        virtual void init(uint32_t srate) = 0;
+	/// Process audio
+        virtual void process_audio(nframes_t nframes, sample_t** inputs, sample_t** outputs) = 0;
 };
 
 } // !namespace nuclear

@@ -61,7 +61,7 @@ protected:
 		for (std::vector<nuclear::voice*>::iterator i = _voices.begin(); i != _voices.end(); ++i)
 		{
 			if ((*i)->note_playing() == 0) continue;
-			(*i)->compute(buffer_size(), NULL, output);
+			(*i)->process_audio(buffer_size(), NULL, output);
 			nuclear::mix_buffer<jack_default_audio_sample_t>(buffer_size(), output[0], out);
 		}
 

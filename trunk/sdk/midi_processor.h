@@ -25,18 +25,26 @@
 namespace nuclear
 {
 
+/// Process MIDI from one or more ports
 class midi_processor
 {
 public:
         midi_processor() {}
         virtual ~midi_processor() {}
 	
+	/// Process note off event
 	virtual void note_off(int port, uint8_t channel, uint8_t note, uint8_t velocity) = 0;
+	/// Process note on event
 	virtual void note_on(int port, uint8_t channel, uint8_t note, uint8_t velocity) = 0;
+	/// Process aftertouch event
 	virtual void aftertouch(int port, uint8_t channel, uint8_t note, uint8_t velocity) = 0;
+	/// Process continous controller event
 	virtual void continous_controller(int port, uint8_t channel, uint8_t controller, uint8_t value) = 0;
+	/// Process patch change event
 	virtual void patch_change(int port, uint8_t channel, uint8_t program) = 0;
+	/// Process channel pressure event
 	virtual void channel_pressure(int port, uint8_t channel, uint8_t pressure) = 0;
+	/// Process pitch bend event
 	virtual void pitch_bend(int port, uint8_t channel, uint8_t value_lo, uint8_t value_hi) = 0;
 };
 

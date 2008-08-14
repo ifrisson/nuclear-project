@@ -30,6 +30,9 @@
 namespace nuclear
 {
 
+namespace faust
+{
+
 class paramui :
 	public UI
 {
@@ -167,6 +170,8 @@ private:
 	std::stack<std::string> _prefix;
 	std::map<std::string, param> _params;
 };
+
+} // !namespace faust
 
 } // !namespace nuclear
 

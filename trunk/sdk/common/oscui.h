@@ -31,6 +31,9 @@ extern "C" {
 namespace nuclear
 {
 
+namespace faust
+{
+
 void liblo_error_callback(int, const char*, const char*);
 int liblo_method_callback(const char*, const char*, lo_arg**, int, void*, void*);
 
@@ -70,6 +73,8 @@ liblo_method_callback(const char *path, const char *types, lo_arg **argv, int ar
 	static_cast<nuclear::oscui*>(user_data)->set_option(path, argv[0]->f);
 	return 0;
 }
+
+} // !namespace faust
 
 } // !namespace nuclear
 
