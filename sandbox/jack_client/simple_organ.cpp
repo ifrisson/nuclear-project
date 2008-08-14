@@ -51,19 +51,19 @@ public:
 protected:
 	void on_process()
 	{
-		jack_default_audio_sample_t* out_left = get_audio_out_samples(0);
 		jack_default_audio_sample_t* out_right = get_audio_out_samples(1);
-		if (out_left == NULL || out_right == NULL)
+		jack_default_audio_sample_t* out_left = get_audio_out_samples(0);
+		if (out_right == NULL || out_left == NULL)
 			throw nuclear::Exception("get_audio_out_samples returned NULL!");
 
-		nuclear::init_buffer<jack_default_audio_sample_t>(buffer_size(), out_left);
 		nuclear::init_buffer<jack_default_audio_sample_t>(buffer_size(), out_right);
+		nuclear::init_buffer<jack_default_audio_sample_t>(buffer_size(), out_left);
 		jack_default_audio_sample_t** output = nuclear::allocate_buffers<jack_default_audio_sample_t>(2, buffer_size());
 		for (std::vector<nuclear::voice*>::iterator i = _voices.begin(); i != _voices.end(); ++i)
 		{
 			(*i)->compute(buffer_size(), NULL, output);
-			nuclear::mix_buffer<jack_default_audio_sample_t>(buffer_size(), output[0], out_left);
-			nuclear::mix_buffer<jack_default_audio_sample_t>(buffer_size(), output[1], out_right);
+			nuclear::mix_buffer<jack_default_audio_sample_t>(buffer_size(), output[0], out_right);
+			nuclear::mix_buffer<jack_default_audio_sample_t>(buffer_size(), output[1], out_left);
 		}
 		nuclear::free_buffers<jack_default_audio_sample_t>(output);
 	}
