@@ -20,9 +20,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-#include "../../sdk/dsp.h"
 #include "../../sdk/voice.h"
-#include "../../sdk/common/paramui.h"
+#include "../../sdk/faust/dsp.h"
+#include "../../sdk/faust/common/paramui.h"
 #include <math.h>
 #include <ctime>
 
