@@ -18,6 +18,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 #include "organ_voice.h"
+#include "../../sdk/common/exception.h"
 #include "../../sdk/common/jack_client.h"
 #include "../../sdk/common/utility.h"
 
@@ -52,7 +53,7 @@ protected:
 	{
 		jack_default_audio_sample_t* out = get_audio_out_samples(0);
 		if (out == NULL)
-			throw "get_audio_out_samples returned NULL!";
+			throw nuclear::Exception("get_audio_out_samples returned NULL!");
 
 		nuclear::init_buffer<jack_default_audio_sample_t>(buffer_size(), out);		
 		jack_default_audio_sample_t** output = nuclear::allocate_buffers<jack_default_audio_sample_t>(2, buffer_size());

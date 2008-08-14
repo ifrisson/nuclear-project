@@ -136,10 +136,7 @@ public:
 	{
 		std::map<std::string, param>::iterator p = _params.find(label);
 		if (p == _params.end())
-		{
-			std::cerr << "Unrecognized option " << label << std::endl;
-			return;
-		}
+			throw Exception("Unrecognized option " + label);
 
 		if (value >= p->second.min && value <= p->second.max)
 			*(p->second.zone) = value;
@@ -151,9 +148,7 @@ public:
 	{
 		std::map<std::string, param>::iterator p = _params.find(label);
 		if (p == _params.end())
-		{
 			throw Exception("Unrecognized option " + label);
-		}
 
 		return *(p->second.zone);
 	}

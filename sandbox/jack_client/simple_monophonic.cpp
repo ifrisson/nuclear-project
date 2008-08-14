@@ -18,6 +18,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 #include "osci_voice.h"
+#include "../../sdk/common/exception.h"
 #include "../../sdk/common/jack_client.h"
 
 class SimpleMonophonic :
@@ -48,7 +49,7 @@ protected:
 	{
 		jack_default_audio_sample_t* out = get_audio_out_samples(0);
 		if (out == NULL)
-			throw "get_audio_out_samples returned NULL!";
+			throw nuclear::Exception("get_audio_out_samples returned NULL!");
 
 		jack_default_audio_sample_t* output[] = { out };
 		_voice->compute(buffer_size(), NULL, output);
