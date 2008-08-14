@@ -86,10 +86,25 @@ public:
 		add_option(label, zone, min, max);
 	}
 	
-	virtual void addNumDisplay(std::string label, float* zone, int precision) {}
-	virtual void addTextDisplay(std::string label, float* zone, char* names[], float min, float max) {}
-	virtual void addHorizontalBargraph(std::string label, float* zone, float min, float max) {}
-	virtual void addVerticalBargraph(std::string label, float* zone, float min, float max) {}
+	virtual void addNumDisplay(std::string label, float* zone, int precision) 
+	{
+		add_option(label, zone, 0, 0);
+	}
+
+	virtual void addTextDisplay(std::string label, float* zone, char* names[], float min, float max)
+	{
+		add_option(label, zone, min, max);
+	}
+
+	virtual void addHorizontalBargraph(std::string label, float* zone, float min, float max)
+	{
+		add_option(label, zone, min, max);
+	}
+
+	virtual void addVerticalBargraph(std::string label, float* zone, float min, float max)
+	{
+		add_option(label, zone, min, max);
+	}
 	
 	virtual void openFrameBox(std::string label) 
 	{ 
@@ -129,6 +144,18 @@ public:
 			*(p->second.zone) = value;
 		else
 			std::cerr << "Option " << label << " value " << value << " out of range (" <<  p->second.min << "-" <<  p->second.max << ")" << std::endl;
+	}
+
+	float get_option(std::string label)
+	{
+		std::map<std::string, param>::iterator p = _params.find(label);
+		if (p == _params.end())
+		{
+			std::cerr << "Unrecognized option " << label << std::endl;
+			return 0.0f;
+		}
+
+		return *(p->second.zone);
 	}
 
 private:
