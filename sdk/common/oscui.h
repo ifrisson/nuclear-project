@@ -21,9 +21,12 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 #include "paramui.h"
-#include <lo/lo.h>
 #include <string>
 #include <iostream>
+
+extern "C" {
+#include <lo/lo.h>
+}
 
 namespace nuclear
 {
