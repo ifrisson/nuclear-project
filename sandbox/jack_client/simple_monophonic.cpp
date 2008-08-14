@@ -52,7 +52,7 @@ protected:
 			throw nuclear::Exception("get_audio_out_samples returned NULL!");
 
 		jack_default_audio_sample_t* output[] = { out };
-		_voice->compute(buffer_size(), NULL, output);
+		_voice->process_audio(buffer_size(), NULL, output);
 	}
 
 	void on_note_off(int port, jack_midi_data_t channel, jack_midi_data_t note, jack_midi_data_t velocity) 

@@ -26,8 +26,12 @@
 #include <math.h>
 #include <ctime>
 
-using nuclear::dsp;
-using nuclear::UI;
+using nuclear::nframes_t;
+using nuclear::sample_t;
+using nuclear::port_t;
+
+using nuclear::faust::dsp;
+using nuclear::faust::UI;
 
 // Include the generated file
 #include "osci.dsp.in"
@@ -39,14 +43,14 @@ public:
 	osci_voice() :
 		nuclear::voice(),
 		_note(0),
-		_interface(new nuclear::paramui())
+		_interface(new nuclear::faust::paramui())
 	{
 	}
 
-	int getNumInputs() { return 0; }
-	int getNumOutputs() { return 1;	}
+	port_t get_num_audio_inputs() { return _dsp.getNumInputs(); }
+	port_t get_num_audio_outputs() { return _dsp.getNumOutputs();	}
 
-	void init(int srate)
+	void init(nuclear::uint32_t srate)
 	{
 		_dsp.init(srate);
 		_dsp.buildUserInterface(_interface);
@@ -62,7 +66,7 @@ public:
 		}
 	}
 
-	void compute(int nframes, float** inputs, float** outputs)
+	void process_audio(nframes_t nframes, sample_t** inputs, sample_t** outputs)
 	{
 		_dsp.compute(nframes, inputs, outputs);
 	}
@@ -135,7 +139,7 @@ private:
 	nuclear::double_t _timestamp;
 
 	mydsp _dsp;
-	nuclear::paramui* _interface;
+	nuclear::faust::paramui* _interface;
 };
 
 #endif // !_OSCI_VOICE_H

@@ -25,6 +25,10 @@
 namespace nuclear
 {
 
+namespace faust
+{
+
+/// Abstract base class for FAUST UI builder
 class UI
 {
 public:
@@ -56,6 +60,8 @@ public:
 	virtual void openVerticalBox(std::string label) = 0;
 	virtual void closeBox() = 0;
 };
+
+} // !namespace faust
 
 } // !namespace nuclear
 

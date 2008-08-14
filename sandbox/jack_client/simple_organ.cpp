@@ -61,7 +61,7 @@ protected:
 		jack_default_audio_sample_t** output = nuclear::allocate_buffers<jack_default_audio_sample_t>(2, buffer_size());
 		for (std::vector<nuclear::voice*>::iterator i = _voices.begin(); i != _voices.end(); ++i)
 		{
-			(*i)->compute(buffer_size(), NULL, output);
+			(*i)->process_audio(buffer_size(), NULL, output);
 			nuclear::mix_buffer<jack_default_audio_sample_t>(buffer_size(), output[0], out_left);
 			nuclear::mix_buffer<jack_default_audio_sample_t>(buffer_size(), output[1], out_right);
 		}
