@@ -21,7 +21,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 #include "../UI.h"
-#include "exception.h"
+#include "../../common/exception.h"
 #include <string>
 #include <stack>
 #include <map>
