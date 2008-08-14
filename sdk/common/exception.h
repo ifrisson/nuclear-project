@@ -1,7 +1,7 @@
-#ifndef EXCEPTIONHANDLER_H_
-#define EXCEPTIONHANDLER_H_
+#ifndef NUCLEAR_EXCEPTION_H_
+#define NUCLEAR_EXCEPTION_H_
 
-// preset_manager.h
+// Nuclear
 // Copyright (c) 2008 by Darren Landrum
 //
 // Contact: dmlandrum@gmail.com
@@ -26,7 +26,8 @@
 namespace nuclear
 {
 
-class Exception : public std::exception
+class Exception : 
+	public std::exception
 {
 public:
 	Exception(string_t msg)
@@ -47,4 +48,4 @@ private:
 
 } // !namespace nuclear
 
-#endif // !EXCEPTIONHANDLER_H_
+#endif // !NUCLEAR_EXCEPTION_H_

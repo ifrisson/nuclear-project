@@ -21,6 +21,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 #include "../UI.h"
+#include "exception.h"
 #include <string>
 #include <stack>
 #include <map>
@@ -151,8 +152,7 @@ public:
 		std::map<std::string, param>::iterator p = _params.find(label);
 		if (p == _params.end())
 		{
-			std::cerr << "Unrecognized option " << label << std::endl;
-			return 0.0f;
+			throw Exception("Unrecognized option " + label);
 		}
 
 		return *(p->second.zone);
