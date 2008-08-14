@@ -1,5 +1,5 @@
-#ifndef NUCLEAR_VOICE_H
-#define NUCLEAR_VOICE_H
+#ifndef NUCLEAR_MIDI_PROCESSOR_H
+#define NUCLEAR_MIDI_PROCESSOR_H
 
 // Nuclear
 // Copyright (c) 2008, Anders Dahnielson
@@ -21,30 +21,25 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 #include "types.h"
-#include "audio_processor.h"
 
 namespace nuclear
 {
 
-class voice :
-	public audio_processor
+class midi_processor
 {
 public:
-        voice() {}
-        virtual ~voice() {}
+        midi_processor() {}
+        virtual ~midi_processor() {}
 	
-	/// Start playing a note
-        virtual void play_note(uint8_t note, uint8_t velocity) = 0;
-	/// Stop playing the current note
-	virtual void stop_note() = 0;
-	/// Kill the note and free the voice immediately
-	virtual void kill_note() = 0;
-	/// Return the note playing or 0 if voice is inactive
-	virtual uint8_t note_playing() = 0;
-	/// Return the note time stamp or 0 if voice is inactive
-	virtual double_t note_timestamp() = 0;
+	virtual void note_off(int port, uint8_t channel, uint8_t note, uint8_t velocity) = 0;
+	virtual void note_on(int port, uint8_t channel, uint8_t note, uint8_t velocity) = 0;
+	virtual void aftertouch(int port, uint8_t channel, uint8_t note, uint8_t velocity) = 0;
+	virtual void continous_controller(int port, uint8_t channel, uint8_t controller, uint8_t value) = 0;
+	virtual void patch_change(int port, uint8_t channel, uint8_t program) = 0;
+	virtual void channel_pressure(int port, uint8_t channel, uint8_t pressure) = 0;
+	virtual void pitch_bend(int port, uint8_t channel, uint8_t value_lo, uint8_t value_hi) = 0;
 };
 
 } // !namespace nuclear
 
-#endif // !NUCLEAR_VOICE_H
+#endif // !NUCLEAR_MIDI_PROCESSOR_H
