@@ -56,17 +56,24 @@ public:
 		_dsp.init(srate);
 		_dsp.buildUserInterface(_interface);
 
-		_interface->set_option("/faust/1-adsr/attack", 1.000000e-02f);
-		_interface->set_option("/faust/1-adsr/decay", 0.300000f);
-		_interface->set_option("/faust/1-adsr/release", 0.200000f);
-		_interface->set_option("/faust/1-adsr/sustain", 0.500000f);
-
-		_interface->set_option("/faust/2-master/pan", 0.500000f);
-		_interface->set_option("/faust/2-master/vol", 0.300000f);
-
-		_interface->set_option("/faust/freq", 440.000000f);
-		_interface->set_option("/faust/gain", 0.300000f);
-		_interface->set_option("/faust/gate", 0.0f);
+		try
+		{
+			_interface->set_option("/faust/1-adsr/attack", 1.000000e-02f);
+			_interface->set_option("/faust/1-adsr/decay", 0.300000f);
+			_interface->set_option("/faust/1-adsr/release", 0.200000f);
+			_interface->set_option("/faust/1-adsr/sustain", 0.500000f);
+			
+			_interface->set_option("/faust/2-master/pan", 0.500000f);
+			_interface->set_option("/faust/2-master/vol", 0.300000f);
+			
+			_interface->set_option("/faust/freq", 440.000000f);
+			_interface->set_option("/faust/gain", 0.300000f);
+			_interface->set_option("/faust/gate", 0.0f);
+		}
+		catch (nuclear::Exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
 
 	void compute(int nframes, float** inputs, float** outputs)
@@ -78,9 +85,17 @@ public:
 	{
 		_timestamp = std::clock();
 		_note = note;
-		_interface->set_option("/faust/freq", note_to_frequency(_note));
-		_interface->set_option("/faust/gain", velocity_to_amplitude(velocity));
-		_interface->set_option("/faust/gate", 1.0f);
+
+		try
+		{
+			_interface->set_option("/faust/freq", note_to_frequency(_note));
+			_interface->set_option("/faust/gain", velocity_to_amplitude(velocity));
+			_interface->set_option("/faust/gate", 1.0f);
+		}
+		catch (nuclear::Exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
 
 	void stop_note()
@@ -88,7 +103,15 @@ public:
 		//fixme: How to deal with the release envelope?
 		_timestamp = 0;
 		_note = 0;
-		_interface->set_option("/faust/gate", 0.0f);
+
+		try
+		{
+			_interface->set_option("/faust/gate", 0.0f);
+		}
+		catch (nuclear::Exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
 
 	void kill_note()
