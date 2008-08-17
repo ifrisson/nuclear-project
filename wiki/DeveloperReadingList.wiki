@@ -1,0 +1,22 @@
+#summary Essential books and resources for developers.
+
+== Developer Reading List ==
+
+=== DSP ===
+
+ * [http://musicdsp.org/ Music-DSP Source Code Archive]
+
+=== C++ ===
+
+ * [http://en.wikibooks.org/wiki/C++_Programming C++ Programming] (free Wikibook)
+ * [http://www.mindview.net/Books/TICPP/ThinkingInCPP2e.html Thinking in C++ 2nd Ed.] by Bruce Eckel and Chuck Allison (Free ebook)
+ * Effective C++ by Scott Meyers
+ * More Effective C++ by Scott Meyers
+ * Effective STL by Scott Meyers
+ * Modern C++ Design by Andrei Alexandrescu
+
+=== Python ===
+
+ * Python in a Nutshell by Alex Martelli
+ * Python Cookbook by David Ascher; Alex Martelli; Anna Ravenscroft
+ * http://del.icio.us/dahnielson/python+reqread 
