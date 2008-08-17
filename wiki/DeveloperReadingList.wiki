@@ -6,6 +6,11 @@
 
  * [http://musicdsp.org/ Music-DSP Source Code Archive]
 
+=== MIDI ===
+
+ * [http://ccrma-www.stanford.edu/~craig/articles/linuxmidi/misc/essenmidi.html Essentials of the MIDI protocol]
+ * http://delicious.com/dahnielson/midi+reference
+
 === C++ ===
 
  * _[http://en.wikibooks.org/wiki/C++_Programming C++ Programming]_ (free Wikibook)
@@ -19,4 +24,4 @@
 
  * _Python in a Nutshell_ by Alex Martelli
  * _Python Cookbook_ by David Ascher; Alex Martelli; Anna Ravenscroft
- * http://del.icio.us/dahnielson/python+reqread 
+ * http://delicious.com/dahnielson/python+reqread 
