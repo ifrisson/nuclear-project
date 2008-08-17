@@ -31,16 +31,6 @@ Our current direction is to develop an SDK to make the job of writing new plugin
   * Develop good looking custom GUIs for instruments and effects.
   * Use [http://www.cmake.org/Wiki/CMake CMake] for build automation of the engines.
 
-= Example Projects =
-
-Example projects to be built with Nuclear serving as test cases:
-
-  * _Simple polyphonic synth_. The simplest possible test case. Create a simple polyphonic synth with a LFO modulated oscillator.
-  * _SFZ sample player_. Advanced test case. Require streaming sample playback.
-  * _[KeyFrameParameterization Keyframe synth]_.
-  * _Reaktor like application_. Similar to the original Nuclear plan but without the need for compilation by GCC to build instruments. Let the user create and edit a processing graph, use a prebuilt standard library of blocks and write new interpreted DSP blocks.
-  * _[Uranium]_. Not an instrument, but an amplifier/cabinet simulator and effect rack. Test case for modeling of non-linear behavior.
-
 = See Also =
 
   * [Design]
