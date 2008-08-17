@@ -1,5 +1,5 @@
 #summary The SDK design.
-#labels Phase-Design,SDK
+#labels Phase-Design,SDK,Deprecated
 
 = Introduction =
 
