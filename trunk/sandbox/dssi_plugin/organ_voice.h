@@ -1,7 +1,7 @@
-#ifndef _OSCI_VOICE_H
-#define _OSCI_VOICE_H
+#ifndef _ORGAN_VOICE_H
+#define _ORGAN_VOICE_H
 
-// Simple JACK Client Demo
+// Simple Organ
 // Copyright (c) 2008, Anders Dahnielson
 //
 // Contact: anders@dahnielson.com
@@ -34,13 +34,13 @@ using nuclear::faust::dsp;
 using nuclear::faust::UI;
 
 // Include the generated file
-#include "osci.dsp.in"
+#include "organ.dsp.in"
 
-class osci_voice :
+class organ_voice :
 	public nuclear::voice
 {
 public:
-	osci_voice() :
+	organ_voice() :
 		nuclear::voice(),
 		_note(0),
 		_interface(new nuclear::faust::paramui())
@@ -48,7 +48,7 @@ public:
 	}
 
 	static port_t expected_audio_inputs() { return 0; }
-	static port_t expected_audio_outputs() { return 1; }
+	static port_t expected_audio_outputs() { return 2; }
 
 	void init(nuclear::uint32_t srate)
 	{
@@ -57,8 +57,17 @@ public:
 
 		try
 		{
-			_interface->set_option("/oscillator/freq", 0.000000f);
-			_interface->set_option("/oscillator/volume", -96.000000f);
+			_interface->set_option("/faust/1-adsr/attack", 1.000000e-02f);
+			_interface->set_option("/faust/1-adsr/decay", 0.300000f);
+			_interface->set_option("/faust/1-adsr/release", 0.200000f);
+			_interface->set_option("/faust/1-adsr/sustain", 0.500000f);
+			
+			_interface->set_option("/faust/2-master/pan", 0.500000f);
+			_interface->set_option("/faust/2-master/vol", 0.300000f);
+			
+			_interface->set_option("/faust/freq", 440.000000f);
+			_interface->set_option("/faust/gain", 0.300000f);
+			_interface->set_option("/faust/gate", 0.0f);
 		}
 		catch (nuclear::Exception& e)
 		{
@@ -78,8 +87,9 @@ public:
 
 		try
 		{
-			_interface->set_option("/oscillator/freq", note_to_frequency(_note));
-			_interface->set_option("/oscillator/volume", velocity_to_amplitude(velocity));
+			_interface->set_option("/faust/freq", note_to_frequency(_note));
+			_interface->set_option("/faust/gain", velocity);
+			_interface->set_option("/faust/gate", 1.0f);
 		}
 		catch (nuclear::Exception& e)
 		{
@@ -89,13 +99,13 @@ public:
 
 	void stop_note()
 	{
+		//todo: How to deal with the release envelope?
 		_timestamp = 0;
 		_note = 0;
 
 		try
 		{
-			_interface->set_option("/oscillator/freq", 0.000000f);
-			_interface->set_option("/oscillator/volume", -96.000000f);
+			_interface->set_option("/faust/gate", 0.0f);
 		}
 		catch (nuclear::Exception& e)
 		{
@@ -105,7 +115,6 @@ public:
 
 	void kill_note()
 	{
-		// Same as stop_note() since we don't have any release envelope
 		stop_note();
 	}
 
@@ -122,23 +131,17 @@ public:
 private:
 	float note_to_frequency(nuclear::note_t note)
 	{
-		int n = note;
-		if (n >= 0 && n <= 119)
-			return 440.0 * pow(2.0, (n-69) / 12.0);
+		if (note >= 0 && note <= 127)
+			return 440.0 * pow(2.0, (note-69) / 12.0);
 		else
 			return 0.0;
 	}
 
-	float velocity_to_amplitude(nuclear::velocity_t velocity)
-	{
-		return -96.000000f + 96.000000f / 127 * velocity;
-	}
-
-	nuclear::uint8_t _note;
+	nuclear::note_t _note;
 	nuclear::double_t _timestamp;
 
 	mydsp _dsp;
 	nuclear::faust::paramui* _interface;
 };
 
-#endif // !_OSCI_VOICE_H
+#endif // !_ORGAN_VOICE_H

@@ -32,10 +32,10 @@ public:
         audio_processor() {}
         virtual ~audio_processor() {}
 	
-	/// Return number of audio input ports
-        virtual port_t get_num_audio_inputs() = 0;
-	/// Return number of audio output ports
-        virtual port_t get_num_audio_outputs() = 0;
+	/// Return number of audio input buffers process_audio expects
+        static port_t expected_audio_inputs();
+	/// Return number of audio output buffers process_audio expects
+        static port_t expected_audio_outputs();
 	/// Initiate processor, must be called at least once before processing
         virtual void init(uint32_t srate) = 0;
 	/// Process audio

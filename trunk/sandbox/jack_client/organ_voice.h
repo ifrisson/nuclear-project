@@ -47,8 +47,8 @@ public:
 	{
 	}
 
-	port_t get_num_audio_inputs() { return _dsp.getNumInputs(); }
-	port_t get_num_audio_outputs() { return _dsp.getNumOutputs();	}
+	static port_t expected_audio_inputs() { return 0; }
+	static port_t expected_audio_outputs() { return 2; }
 
 	void init(nuclear::uint32_t srate)
 	{
@@ -80,7 +80,7 @@ public:
 		_dsp.compute(nframes, inputs, outputs);
 	}
 
-	void play_note(nuclear::uint8_t note, nuclear::uint8_t velocity)
+	void play_note(nuclear::note_t note, nuclear::velocity_t velocity)
 	{
 		_timestamp = std::clock();
 		_note = note;
@@ -88,7 +88,7 @@ public:
 		try
 		{
 			_interface->set_option("/faust/freq", note_to_frequency(_note));
-			_interface->set_option("/faust/gain", velocity_to_amplitude(velocity));
+			_interface->set_option("/faust/gain", velocity);
 			_interface->set_option("/faust/gate", 1.0f);
 		}
 		catch (nuclear::Exception& e)
@@ -99,7 +99,7 @@ public:
 
 	void stop_note()
 	{
-		//fixme: How to deal with the release envelope?
+		//todo: How to deal with the release envelope?
 		_timestamp = 0;
 		_note = 0;
 
@@ -118,7 +118,7 @@ public:
 		stop_note();
 	}
 
-	nuclear::uint8_t note_playing()
+	nuclear::note_t note_playing()
 	{
 		return _note;
 	}
@@ -129,22 +129,15 @@ public:
 	}
 
 private:
-	float note_to_frequency(nuclear::uint8_t note)
+	float note_to_frequency(nuclear::note_t note)
 	{
-		int n = note;
-		if (n >= 0 && n <= 119)
-			return 440.0 * pow(2.0, (n-69) / 12.0);
+		if (note >= 0 && note <= 127)
+			return 440.0 * pow(2.0, (note-69) / 12.0);
 		else
 			return 0.0;
 	}
 
-	float velocity_to_amplitude(nuclear::uint8_t velocity)
-	{
-		int v = velocity;
-		return -96.000000f + 96.000000f / 127 * v;
-	}
-
-	nuclear::uint8_t _note;
+	nuclear::note_t _note;
 	nuclear::double_t _timestamp;
 
 	mydsp _dsp;
