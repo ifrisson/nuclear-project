@@ -8,6 +8,7 @@
 
 === MIDI ===
 
+ * Harmony Central [http://www.harmony-central.com/MIDI/Doc/doc.html MIDI Documentation]
  * [http://ccrma-www.stanford.edu/~craig/articles/linuxmidi/misc/essenmidi.html Essentials of the MIDI protocol]
  * http://delicious.com/dahnielson/midi+reference
 
