@@ -8,15 +8,15 @@
 
 === C++ ===
 
- * [http://en.wikibooks.org/wiki/C++_Programming C++ Programming] (free Wikibook)
- * [http://www.mindview.net/Books/TICPP/ThinkingInCPP2e.html Thinking in C++ 2nd Ed.] by Bruce Eckel and Chuck Allison (free ebook)
- * Effective C++ by Scott Meyers
- * More Effective C++ by Scott Meyers
- * Effective STL by Scott Meyers
- * Modern C++ Design by Andrei Alexandrescu
+ * _[http://en.wikibooks.org/wiki/C++_Programming C++ Programming]_ (free Wikibook)
+ * _[http://www.mindview.net/Books/TICPP/ThinkingInCPP2e.html Thinking in C++ 2nd Ed.]_ by Bruce Eckel and Chuck Allison (free ebook)
+ * _Effective C++_ by Scott Meyers
+ * _More Effective C++_ by Scott Meyers
+ * _Effective STL_ by Scott Meyers
+ * _Modern C++ Design_ by Andrei Alexandrescu
 
 === Python ===
 
- * Python in a Nutshell by Alex Martelli
- * Python Cookbook by David Ascher; Alex Martelli; Anna Ravenscroft
+ * _Python in a Nutshell_ by Alex Martelli
+ * _Python Cookbook_ by David Ascher; Alex Martelli; Anna Ravenscroft
  * http://del.icio.us/dahnielson/python+reqread 
