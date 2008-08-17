@@ -23,7 +23,7 @@ I won't spend time explaining the algorithm here, as the article linked above do
 
 = Conclusion =
 
-An interpolated table makes the most sense for curves that are measured from real devices. Also, for curves which are describes by extremely complex mathematics, like tube models, it makes sense to "compile" a table to use instead of running each sample through a set of functions that could create very high CPU usage. The table can then be used by the interpolation algorithm to process audio.
+An interpolated table makes the most sense for curves that are measured from real devices. Also, for curves which are described by extremely complex mathematics, like tube models, it makes sense to "compile" a table to use instead of running each sample through a set of functions that could create very high CPU usage. The table can then be used by the interpolation algorithm to process audio.
 
 = References =
 
