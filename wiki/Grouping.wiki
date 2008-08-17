@@ -1,5 +1,5 @@
 #summary How to handle grouping of blocks for reuse.
-#labels Phase-Design,CG
+#labels Phase-Design
 
 = Introduction =
 
