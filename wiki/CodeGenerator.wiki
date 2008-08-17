@@ -1,5 +1,5 @@
 #summary Design of the code generator.
-#labels Phase-Design,CG
+#labels Phase-Design,CG,Deprecated
 
 = Introduction =
 
