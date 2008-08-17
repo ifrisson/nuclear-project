@@ -1,5 +1,5 @@
 #summary Design of the IDE.
-#labels Phase-Design,IDE
+#labels Phase-Design,IDE,Deprecated
 
 = Introduction =
 
