@@ -1,5 +1,5 @@
-#ifndef NUCLEAR_EXCEPTION_H_
-#define NUCLEAR_EXCEPTION_H_
+#ifndef NUCLEAR_EXCEPTION_H
+#define NUCLEAR_EXCEPTION_H
 
 // Nuclear
 // Copyright (c) 2008 by Darren Landrum
@@ -48,4 +48,4 @@ private:
 
 } // !namespace nuclear
 
-#endif // !NUCLEAR_EXCEPTION_H_
+#endif // !NUCLEAR_EXCEPTION_H

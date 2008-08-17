@@ -21,28 +21,35 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 #include "types.h"
-#include "audio_processor.h"
 
 namespace nuclear
 {
 
-class voice :
-	public audio_processor
+class voice
 {
 public:
         voice() {}
         virtual ~voice() {}
 	
 	/// Start playing a note
-        virtual void play_note(uint8_t note, uint8_t velocity) = 0;
+        virtual void play_note(note_t note, velocity_t velocity) = 0;
 	/// Stop playing the current note
 	virtual void stop_note() = 0;
 	/// Kill the note and free the voice immediately
 	virtual void kill_note() = 0;
 	/// Return the note playing or 0 if voice is inactive
-	virtual uint8_t note_playing() = 0;
+	virtual note_t note_playing() = 0;
 	/// Return the note time stamp or 0 if voice is inactive
 	virtual double_t note_timestamp() = 0;
+
+	/// Return number of audio input buffers process_audio expects
+        static port_t expected_audio_inputs();
+	/// Return number of audio output buffers process_audio expects
+        static port_t expected_audio_outputs();
+	/// Initiate processor, must be called at least once before processing
+        virtual void init(uint32_t srate) = 0;
+	/// Process audio
+        virtual void process_audio(nframes_t nframes, sample_t** inputs, sample_t** outputs) = 0;
 };
 
 } // !namespace nuclear

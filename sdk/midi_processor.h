@@ -31,7 +31,9 @@ class midi_processor
 public:
         midi_processor() {}
         virtual ~midi_processor() {}
-	
+
+	/// Return number of MIDI input ports expected
+	static port_t expected_midi_inputs();
 	/// Process note off event
 	virtual void note_off(int port, uint8_t channel, uint8_t note, uint8_t velocity) = 0;
 	/// Process note on event
