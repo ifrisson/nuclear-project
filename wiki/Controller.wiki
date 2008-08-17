@@ -1,5 +1,5 @@
 #summary How to control the engine.
-#labels Phase-Design,SDK
+#labels Phase-Design,SDK,Deprecated
 
 = Introduction =
 
