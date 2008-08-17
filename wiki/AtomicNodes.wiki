@@ -5,7 +5,7 @@
 
 This page describes the type and implementation of the basic nodes that can be combined to create a wide variety of DSP blocks.
 
-As the [Grouping] page explains, individual nodes can be combined into groups of nodes, which can then be treated as a cohesive unit by the graph. These are called _node groups_, or simply _groups_. Although any node can be made part of a group, regardless of its complexity, there will exist as a core part of Nuclear a set of basic DSP nodes, which are called _atomic nodes_, that will allow for the creation of a wide variety of DSP algorithms when grouped together.
+Individual nodes can be combined into groups of nodes, which can then be treated as a cohesive unit by the graph. These are called _node groups_, or simply _groups_. Although any node can be made part of a group, regardless of its complexity, there will exist as a core part of Nuclear a set of basic DSP nodes, which are called _atomic nodes_, that will allow for the creation of a wide variety of DSP algorithms when grouped together.
 
 = The Atomic Nodes =
 
