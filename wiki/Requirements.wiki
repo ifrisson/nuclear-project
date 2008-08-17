@@ -22,7 +22,7 @@ Our current direction is to develop an SDK to make the job of writing new plugin
   * Compile as:
     * [http://jackaudio.org JACK] application;
     * [http://lv2plug.in LV2] plugin.
-  * Using [http://faust.grame.fr/ FAUST] for DSP development.
+  * Use [http://faust.grame.fr/ FAUST] for DSP development.
   * Creating engines by interconnecting DSP blocks as nodes in a processing graph:
     * processing graphs are declared in a XML schema;
     * [Oversampling oversampling] of local portions of the graph;
