@@ -1,5 +1,5 @@
 #summary How do we fulfill the requirements?
-#labels Phase-Design,Featured,Deprecated
+#labels Phase-Design,Deprecated
 
 = Introduction =
 
