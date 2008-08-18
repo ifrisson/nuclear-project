@@ -26,25 +26,26 @@
 namespace nuclear
 {
 
-class Exception : 
-	public std::exception
-{
-public:
-	Exception(string_t msg)
+	/// A general exception
+	class Exception : 
+		public std::exception
 	{
-		error = msg;
-	}
+	public:
+		Exception(string_t msg)
+		{
+			error = msg;
+		}
 	
-	~Exception() throw() {}
+		~Exception() throw() {}
 	
-	virtual const char* what() const throw()
-	{
-		return error.c_str();
-	}
+		virtual const char* what() const throw()
+		{
+			return error.c_str();
+		}
 
-private:
-	string_t error;
-};
+	private:
+		string_t error;
+	};
 
 } // !namespace nuclear
 

@@ -30,148 +30,148 @@
 namespace nuclear
 {
 
-namespace faust
-{
-
-class paramui :
-	public UI
-{
-	struct param 
+	namespace faust
 	{
-		param(float* z, float a, float b) : 
-			zone(z), 
-			min(a), 
-			max(b) 
-		{}
+
+		class paramui :
+			public UI
+		{
+			struct param 
+			{
+				param(float* z, float a, float b) : 
+					zone(z), 
+					min(a), 
+					max(b) 
+				{}
 		
-		float* zone; 
-		float min; 
-		float max;
-	};
+				float* zone; 
+				float min; 
+				float max;
+			};
 
-public:
-	paramui() :
-		UI()
-	{
-		_prefix.push("/");
-	}
+		public:
+			paramui() :
+				UI()
+			{
+				_prefix.push("/");
+			}
 
-	~paramui()
-	{
-	}
+			~paramui()
+			{
+			}
 
-	virtual void addButton(std::string label, float* zone) 
-	{
-		add_option(label, zone, 0.0f, 1.0f);
-	}
+			virtual void addButton(std::string label, float* zone) 
+			{
+				add_option(label, zone, 0.0f, 1.0f);
+			}
 
-	virtual void addToggleButton(std::string label, float* zone)
-	{
-		add_option(label, zone, 0.0f, 1.0f);
-	}
+			virtual void addToggleButton(std::string label, float* zone)
+			{
+				add_option(label, zone, 0.0f, 1.0f);
+			}
 
-	virtual void addCheckButton(std::string label, float* zone)
-	{
-		add_option(label, zone, 0.0f, 1.0f);
-	}
+			virtual void addCheckButton(std::string label, float* zone)
+			{
+				add_option(label, zone, 0.0f, 1.0f);
+			}
 
-	virtual void addVerticalSlider(std::string label, float* zone, float init, float min, float max, float step)
-	{
-		add_option(label, zone, min, max);
-	}
+			virtual void addVerticalSlider(std::string label, float* zone, float init, float min, float max, float step)
+			{
+				add_option(label, zone, min, max);
+			}
 
-	virtual void addHorizontalSlider(std::string label, float* zone, float init, float min, float max, float step)
-	{
-		add_option(label, zone, min, max);
-	}
+			virtual void addHorizontalSlider(std::string label, float* zone, float init, float min, float max, float step)
+			{
+				add_option(label, zone, min, max);
+			}
 
-	virtual void addNumEntry(std::string label, float* zone, float init, float min, float max, float step)
-	{
-		add_option(label, zone, min, max);
-	}
+			virtual void addNumEntry(std::string label, float* zone, float init, float min, float max, float step)
+			{
+				add_option(label, zone, min, max);
+			}
 	
-	virtual void addNumDisplay(std::string label, float* zone, int precision) 
-	{
-		add_option(label, zone, 0, 0);
-	}
+			virtual void addNumDisplay(std::string label, float* zone, int precision) 
+			{
+				add_option(label, zone, 0, 0);
+			}
 
-	virtual void addTextDisplay(std::string label, float* zone, char* names[], float min, float max)
-	{
-		add_option(label, zone, min, max);
-	}
+			virtual void addTextDisplay(std::string label, float* zone, char* names[], float min, float max)
+			{
+				add_option(label, zone, min, max);
+			}
 
-	virtual void addHorizontalBargraph(std::string label, float* zone, float min, float max)
-	{
-		add_option(label, zone, min, max);
-	}
+			virtual void addHorizontalBargraph(std::string label, float* zone, float min, float max)
+			{
+				add_option(label, zone, min, max);
+			}
 
-	virtual void addVerticalBargraph(std::string label, float* zone, float min, float max)
-	{
-		add_option(label, zone, min, max);
-	}
+			virtual void addVerticalBargraph(std::string label, float* zone, float min, float max)
+			{
+				add_option(label, zone, min, max);
+			}
 	
-	virtual void openFrameBox(std::string label) 
-	{ 
-		add_namespace(label); 
-	}
+			virtual void openFrameBox(std::string label) 
+			{ 
+				add_namespace(label); 
+			}
 
-	virtual void openTabBox(std::string label) 
-	{ 
-		add_namespace(label); 
-	}
+			virtual void openTabBox(std::string label) 
+			{ 
+				add_namespace(label); 
+			}
 
-	virtual void openHorizontalBox(std::string label) 
-	{ 
-		add_namespace(label); 
-	}
+			virtual void openHorizontalBox(std::string label) 
+			{ 
+				add_namespace(label); 
+			}
 
-	virtual void openVerticalBox(std::string label) 
-	{ 
-		add_namespace(label); 
-	}
+			virtual void openVerticalBox(std::string label) 
+			{ 
+				add_namespace(label); 
+			}
 
-	virtual void closeBox() 
-	{ 
-		_prefix.pop(); 
-	}
+			virtual void closeBox() 
+			{ 
+				_prefix.pop(); 
+			}
 
-	void set_option(std::string label, float value)
-	{
-		std::map<std::string, param>::iterator p = _params.find(label);
-		if (p == _params.end())
-			throw Exception("Unrecognized option " + label);
+			void set_option(std::string label, float value)
+			{
+				std::map<std::string, param>::iterator p = _params.find(label);
+				if (p == _params.end())
+					throw Exception("Unrecognized option " + label);
 
-		if (value >= p->second.min && value <= p->second.max)
-			*(p->second.zone) = value;
-		else
-			std::cerr << "Option " << label << " value " << value << " out of range (" <<  p->second.min << "-" <<  p->second.max << ")" << std::endl;
-	}
+				if (value >= p->second.min && value <= p->second.max)
+					*(p->second.zone) = value;
+				else
+					std::cerr << "Option " << label << " value " << value << " out of range (" <<  p->second.min << "-" <<  p->second.max << ")" << std::endl;
+			}
 
-	float get_option(std::string label)
-	{
-		std::map<std::string, param>::iterator p = _params.find(label);
-		if (p == _params.end())
-			throw Exception("Unrecognized option " + label);
+			float get_option(std::string label)
+			{
+				std::map<std::string, param>::iterator p = _params.find(label);
+				if (p == _params.end())
+					throw Exception("Unrecognized option " + label);
 
-		return *(p->second.zone);
-	}
+				return *(p->second.zone);
+			}
 
-private:
-	void add_option(std::string label, float* zone, float min, float max)
-	{
-		_params.insert(std::make_pair(_prefix.top() + label, param(zone, min, max)));
-	}
+		private:
+			void add_option(std::string label, float* zone, float min, float max)
+			{
+				_params.insert(std::make_pair(_prefix.top() + label, param(zone, min, max)));
+			}
 
-	void add_namespace(std::string label)
-	{
-		_prefix.push(_prefix.top() + label + "/");
-	}
+			void add_namespace(std::string label)
+			{
+				_prefix.push(_prefix.top() + label + "/");
+			}
 	
-	std::stack<std::string> _prefix;
-	std::map<std::string, param> _params;
-};
+			std::stack<std::string> _prefix;
+			std::map<std::string, param> _params;
+		};
 
-} // !namespace faust
+	} // !namespace faust
 
 } // !namespace nuclear
 
