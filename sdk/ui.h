@@ -25,13 +25,13 @@
 namespace nuclear
 {
 
-/// Abstract class for engines with custom GUIs
-class ui
-{
-public:
-        ui() {}
-        virtual ~ui() {}
-};
+	/// Abstract class for engines with custom GUIs
+	class ui
+	{
+	public:
+		ui() {}
+		virtual ~ui() {}
+	};
 
 } // !namespace nuclear
 

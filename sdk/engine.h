@@ -25,27 +25,27 @@
 namespace nuclear
 {
 
-/// Baseclass for synths and effects
-class engine
-{
-public:
-        engine() {}
-        virtual ~engine() {}
+	/// Baseclass for synths and effects
+	class engine
+	{
+	public:
+		engine() {}
+		virtual ~engine() {}
 
-	/// Initate engine
-	virtual void init(uint32_t srate) = 0;
-	/// Connect data to port
-	virtual void connect_port(port_t port, void* data_location) = 0;
-	/// Activate engine
-	virtual void activate() = 0;
-	/// Run engine
-	virtual void run(nframes_t nframes) = 0;
-	/// Deactivate engine
-	virtual void deactivate() = 0;
+		/// Initate engine
+		virtual void init(uint32_t srate) = 0;
+		/// Connect data to port
+		virtual void connect_port(port_t port, void* data_location) = 0;
+		/// Activate engine
+		virtual void activate() = 0;
+		/// Run engine
+		virtual void run(nframes_t nframes) = 0;
+		/// Deactivate engine
+		virtual void deactivate() = 0;
 
-	/// Return pointer to port value or buffer
-	virtual void* p(nuclear::port_t port) = 0;
-};
+		/// Return pointer to port value or buffer
+		virtual void* p(nuclear::port_t port) = 0;
+	};
 
 } // !namespace nuclear
 

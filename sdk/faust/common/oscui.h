@@ -31,50 +31,50 @@ extern "C" {
 namespace nuclear
 {
 
-namespace faust
-{
-
-void liblo_error_callback(int, const char*, const char*);
-int liblo_method_callback(const char*, const char*, lo_arg**, int, void*, void*);
-
-class oscui :
-	public paramui
-{
-public:
-	oscui(std::string port) :
-		paramui()
+	namespace faust
 	{
-		lo_server_thread _thread = lo_server_thread_new(port.c_str(), error);
-		lo_server_thread_add_method(_thread, NULL, "f", liblo_callback, this);
-		lo_server_thread_start(_thread);
-	}
 
-	~oscui()
-	{
-		lo_server_thread_free(_thread);
-	}
+		void liblo_error_callback(int, const char*, const char*);
+		int liblo_method_callback(const char*, const char*, lo_arg**, int, void*, void*);
 
-private:
-	friend void liblo_error_callback(int, const char*, const char*);
-	friend int liblo_method_callback(const char*, const char*, lo_arg**, int, void*, void*);
+		class oscui :
+			public paramui
+		{
+		public:
+			oscui(std::string port) :
+				paramui()
+			{
+				lo_server_thread _thread = lo_server_thread_new(port.c_str(), error);
+				lo_server_thread_add_method(_thread, NULL, "f", liblo_callback, this);
+				lo_server_thread_start(_thread);
+			}
 
-	lo_server_thread _thread;
-};
+			~oscui()
+			{
+				lo_server_thread_free(_thread);
+			}
 
-void 
-liblo_error_callback(int num, const char *msg, const char *path)
-{
-	std::cerr << "liblo server error " << num << " in path " << path << ": " << msg << std::endl;
-}
+		private:
+			friend void liblo_error_callback(int, const char*, const char*);
+			friend int liblo_method_callback(const char*, const char*, lo_arg**, int, void*, void*);
 
-int 
-liblo_method_callback(const char *path, const char *types, lo_arg **argv, int argc, void *data, void *user_data)
-{
-	static_cast<nuclear::oscui*>(user_data)->set_option(path, argv[0]->f);
-	return 0;
-}
+			lo_server_thread _thread;
+		};
 
-} // !namespace faust
+		void 
+		liblo_error_callback(int num, const char *msg, const char *path)
+		{
+			std::cerr << "liblo server error " << num << " in path " << path << ": " << msg << std::endl;
+		}
+
+		int 
+		liblo_method_callback(const char *path, const char *types, lo_arg **argv, int argc, void *data, void *user_data)
+		{
+			static_cast<nuclear::oscui*>(user_data)->set_option(path, argv[0]->f);
+			return 0;
+		}
+
+	} // !namespace faust
 
 } // !namespace nuclear
 

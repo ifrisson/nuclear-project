@@ -1,5 +1,5 @@
-#ifndef PRESETMANAGER_H_
-#define PRESETMANAGER_H_
+#ifndef NUCLEAR_PRESETMANAGER_H
+#define NUCLEAR_PRESETMANAGER_H
 
 // preset_manager.h
 // Copyright (c) 2008 by Darren Landrum
@@ -31,101 +31,101 @@
 namespace nuclear
 {
 
-class PresetManager
-{
-private:
-	map<string_t, string_t> preset;
-	list<string_t> tags;
-	
-public:
-	PresetManager()
+	class PresetManager
 	{
-	}
+	private:
+		map<string_t, string_t> preset;
+		list<string_t> tags;
 	
-	void readPreset(string_t filename)
-	{
-		string_t line;
-		fstream file;
-		string_t key;
-		string_t value;
-		int16_t delim;
-		
-		// empty the current preset and tag list
-		preset.clear();
-		tags.clear();
-		
-		file.open(filename.c_str(), fstream::in);
-		
-		// parse the file
-		while(!file.eof())
+	public:
+		PresetManager()
 		{
-			file.getline(line, 1024);
-			// split the line into key:value pairs, omitting the delimiter
-			delim = line.find(':');
-			key = line.substr(0, delim-1);
-			value = line.substr(delim+1, line.length()-(delim+1));
-			preset[key] = value;
 		}
-		
-		delim = 0; // re-initialize, to be on the safe side
-		// extract tags into separate list
-		delim = preset["tags"].find(',');
-		while(delim != string::npos)
+	
+		void readPreset(string_t filename)
 		{
-			tags.push_front(preset["tags"].substr(0, delim-1));
-			preset["tags"] = preset["tags"].substr(delim+1, line.length()-(delim+1));
+			string_t line;
+			fstream file;
+			string_t key;
+			string_t value;
+			int16_t delim;
+		
+			// empty the current preset and tag list
+			preset.clear();
+			tags.clear();
+		
+			file.open(filename.c_str(), fstream::in);
+		
+			// parse the file
+			while(!file.eof())
+			{
+				file.getline(line, 1024);
+				// split the line into key:value pairs, omitting the delimiter
+				delim = line.find(':');
+				key = line.substr(0, delim-1);
+				value = line.substr(delim+1, line.length()-(delim+1));
+				preset[key] = value;
+			}
+		
+			delim = 0; // re-initialize, to be on the safe side
+			// extract tags into separate list
 			delim = preset["tags"].find(',');
+			while(delim != string::npos)
+			{
+				tags.push_front(preset["tags"].substr(0, delim-1));
+				preset["tags"] = preset["tags"].substr(delim+1, line.length()-(delim+1));
+				delim = preset["tags"].find(',');
+			}
+			preset.erase("tags");
 		}
-		preset.erase("tags");
-	}
 	
-	void writePreset()
-	{
-		
-	}
-	
-	template <class T>
-	void setParam(string_t param_name, T param)
-	{
-		preset[param_name] = boost::lexical_cast<string_t>(param);
-	}
-	
-	template <class T>
-	T getParam(string_t param_name)
-	{
-		return boost::lexical_cast<T>(preset[param_name]);
-	}
-	
-	void removeParam(string_t param_name)
-	{
-		if(param_name != "preset" && param_name != "preset version" &&
-		   param_name != "program" && param_name != "program version")
+		void writePreset()
 		{
-			preset.erase(param_name);
-		}
-	}
-	
-	void addTag(string_t tag)
-	{
-		if(tag.find(',') == string::npos)
-		{
-			// no commas allowed
-			tags.push_front(tag);
-			tags.sort();
-		}
-	}
-	
-	void removeTag(string_t tag)
-	{
-		tags.remove(tag);
-	}
-	
-	string_t* getTagList()
-	{
 		
-	}
-};
+		}
+	
+		template <class T>
+		void setParam(string_t param_name, T param)
+		{
+			preset[param_name] = boost::lexical_cast<string_t>(param);
+		}
+	
+		template <class T>
+		T getParam(string_t param_name)
+		{
+			return boost::lexical_cast<T>(preset[param_name]);
+		}
+	
+		void removeParam(string_t param_name)
+		{
+			if(param_name != "preset" && param_name != "preset version" &&
+			   param_name != "program" && param_name != "program version")
+			{
+				preset.erase(param_name);
+			}
+		}
+	
+		void addTag(string_t tag)
+		{
+			if(tag.find(',') == string::npos)
+			{
+				// no commas allowed
+				tags.push_front(tag);
+				tags.sort();
+			}
+		}
+	
+		void removeTag(string_t tag)
+		{
+			tags.remove(tag);
+		}
+	
+		string_t* getTagList()
+		{
+		
+		}
+	};
 
 } // !namespace nuclear
 
-#endif // !PRESETMANAGER_H_
+#endif // !NUCLEAR_PRESETMANAGER_H

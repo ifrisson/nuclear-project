@@ -1,5 +1,5 @@
-#ifndef NUCLEAR_TYPES_H
-#define NUCLEAR_TYPES_H
+#ifndef NUCLEAR_LV2_H
+#define NUCLEAR_LV2_H
 
 // Nuclear
 // Copyright (c) 2008, Anders Dahnielson
@@ -20,40 +20,13 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-#include <boost/cstdint.hpp>
-#include <string>
+// Documents the nuclear::lv2 namespace
 
 namespace nuclear
 {
-
-	typedef bool bool_t;
-
-	typedef boost::int8_t int8_t;
-	typedef boost::int16_t int16_t;
-	typedef boost::int32_t int32_t;
-	typedef boost::int64_t int64_t;
-
-	typedef boost::uint8_t uint8_t;
-	typedef boost::uint16_t uint16_t;
-	typedef boost::uint32_t uint32_t;
-	typedef boost::uint64_t uint64_t;
-
-	typedef float float_t;
-	typedef double double_t;
-
-	typedef std::string string_t;
-
-	typedef boost::uint32_t voice_t;
-	typedef boost::uint32_t port_t;
-	typedef boost::uint32_t nframes_t;
-	typedef boost::uint64_t tick_t;
-	typedef float sample_t;
-
-	/// Note value between 0...127
-	typedef boost::uint32_t note_t;
-	/// Velocity value between 0..1
-	typedef float velocity_t;
-
+	/// Namespace for LV2
+	namespace faust {}
+	
 } // !namespace nuclear
 
-#endif // !NUCLEAR_TYPES_H
+#endif // !NUCLEAR_LV2_H
