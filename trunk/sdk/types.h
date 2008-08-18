@@ -43,15 +43,24 @@ namespace nuclear
 
 	typedef std::string string_t;
 
-	typedef boost::uint32_t voice_t;
-	typedef boost::uint32_t port_t;
+	// Audio
+
+	/// Number of frames
 	typedef boost::uint32_t nframes_t;
+	/// Ticks
 	typedef boost::uint64_t tick_t;
+	/// 32-bit float samples
 	typedef float sample_t;
 
+	// MIDI
+
+	/// Port
+	typedef boost::uint32_t port_t;
+	/// Channel value between 0...15
+	typedef boost::uint32_t channel_t;
 	/// Note value between 0...127
 	typedef boost::uint32_t note_t;
-	/// Velocity value between 0..1
+	/// Velocity value between 0.0f...1.0f
 	typedef float velocity_t;
 
 } // !namespace nuclear
