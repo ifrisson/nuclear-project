@@ -18,7 +18,7 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 #include "../../sdk/engine.h"
-#include "../../sdk/lv2/lv2_plugin.h"
+#include "../../sdk/lv2/common/lv2_plugin.h"
 
 class test :
 	public nuclear::engine
