@@ -1,5 +1,5 @@
-#ifndef NUCLEAR_LV2_H
-#define NUCLEAR_LV2_H
+#ifndef NUCLEAR_LV2NAMESPACE_H
+#define NUCLEAR_LV2NAMESPACE_H
 
 // Nuclear
 // Copyright (c) 2008, Anders Dahnielson
@@ -29,4 +29,4 @@ namespace nuclear
 	
 } // !namespace nuclear
 
-#endif // !NUCLEAR_LV2_H
+#endif // !NUCLEAR_LV2NAMESPACE_H
