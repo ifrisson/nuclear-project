@@ -20,8 +20,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-#include <ladspa.h>
-#include <dssi.h>
+#include "../../ladspa/ladspa.h"
+#include "../dssi.h"
 #include "../../engine.h"
 #include "../../types.h"
 #include "dssi_descriptor_builder.h"
