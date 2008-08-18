@@ -1,0 +1,7 @@
+project(lv2_plugin)
+
+SET(BUILD_SHARED_LIBS ON)
+SET(LIBRARIES dl m)
+
+ADD_LIBRARY(test test.cpp)
+TARGET_LINK_LIBRARIES(test ${LIBRARIES})

@@ -1,5 +1,5 @@
-#ifndef NUCLEAR_SYNTH_DESCRIPTOR_H
-#define NUCLEAR_SYNTH_DESCRIPTOR_H
+#ifndef NUCLEAR_ENGINE_H
+#define NUCLEAR_ENGINE_H
 
 // Nuclear
 // Copyright (c) 2008, Anders Dahnielson
@@ -25,19 +25,28 @@
 namespace nuclear
 {
 
-/// Abstract descriptor
-class synth_descriptor
+/// Baseclass for synths and effects
+class engine
 {
 public:
-	void set_label(string_t label);
-	void set_name(string_t name);
-	void set_maker(string_t maker);
-	void set_copyright(string_t copyright);
-	void add_control(string_t name, float_t min, float_t max);
-	void add_input(string_t name);
-	void add_output(string_t name);
+        engine() {}
+        virtual ~engine() {}
+
+	/// Initate engine
+	virtual void init(uint32_t srate) = 0;
+	/// Connect data to port
+	virtual void connect_port(port_t port, void* data_location) = 0;
+	/// Activate engine
+	virtual void activate() = 0;
+	/// Run engine
+	virtual void run(nframes_t nframes) = 0;
+	/// Deactivate engine
+	virtual void deactivate() = 0;
+
+	/// Return pointer to port value or buffer
+	virtual void* p(nuclear::port_t port) = 0;
 };
 
 } // !namespace nuclear
 
-#endif // !NUCLEAR_SYNTH_DESCRIPTOR_H
+#endif // !NUCLEAR_ENGINE_H

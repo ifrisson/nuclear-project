@@ -19,7 +19,7 @@
 
 #include "osci_voice.h"
 #include "../../sdk/common/exception.h"
-#include "../../sdk/common/jack_client.h"
+#include "../../sdk/jack/jack_client.h"
 
 class SimpleMonophonic :
 	public nuclear::jack_client
