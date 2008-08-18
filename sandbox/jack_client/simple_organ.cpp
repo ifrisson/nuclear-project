@@ -19,8 +19,8 @@
 
 #include "organ_voice.h"
 #include "../../sdk/common/exception.h"
-#include "../../sdk/common/jack_client.h"
 #include "../../sdk/common/utility.h"
+#include "../../sdk/jack/jack_client.h"
 
 class SimpleOrgan :
 	public nuclear::jack_client

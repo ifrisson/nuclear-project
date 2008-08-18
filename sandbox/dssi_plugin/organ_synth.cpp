@@ -20,8 +20,8 @@
 #include "organ_voice.h"
 #include "../../sdk/synth.h"
 #include "../../sdk/synth_descriptor.h"
-#include "../../sdk/common/dssi_plugin.h"
 #include "../../sdk/common/utility.h"
+#include "../../sdk/dssi/dssi_plugin.h"
 
 class organ_synth :
 	public nuclear::synth

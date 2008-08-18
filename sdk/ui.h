@@ -1,5 +1,5 @@
-#ifndef NUCLEAR_AUDIO_PROCESSOR_H
-#define NUCLEAR_AUDIO_PROCESSOR_H
+#ifndef NUCLEAR_UI_H
+#define NUCLEAR_UI_H
 
 // Nuclear
 // Copyright (c) 2008, Anders Dahnielson
@@ -25,23 +25,14 @@
 namespace nuclear
 {
 
-/// Process audio using zero or more inputs/outputs
-class audio_processor
+/// Abstract class for engines with custom GUIs
+class ui
 {
 public:
-        audio_processor() {}
-        virtual ~audio_processor() {}
-	
-	/// Return number of audio input buffers process_audio expects
-        static port_t expected_audio_inputs();
-	/// Return number of audio output buffers process_audio expects
-        static port_t expected_audio_outputs();
-	/// Initiate processor, must be called at least once before processing
-        virtual void init(uint32_t srate) = 0;
-	/// Process audio
-        virtual void process_audio(nframes_t nframes, sample_t** inputs, sample_t** outputs) = 0;
+        ui() {}
+        virtual ~ui() {}
 };
 
 } // !namespace nuclear
 
-#endif // !NUCLEAR_AUDIO_PROCESSOR_H
+#endif // !NUCLEAR_UI_H
