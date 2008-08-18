@@ -41,7 +41,7 @@ namespace nuclear {
 		class plugin
 		{
 		public:
-			plugin(dssi_descriptor_builder* builder)
+			plugin(descriptor_builder* builder)
 			{
 				g_ladspa_descriptor = builder->get_descriptor();
 				g_ladspa_descriptor->UniqueID = 0;
