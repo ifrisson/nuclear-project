@@ -27,10 +27,20 @@
 #include "dssi_descriptor_builder.h"
 
 static LADSPA_Descriptor* g_ladspa_descriptor = NULL;
-const LADSPA_Descriptor* ladspa_descriptor(unsigned long index) { return g_ladspa_descriptor; }
+const LADSPA_Descriptor* ladspa_descriptor(unsigned long index) 
+{ 
+	if (index > 0)
+		return NULL;
+	return g_ladspa_descriptor; 
+}
 
 static DSSI_Descriptor* g_dssi_descriptor = NULL;
-const DSSI_Descriptor* dssi_descriptor(unsigned long index) { return g_dssi_descriptor; }
+const DSSI_Descriptor* dssi_descriptor(unsigned long index) 
+{ 
+	if (index > 0)
+		return NULL;
+	return g_dssi_descriptor; 
+}
 
 namespace nuclear { 
 
