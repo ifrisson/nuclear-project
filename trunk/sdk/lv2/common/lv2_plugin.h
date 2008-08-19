@@ -21,11 +21,17 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 #include "../lv2.h"
+#include "../lv2_event.h"
 #include "../../types.h"
 #include "../../engine.h"
 
 static LV2_Descriptor* g_lv2_descriptor = NULL;
-const LV2_Descriptor* lv2_descriptor(uint32_t index) { return g_lv2_descriptor; }
+const LV2_Descriptor* lv2_descriptor(uint32_t index) 
+{ 
+	if (index > 0)
+		return NULL;
+	return g_lv2_descriptor; 
+}
 
 namespace nuclear
 {
@@ -51,12 +57,34 @@ namespace nuclear
 				g_lv2_descriptor->extension_data = lv2_plugin::extension_data;
 			}
 			
-			static LV2_Handle instantiate(const struct _LV2_Descriptor* descriptor,
-						      double                        sample_rate,
-						      const char*                   bundle_path,
-						      const LV2_Feature* const*     features)
+			static LV2_Handle instantiate(const struct _LV2_Descriptor* descriptor, 
+						      double sample_rate, 
+						      const char* bundle_path, 
+						      const LV2_Feature* const* features)
 			{
 				nuclear::engine* plugin = new T;
+
+				// Features
+				while (*features)
+				{
+					// Do we require MIDI?
+					if (dynamic_cast<nuclear::midi*>(plugin))
+					{
+						// Do the host support it?
+						if (nuclear::string_t((*features)->URI) == nuclear::string_t(LV2_EVENT_URI))
+						{
+							//(*features)->data;
+						}
+						else
+						{
+							delete plugin;
+							return NULL;
+						}
+					}
+					
+					features++;
+				}
+
 				plugin->init(sample_rate);
 				return plugin;
 			}
