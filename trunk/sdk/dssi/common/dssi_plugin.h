@@ -1,3 +1,4 @@
+/* -*- Mode: C++ ; c-basic-offset: 8 -*- */
 #ifndef NUCLEAR_DSSI_PLUGIN_H
 #define NUCLEAR_DSSI_PLUGIN_H
 
