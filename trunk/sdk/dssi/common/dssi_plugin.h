@@ -119,30 +119,32 @@ namespace nuclear {
 			{
 				nuclear::engine* plugin = static_cast<nuclear::engine*>(instance);
 				
+				// MIDI
 				nuclear::midi* midi = dynamic_cast<nuclear::midi*>(plugin);
 				if (midi)
 				{
+					const nuclear::float_t velocity_scale = 1.0f / 127;
 					for (int event_index = 0; event_index < event_count; ++event_index)
 					{
 						if (events[event_index].type == SND_SEQ_EVENT_NOTEOFF)
 						{
-							midi->note_off( 
+							midi->note_off(0, 0, 
 								events[event_index].data.note.note,
-								events[event_index].data.note.velocity
+								events[event_index].data.note.velocity * velocity_scale
 								);
 						}
 						else if (events[event_index].type == SND_SEQ_EVENT_NOTEON)
 						{
-							midi->note_on(
+							midi->note_on(0, 0
 								events[event_index].data.note.note,
-								events[event_index].data.note.velocity
+								events[event_index].data.note.velocity * velocity_scale
 								);
 						}
 						else if (events[event_index].type == SND_SEQ_EVENT_KEYPRESS)
 						{
-							midi->aftertouch(
+							midi->aftertouch(0, 0
 								events[event_index].data.note.note,
-								events[event_index].data.note.velocity
+								events[event_index].data.note.velocity * velocity_scale
 								);
 						}
 						/*
@@ -158,14 +160,14 @@ namespace nuclear {
 						*/
 						else if (events[event_index].type == SND_SEQ_EVENT_CHANPRESS)
 						{
-							midi->channel_pressure(
-								events[event_index].data.control.value
+							midi->channel_pressure(0, 0
+								events[event_index].data.control.value * velocity_scale
 								);
 						}
 						else if (events[event_index].type == SND_SEQ_EVENT_PITCHBEND)
 						{
-							midi->pitch_bend(
-								events[event_index].data.control.value
+							midi->pitch_bend(0, 0
+								events[event_index].data.control.value * velocity_scale
 								);
 						}
 					}
