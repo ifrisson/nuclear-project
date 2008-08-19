@@ -1,3 +1,4 @@
+/* -*- Mode: C++ ; c-basic-offset: 8 -*- */
 #ifndef NUCLEAR_UTILITY_H
 #define NUCLEAR_UTILITY_H
 

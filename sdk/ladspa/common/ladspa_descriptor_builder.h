@@ -1,3 +1,4 @@
+/* -*- Mode: C++ ; c-basic-offset: 8 -*- */
 #ifndef NUCLEAR_LADSPA_DESCRIPTOR_BUILDER_H
 #define NUCLEAR_LADSPA_DESCRIPTOR_BUILDER_H
 

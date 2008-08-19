@@ -1,3 +1,4 @@
+/* -*- Mode: C++ ; c-basic-offset: 8 -*- */
 #ifndef NUCLEAR_FAUST_H
 #define NUCLEAR_FAUST_H
 
