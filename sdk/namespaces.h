@@ -1,6 +1,5 @@
-/* -*- Mode: C++ ; c-basic-offset: 8 -*- */
-#ifndef NUCLEAR_FAUST_H
-#define NUCLEAR_FAUST_H
+#ifndef NUCLEAR_NAMESPACES_H
+#define NUCLEAR_NAMESPACES_H
 
 // Nuclear
 // Copyright (c) 2008, Anders Dahnielson
@@ -21,13 +20,26 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-// Documents the nuclear::faust namespace
+// The only purpose of this file is to document namespaces used in the SDK.
 
+/// Namespace for Nuclear SDK
 namespace nuclear
 {
+	/// Namespace for DSSI
+	namespace dssi {}
+	
 	/// Namespace for FAUST
 	namespace faust	{}
+
+	/// Namespace for JACK
+	namespace jack {}
+	
+	/// Namespace for LADSPA
+	namespace ladspa {}
+	
+	/// Namespace for LV2
+	namespace faust {}
 	
 } // !namespace nuclear
 
-#endif // !NUCLEAR_FAUST_H
+#endif // !NUCLEAR_NAMESPACES_H
