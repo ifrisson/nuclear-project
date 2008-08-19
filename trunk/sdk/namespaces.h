@@ -38,7 +38,7 @@ namespace nuclear
 	namespace ladspa {}
 	
 	/// Namespace for LV2
-	namespace faust {}
+	namespace lv2 {}
 	
 } // !namespace nuclear
 
