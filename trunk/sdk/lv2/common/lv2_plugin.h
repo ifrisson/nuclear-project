@@ -23,6 +23,8 @@
 
 #include "../lv2.h"
 #include "../lv2_event.h"
+#include "../lv2_event_helpers.h"
+#include "../lv2_uri_map.h"
 #include "../../types.h"
 #include "../../engine.h"
 
@@ -44,6 +46,16 @@ namespace nuclear
 		template<typename T>
 		class plugin
 		{
+			// Event extension
+			LV2_Event_Buffer* event_buffer;
+			LV2_Event_Feature* event_feature;
+
+			// MIDI extension
+			int midi_event_id;
+
+			// URI-Map extension
+			LV2_URI_Map_Feature* map_feature;
+
 		public:
 			plugin(const string_t URI)
 			{
@@ -65,21 +77,24 @@ namespace nuclear
 			{
 				nuclear::engine* plugin = new T;
 
+				// Look for features
+				for(int i = 0; features[i]; ++i)
+				{
+					if (nuclear::string_t(features[i]->URI) == nuclear::string_t(LV2_URI_MAP_URI))
+					{
+						map_feature = features[i]->data;
+						midi_event_id = map_feature->uri_to_id(map_feature->callback_data, LV2_EVENT_URI, "http://lv2plug.in/ns/ext/midi#MidiEvent");
+					}
+					else if (nuclear::string_t(features[i]->URI) == nuclear::string_t(LV2_EVENT_URI))
+					{
+						event_feature = features[i]->data;
+					}
+				}
+
 				// Do we require MIDI?
-				bool midi_support = false;
 				if (dynamic_cast<nuclear::midi*>(plugin))
 				{
-					while (*features)
-					{
-						if (nuclear::string_t((*features)->URI) == nuclear::string_t(LV2_EVENT_URI))
-						{
-							//(*features)->data;
-							midi_support = true;
-							break;
-						}
-						features++;
-					}
-					if (!midi_support)
+					if (midi_event_id == 0 || event_feature == NULL)
 					{
 						delete plugin;
 						return NULL;
@@ -105,6 +120,76 @@ namespace nuclear
 			static void run(LV2_Handle instance, uint32_t sample_count)
 			{
 				nuclear::engine* plugin = static_cast<nuclear::engine*>(instance);
+
+				// MIDI
+				nuclear::midi* midi = dynamic_cast<nuclear::midi*>(plugin);
+				if (midi)
+				{
+					const nuclear::float_t velocity_scale = 1.0f / 127;
+					LV2_Event_Iterator iterator;
+					for(lv2_event_begin(&iterator, event_buffer); 
+					    lv2_event_is_valid(&iterator);
+					    lv2_event_increment(&iterator))
+					{
+						uint16_t size = 0;
+						if (lv2_event_get(&iterator, NULL)->type == 0)
+							event_feature->lv2_event_unref(event_feature->callback_data, lv2_event_get(&iterator, NULL));
+						else if (lv2_event_get(&iterator, NULL)->type == midi_event_id)
+							size = ev->size;
+
+						uint8_t* midi_data = (uint8_t *) lv2_event_get(&iterator, NULL) + 12;
+
+						if (size == 3 && ((*midi_data & 0xf0) == 0x80))
+						{
+							nuclear::channel_t channel = 0x80 ^ (*midi_data);
+							nuclear::note_t note = (*midi_data+1);
+							nuclear::velocity_t velocity = (*midi_data+2) * velocity_scale;
+							plugin->note_off(0, channel, note, velocity);
+						}
+						else if (size == 3 && ((*midi_data & 0xf0) == 0x90))
+						{
+							nuclear::channel_t channel = 0x90 ^ (*midi_data);
+							nuclear::note_t note = (*midi_data+1);
+							nuclear::velocity_t velocity = (*midi_data+2) * velocity_scale;
+							plugin->note_on(0, channel, note, velocity);
+						}
+						else if (size == 3 && ((*midi_data & 0xf0) == 0xA0))
+						{
+							nuclear::channel_t channel = 0xA0 ^ (*midi_data);
+							nuclear::note_t note = (*midi_data+1);
+							nuclear::velocity_t velocity = (*midi_data+2) * velocity_scale;
+							plugin->aftertouch(0, channel, note, velocity);
+						}
+						else if(size == 3 && ((*midi_data & 0xf0) == 0xB0))
+						{
+							//int channel = 0xB0 ^ (*midi_data);
+							//int controller = (*midi_data+1);
+							//int value = (*midi_data+2);
+							//plugin->continous_controller(0, channel, controller, value);
+						}
+						else if(size == 2 && ((*midi_data & 0xf0) == 0xC0))
+						{
+							nuclear::channel_t channel = 0xC0 ^ (*midi_data);
+							nuclear::uint32_t program = (*midi_data+1);
+							plugin->program_change(0, channel, program);
+						}
+						else if(size == 2 && ((*midi_data & 0xf0) == 0xD0))
+						{
+							nuclear::channel_t channel = 0xD0 ^ (*midi_data);
+							nuclear::velocity_t pressure = (*midi_data+1) * velocity_scale;
+							plugin->channel_pressure(0, channel, pressure);
+						}
+						else if(size == 3 && ((*midi_data & 0xf0) == 0xE0))
+						{
+							//int channel = 0xE0 ^ (*midi_data);
+							//int value_lo = (*midi_data+1);
+							//int value_hi = (*midi_data+2);
+							//nuclear::velocity_t value;
+							//plugin->pitch_bend(0, channel, value);
+						}					
+					}
+				}
+
 				plugin->run(sample_count);
 			}
 		
