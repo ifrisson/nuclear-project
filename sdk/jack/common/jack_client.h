@@ -363,7 +363,7 @@ namespace nuclear
 				for (std::vector<jack_port_t*>::iterator i = _midi_out_ports.begin(); i != _midi_out_ports.end(); ++i)
 				{
 					void* buffer = jack_port_get_buffer(*i, nframes);
-			jack_midi_clear_buffer(buffer);
+					jack_midi_clear_buffer(buffer);
 				}
 				
 				jack_midi_event_t event;
