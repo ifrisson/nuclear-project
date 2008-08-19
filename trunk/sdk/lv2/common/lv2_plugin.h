@@ -64,25 +64,25 @@ namespace nuclear
 			{
 				nuclear::engine* plugin = new T;
 
-				// Features
-				while (*features)
+				// Do we require MIDI?
+				bool midi_support = false;
+				if (dynamic_cast<nuclear::midi*>(plugin))
 				{
-					// Do we require MIDI?
-					if (dynamic_cast<nuclear::midi*>(plugin))
+					while (*features)
 					{
-						// Do the host support it?
 						if (nuclear::string_t((*features)->URI) == nuclear::string_t(LV2_EVENT_URI))
 						{
 							//(*features)->data;
+							midi_support = true;
+							break;
 						}
-						else
-						{
-							delete plugin;
-							return NULL;
-						}
+						features++;
 					}
-					
-					features++;
+					if (!midi_support)
+					{
+						delete plugin;
+						return NULL;
+					}
 				}
 
 				plugin->init(sample_rate);
