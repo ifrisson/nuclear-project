@@ -11,6 +11,10 @@ SET(NUCLEAR_COPYRIGHT "Copyright (c) 2008, Anders Dahnielson & Darren Landrum.")
 SET(NUCLEAR_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX})
 SET(NUCLEAR_LIBDIR lib${LIB_SUFFIX})
 
+# Setup testing
+ENABLE_TESTING()
+MARK_AS_ADVANCED(BUILD_TESTING)
+
 # Detect 32/64 bit platform type
 MESSAGE(STATUS "checking the width of std::vector<>::size_type for this platform")
 
@@ -55,7 +59,12 @@ IF(FAUST_EXECUTABLE)
   ENDMACRO(FAUST_FILE)
 ENDIF(FAUST_EXECUTABLE)
 
+# Build shared libraries
 SET(BUILD_SHARED_LIBS ON)
 
+# Set up dubdirectories...
 ADD_SUBDIRECTORY(docs)
 ADD_SUBDIRECTORY(sdk)
+IF(BUILD_TESTING)
+  ADD_SUBDIRECTORY(tests)
+ENDIF(BUILD_TESTING)
