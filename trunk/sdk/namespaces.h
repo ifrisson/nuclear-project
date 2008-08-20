@@ -39,6 +39,9 @@ namespace nuclear
 	
 	/// Namespace for LV2
 	namespace lv2 {}
+
+	/// Namespace for RDF
+	namespace rdf {}
 	
 } // !namespace nuclear
 
