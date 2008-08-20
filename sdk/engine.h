@@ -40,12 +40,9 @@ namespace nuclear
 		/// Activate engine
 		virtual void activate() = 0;
 		/// Run engine
-		virtual void run(nframes_t nframes) = 0;
+		virtual void run(nframes_t nframes, sample_t** inputs, sample_t** outputs) = 0;
 		/// Deactivate engine
 		virtual void deactivate() = 0;
-
-		/// Return pointer to port value or buffer
-		virtual void* p(nuclear::port_t port) = 0;
 	};
 
 } // !namespace nuclear
