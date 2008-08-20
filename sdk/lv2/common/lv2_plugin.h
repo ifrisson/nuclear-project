@@ -238,6 +238,6 @@ namespace nuclear
 } // !namespace nuclear
 
 /// Macro to register engine as LV2 plugin		
-#define NUCLEAR_LV2_PLUGIN(T, URI) static void* _ = new nuclear::lv2::plugin<T>(URI);
+#define NUCLEAR_LV2_PLUGIN(T, MAP) static void* _ = new nuclear::lv2::plugin<T>(MAP);
 		
 #endif // !NUCLEAR_LV2_PLUGIN_H
