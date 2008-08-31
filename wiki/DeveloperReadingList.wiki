@@ -5,7 +5,7 @@
 === DSP ===
 
  * [http://musicdsp.org/ Music-DSP Source Code Archive]
- * [http://www.dspguide.com/ The Scientist and Engineer's Guide to DSP] (free ebook)
+ * [http://www.dspguide.com/ The Scientist and Engineer's Guide to DSP], by Dr. Steven W. Smith (free ebook)
 
 === MIDI ===
 
