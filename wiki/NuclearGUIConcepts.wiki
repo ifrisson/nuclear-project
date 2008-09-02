@@ -26,7 +26,7 @@ Some thinking about how to avoid a cluttered surface has brought me to a new ide
 = Disadvantages =
 
  * *Modules With Too Many Parameters:* Some modules have too many parameters to neatly map to a 2-dimensional surface.
-  * _Possible Solution:_ When a puck is dragged to the surface for the first time, it can ask the user which parameters to map to each axis.
+  * _Possible Solution:_ When a puck is dragged to the surface for the first time, it can ask the user which parameters to map to each axis. Other parameters can then be set static. This is the only part of this whole idea that I don't like.
 
 = Conclusion =
 
