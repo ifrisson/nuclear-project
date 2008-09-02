@@ -24,7 +24,7 @@ I believe this basic idea can be extended to pretty much any kind of synthesizer
  * *Modules With Too Many Parameters:* Some modules have too many parameters to neatly map to a 2-dimensional surface.
   * _Possible Solution:_ When a puck is dragged to the surface for the first time, it can ask the user which parameters to map to each axis.
  * *Cluttered Surface:* Some presets might get very busy, especially if there is a lot of motion going on.
-  * _Possible Solution:_ Perhaps an option to hide pucks that are now programmed and no longer readily needed. Of course, it would also have to be easy to un-hide them.
+  * _Possible Solution:_ Perhaps a Photoshop-like layering system could be employed, where pucks can be put on layers (only in terms of display, not graph connections) which can then be hidden and un-hidden as needed.
 
 = Conclusion =
 
