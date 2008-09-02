@@ -3,7 +3,7 @@
 
 = Introduction =
 
-It has recently been a topic on my mind about how to move away from emulating the look of classic equipment and create UIs for synthesis and effects control that takes full advantage of the computer as a HUI device. I'm using for reference mainly the look and behavior of the TC Electronic Fabrik-R Reverb plug-in(1), which serves as my inspiration.
+It has recently been a topic on my mind about how to move away from emulating the look of classic equipment and create UIs for synthesis and effects control that takes full advantage of the computer as a HUI device. I'm using for reference mainly the look and feel of the TC Electronic Fabrik-R Reverb plug-in(1), which serves as my inspiration.
 
 = A Basic Description =
 
