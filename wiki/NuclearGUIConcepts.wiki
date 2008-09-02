@@ -7,7 +7,7 @@ It has recently been a topic on my mind about how to move away from emulating th
 
 = A Basic Description =
 
-The best way to describe this idea would be to give an example of how it would be applied to the GUI design for a polysynth plug-in. Each module or node, like an oscillator or filter, is represented by a puck sitting upon a large surface. When a puck, representing a particular module, is first placed on the surface, it is wired to the other pucks as part of the directed graph. After that, the position of the puck on the field determines the value of various parameters controlling the module. Using a low-pass filter as an example, moving the puck up and down might represent resonance level, while left and right would be its cutoff.
+Each module or node, such as an oscillator or filter, is represented by a puck sitting upon a large surface. When a puck, representing a particular module, is first placed on the surface, it is wired to the other pucks as part of the directed graph. After that, the position of the puck on the field determines the value of various parameters controlling the module. Using a low-pass filter as an example, moving the puck up and down might represent resonance level, while left and right would be its cutoff.
 
 For modulation, instead of envelopes and LFOs and the like, a path can be drawn on the surface that a particular puck will follow. It can do this either over time (with acceleration possibly being defined as well), back and forth over time (looping), in response to the output of another puck, or in response to an event, like a message from a real-time controller.
 
