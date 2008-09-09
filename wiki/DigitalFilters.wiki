@@ -7,9 +7,15 @@ A digital filter is a system that performs mathematical operations on a sampling
 
 After a filter is designed, it is must be realized by developing a signal flow diagram that describes how the filter can be implemented. A given filter can be realized in many ways. The most straightforward approach is direct computation of the difference equation, which is practical for small filters, but inefficient and impractical for more complex designs.
 
-The transfer function for a typical linear digital filter can be expressed as a transform in the Z-domain.
+In discrete-time systems, the digital filter is often implemented by converting the transfer function to a linear constant-coefficient difference equation (LCCD) via the Z-transform
 
-== Finite impulse response ==
+== Types of Digital Filters ==
+
+Many digital filters are based on the Fast Fourier transform, a mathematical algorithm that quickly extracts the frequency spectrum of a signal, allowing the spectrum to be manipulated (such as to create band-pass filters) before converting the modified spectrum back into a time-series signal.
+
+Another form of a digital filter is that of a state-space model. A well used state-space filter is the Kalman filter 
+
+== Finite Impulse Response ==
 
 FIR filters have fixed-duration impulse responses. The impulse response, the filter's response to a Kronecker delta input, is 'finite' because it settles to zero in a finite number of sample intervals. The impulse response of an Nth order FIR filter lasts for N+1 samples, and then dies to zero.
 
@@ -29,7 +35,7 @@ To design a filter means to select the coefficients such that the system has spe
 
 Some of the time, the filter specifications refer to the time-domain shape of the input signal the filter is expected to "recognize". The optimum matched filter is to sample that shape and use those samples directly as the coefficients of the filter -- giving the filter an impulse response that is the time-reverse of the expected input signal.
 
-== Infinite impulse response ==
+== Infinite Impulse Response ==
 
 IIR filters have an impulse response function which is non-zero over an infinite length of time. IIR filters have internal feedback and may continue to respond indefinitely.
 
