@@ -19,6 +19,8 @@ An FIR filter has a number of useful properties which sometimes make it preferab
   * Require no feedback. This means that any rounding errors are not compounded by summed iterations. The same relative error occurs in each calculation.
   * They can be designed to be linear phase, which means the phase change is proportional to the frequency. This is usually desired for phase-sensitive applications, for example crossover filters, and mastering, where transparent filtering is adequate.
 
+To design a filter means to select the coefficients such that the system has specific characteristics. The required characteristics are stated in filter specifications. Most of the time filter specifications refer to the frequency response of the filter. There are different methods to find the coefficients from frequency specifications:
+
   # Window design method
   # Frequency Sampling method
   # Weighted least squares design
