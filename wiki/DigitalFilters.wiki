@@ -1,0 +1,20 @@
+#summary Digital filter primer
+#labels DSP
+
+== Introduction ==
+
+A digital filter is a system that performs mathematical operations on a sampling, discrete-time signal to reduce or enhance certain aspects of that signal. A digital filter is characterized by its transfer function. Mathematical analysis of the transfer function can describe how it will respond to any input. As such, designing a filter begins with finding an appropriate transfer function for a particular problem.
+
+After a filter is designed, it is must be realized by developing a signal flow diagram that describes how the filter can be implemented. A given filter can be realized in many ways. The most straightforward approach is direct computation of the difference equation, which is practical for small filters, but inefficient and impractical for more complex designs.
+
+The transfer function for a typical linear digital filter can be expressed as a transform in the Z-domain.
+
+== Finite impulse response ==
+
+FIR filters have fixed-duration impulse responses. The impulse response, the filter's response to a Kronecker delta input, is 'finite' because it settles to zero in a finite number of sample intervals.
+
+== Infinite impulse response ==
+
+IIR filters have an impulse response function which is non-zero over an infinite length of time. IIR filters have internal feedback and may continue to respond indefinitely.
+
+(Source: Wikipedia.)
