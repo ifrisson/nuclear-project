@@ -11,7 +11,21 @@ The transfer function for a typical linear digital filter can be expressed as a 
 
 == Finite impulse response ==
 
-FIR filters have fixed-duration impulse responses. The impulse response, the filter's response to a Kronecker delta input, is 'finite' because it settles to zero in a finite number of sample intervals.
+FIR filters have fixed-duration impulse responses. The impulse response, the filter's response to a Kronecker delta input, is 'finite' because it settles to zero in a finite number of sample intervals. The impulse response of an Nth order FIR filter lasts for N+1 samples, and then dies to zero.
+
+An FIR filter has a number of useful properties which sometimes make it preferable to an infinite impulse response filter. FIR filters:
+
+  * Are inherently stable. This is due to the fact that all the poles are located at the origin and thus are located within the unit circle.
+  * Require no feedback. This means that any rounding errors are not compounded by summed iterations. The same relative error occurs in each calculation.
+  * They can be designed to be linear phase, which means the phase change is proportional to the frequency. This is usually desired for phase-sensitive applications, for example crossover filters, and mastering, where transparent filtering is adequate.
+
+  # Window design method
+  # Frequency Sampling method
+  # Weighted least squares design
+  # Minimax design
+  # Equiripple design. 
+
+Some of the time, the filter specifications refer to the time-domain shape of the input signal the filter is expected to "recognize". The optimum matched filter is to sample that shape and use those samples directly as the coefficients of the filter -- giving the filter an impulse response that is the time-reverse of the expected input signal.
 
 == Infinite impulse response ==
 
