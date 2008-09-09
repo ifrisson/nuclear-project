@@ -33,4 +33,10 @@ Some of the time, the filter specifications refer to the time-domain shape of th
 
 IIR filters have an impulse response function which is non-zero over an infinite length of time. IIR filters have internal feedback and may continue to respond indefinitely.
 
+In digital IIR filters, the output feedback is immediately apparent in the equations defining the output. Note that unlike with FIR filters, in designing IIR filters it is necessary to carefully consider "time zero" case in which the outputs of the filter have not yet been clearly defined.
+
+Design of digital IIR filters is heavily dependent on that of their analog counterparts because there are plenty of resources, works and straightforward design methods concerning analog feedback filter design while there are hardly any for digital IIR filters. As a result, mostly, if a digital IIR filter is going to be implemented, first, an analog filter (e.g. Chebyshev filter, Butterworth filter, Elliptic filter) is designed and then it is converted to digital by applying discretization techniques such as Bilinear transform or Impulse invariance.
+
+Example IIR filters include the Chebyshev filter, Butterworth filter, and the Bessel filter.
+
 (Source: Wikipedia.)
