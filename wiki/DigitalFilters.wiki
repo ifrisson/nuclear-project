@@ -27,11 +27,11 @@ An FIR filter has a number of useful properties which sometimes make it preferab
 
 To design a filter means to select the coefficients such that the system has specific characteristics. The required characteristics are stated in filter specifications. Most of the time filter specifications refer to the frequency response of the filter. There are different methods to find the coefficients from frequency specifications:
 
-  # Window design method
-  # Frequency Sampling method
-  # Weighted least squares design
-  # Minimax design
-  # Equiripple design. 
+  * Window design method
+  * Frequency Sampling method
+  * Weighted least squares design
+  * Minimax design
+  * Equiripple design. 
 
 Some of the time, the filter specifications refer to the time-domain shape of the input signal the filter is expected to "recognize". The optimum matched filter is to sample that shape and use those samples directly as the coefficients of the filter -- giving the filter an impulse response that is the time-reverse of the expected input signal.
 
