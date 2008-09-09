@@ -1,5 +1,5 @@
 #summary A brief primer on how we might implement a very low latency FFT convolution function without patent encumbrance.
-#labels Phase-Requirements,Node
+#labels DSP
 
 = Introduction =
 
