@@ -47,4 +47,7 @@ Example IIR filters include the Chebyshev filter, Butterworth filter, and the Be
 
 (Source: Wikipedia.)
 
-See also http://www.dsprelated.com/dspbooks/filters/
+== See also ==
+
+  * [http://www.dsprelated.com/dspbooks/filters/ Introduction to Digital Filters with Audio Applications]
+  * [http://www.dspguide.com/ch14.htm DSP Guide Chapter 14: Introduction to Digital Filters]
