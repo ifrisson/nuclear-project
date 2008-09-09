@@ -15,7 +15,9 @@ A digital filter is a system that performs mathematical operations on a sampling
 
 After a filter is designed, it is must be realized by developing a signal flow diagram that describes how the filter can be implemented. A given filter can be realized in many ways. The most straightforward approach is direct computation of the difference equation, which is practical for small filters, but inefficient and impractical for more complex designs.
 
-In discrete-time systems, the digital filter is often implemented by converting the transfer function to a linear constant-coefficient difference equation (LCCD) via the Z-transform
+In discrete-time systems, the digital filter is often implemented by converting the transfer function to a linear constant-coefficient difference equation (LCCD) via the Z-transform.
+
+Every linear filter has an impulse response, a step response and a frequency response.
 
 == Types of Digital Filters ==
 
