@@ -17,7 +17,7 @@ After a filter is designed, it is must be realized by developing a signal flow d
 
 In discrete-time systems, the digital filter is often implemented by converting the transfer function to a linear constant-coefficient difference equation (LCCD) via the Z-transform.
 
-Every linear filter has an impulse response, a step response and a frequency response.
+"Every linear filter has an impulse response, a step response and a frequency response. Each of these responses contains complete information about the filter, but in a different form. If one of the three is specified, the other two are fixed and can be directly calculated. All three of these representations are important, because they describe how the filter will react under different circumstances." -- From [http://www.dspguide.com/ch14.htm DSP Guide Chapter 14: Introduction to Digital Filters]
 
 == Types of Digital Filters ==
 
