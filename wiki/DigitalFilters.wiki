@@ -1,7 +1,11 @@
 #summary Digital filter primer
 #labels DSP
 
-== Introduction ==
+== What is a Filter ==
+
+"Any medium through which the music signal passes, whatever its form, can be regarded as a filter. However, we do not usually think of something as a filter unless it can modify the sound in some way. For example, speaker wire is not considered a filter, but the speaker is (unfortunately). The different vowel sounds in speech are produced primarily by changing the shape of the mouth cavity, which changes the resonances and hence the filtering characteristics of the vocal tract. The tone control circuit in an ordinary car radio is a filter, as are the bass, midrange, and treble boosts in a stereo preamplifier. Graphic equalizers, reverberators, echo devices, phase shifters, and speaker crossover networks are further examples of useful filters in audio. There are also examples of undesirable filtering, such as the uneven reinforcement of certain frequencies in a room with ``bad acoustics.'' A well-known signal processing wizard is said to have remarked, ``When you think about it, everything is a filter.''" -- From [http://www.dsprelated.com/dspbooks/filters/ Introduction to Digital Filters with Audio Applications] by Julius Orion Smith III 
+
+== Digital Filter ==
 
 A digital filter is a system that performs mathematical operations on a sampling, discrete-time signal to reduce or enhance certain aspects of that signal. A digital filter is characterized by its transfer function. Mathematical analysis of the transfer function can describe how it will respond to any input. As such, designing a filter begins with finding an appropriate transfer function for a particular problem.
 
