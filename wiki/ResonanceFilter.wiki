@@ -1,6 +1,8 @@
 #summary Resonance filter brief
 #labels dsp
 
+= What is a resonance filter? =
+
   "Whenever the vibrations of one object cause a second object to start vibrating, the second object is said to be resonating with the first, and its vibrations can be called sympathetic vibrations. Resonance is very important in the physics of music. In fact, in many musical instruments, the part of the instrument that first produces vibrations is often a rather small, insignificant-looking part of the instrument - a thin string, or a sliver of reed. (In the case of brass instruments, it is not a part of the instrument at all, but the players lips, that produce the original vibrations.) The largest, most obvious part of the instrument - the delicately curved body of the violin, for example, or the many brass loops of the French horn is just the main resonator, and this resonating part of the instrument (often called the body of the instrument) determines, or helps to determine, many important apsects of the instrument's sound, including tone quality, timbre, and dynamic capabilities." -- [http://cnx.org/content/m13537/latest/ Resonance and Musical Instruments] by Catherine Schmidt-Jones
 
 == Formant Filter ==
