@@ -6,6 +6,7 @@
 
  * [http://musicdsp.org/ Music-DSP Source Code Archive]
  * _[http://www.dspguide.com/ The Scientist and Engineer's Guide to DSP]_ by Dr. Steven W. Smith (free ebook)
+ * _[http://crca.ucsd.edu/~msp/techniques/latest/book-html/ Theory and Techniques of Electronic Music]_ by Miller Puckette
 
 === MIDI ===
 
