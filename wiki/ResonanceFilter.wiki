@@ -1,5 +1,5 @@
 #summary Resonance filter brief
-#labels dsp
+#labels DSP
 
 = Resonance Filter =
 
