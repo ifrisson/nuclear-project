@@ -35,8 +35,6 @@ namespace nuclear
 
 		/// Initate engine
 		virtual void init(uint32_t srate) = 0;
-		/// Connect data to port
-		virtual void connect_port(port_t port, void* data_location) = 0;
 		/// Activate engine
 		virtual void activate() = 0;
 		/// Run engine

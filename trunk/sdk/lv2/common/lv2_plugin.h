@@ -27,7 +27,8 @@
 #include "../lv2_uri_map.h"
 #include "../../types.h"
 #include "../../engine.h"
-#include "lv2_mapper.h"
+#include "../../midi.h"
+#include <vector>
 
 static LV2_Descriptor* g_lv2_descriptor = NULL;
 const LV2_Descriptor* lv2_descriptor(uint32_t index) 
@@ -43,12 +44,20 @@ namespace nuclear
 	namespace lv2
 	{
 
+		enum port_type_t
+		{
+			NONE,
+			CONTROL,
+			AUDIO_IN,
+			AUDIO_OUT,
+			MIDI_IN,
+			MIDI_OUT
+		};
+
 		/// Wrap engine as LV2 plugin
-		template<typename T>
+		template<typename P, typename T>
 		class plugin
 		{
-			static mapper* map;
-
 			// Event extension
 			static LV2_Event_Buffer* event_buffer;
 			static LV2_Event_Feature* event_feature;
@@ -60,16 +69,17 @@ namespace nuclear
 			static LV2_URI_Map_Feature* map_feature;
 
 			// Ports
-			static std::vector<void*> control_ports;
-			static std::vector<nuclear::sample_t*> audio_ports;
-			static std::vector<LV2_Event_Buffer*> midi_ports;
+			static std::vector<nuclear::float_t*> control_ports;
+			static std::vector<nuclear::sample_t*> audio_in_ports;
+			static std::vector<nuclear::sample_t*> audio_out_ports;
+			static std::vector<LV2_Event_Buffer*> midi_in_ports;
+			static std::vector<LV2_Event_Buffer*> midi_out_ports;
 
 		public:
-			plugin(mapper* mapping)
+			plugin()
 			{
-				plugin::map = mapping;
 				g_lv2_descriptor = new LV2_Descriptor;
-				g_lv2_descriptor->URI = plugin::map->uri().c_str();
+				g_lv2_descriptor->URI = P::uri().c_str();
 				g_lv2_descriptor->instantiate = plugin::instantiate;
 				g_lv2_descriptor->connect_port = plugin::connect_port;
 				g_lv2_descriptor->activate = plugin::activate;
@@ -88,12 +98,12 @@ namespace nuclear
 				{
 					if (nuclear::string_t(features[i]->URI) == nuclear::string_t(LV2_URI_MAP_URI))
 					{
-						plugin::map_feature = features[i]->data;
+						plugin::map_feature = static_cast<LV2_URI_Map_Feature*>(features[i]->data);
 						plugin::midi_event_id = plugin::map_feature->uri_to_id(plugin::map_feature->callback_data, LV2_EVENT_URI, "http://lv2plug.in/ns/ext/midi#MidiEvent");
 					}
 					else if (nuclear::string_t(features[i]->URI) == nuclear::string_t(LV2_EVENT_URI))
 					{
-						plugin::event_feature = features[i]->data;
+						plugin::event_feature = static_cast< LV2_Event_Feature*>(features[i]->data);
 					}
 				}
 
@@ -113,16 +123,22 @@ namespace nuclear
 			
 			static void connect_port(LV2_Handle instance, uint32_t port, void* data_location)
 			{
-				switch (plugin::map->port_type(port))
+				switch (P::port_type(port))
 				{
 				case CONTROL:
-					plugin::midi_ports.push_back(data_location);
+					plugin::control_ports.push_back(static_cast<nuclear::float_t*>(data_location));
 					break;
-				case AUDIO:
-					plugin::audio_ports.push_back(static_cast<nuclear::sample_t*>(data_location));
+				case AUDIO_IN:
+					plugin::audio_in_ports.push_back(static_cast<nuclear::sample_t*>(data_location));
 					break;
-				case MIDI:
-					plugin::control_ports.push_back(static_cast<LV2_Event_Buffer*>(data_location));
+				case AUDIO_OUT:
+					plugin::audio_out_ports.push_back(static_cast<nuclear::sample_t*>(data_location));
+					break;
+				case MIDI_IN:
+					plugin::midi_in_ports.push_back(static_cast<LV2_Event_Buffer*>(data_location));
+					break;
+				case MIDI_OUT:
+					plugin::midi_out_ports.push_back(static_cast<LV2_Event_Buffer*>(data_location));
 					break;
 				default:
 					break;
@@ -139,7 +155,7 @@ namespace nuclear
 			{
 				const nuclear::float_t velocity_scale = 1.0f / 127;
 				int port = 0;
-				for (std::vector<LV2_Event_Buffer*>::iterator p = plugin::midi_ports.begin(); p != plugin::midi_ports.end(); ++p)
+				for (std::vector<LV2_Event_Buffer*>::iterator p = plugin::midi_in_ports.begin(); p != plugin::midi_in_ports.end(); ++p)
 				{
 					LV2_Event_Iterator iterator;
 					for(lv2_event_begin(&iterator, (*p)); lv2_event_is_valid(&iterator); lv2_event_increment(&iterator))
@@ -212,7 +228,17 @@ namespace nuclear
 				nuclear::midi* midi = dynamic_cast<nuclear::midi*>(engine);
 				if (midi) plugin::run_midi(midi, sample_count);
 
-				engine->run(sample_count);
+				nuclear::sample_t* aiports[audio_in_ports.size()];
+				for (int i = 0; i < audio_in_ports.size(); ++i)
+					aiports[i] = audio_in_ports[i];
+
+				nuclear::sample_t* aoports[audio_out_ports.size()];
+				for (int i = 0; i < audio_out_ports.size(); ++i)
+					aoports[i] = audio_out_ports[i];
+
+				engine->run(sample_count, aiports, aoports);
+
+				//delete [] aports; //fixme: ?
 			}
 		
 			static void deactivate(LV2_Handle instance)
@@ -237,7 +263,4 @@ namespace nuclear
 		
 } // !namespace nuclear
 
-/// Macro to register engine as LV2 plugin		
-#define NUCLEAR_LV2_PLUGIN(T, MAP) static void* _ = new nuclear::lv2::plugin<T>(MAP);
-		
 #endif // !NUCLEAR_LV2_PLUGIN_H

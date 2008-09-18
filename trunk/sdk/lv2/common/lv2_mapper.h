@@ -31,16 +31,17 @@ namespace nuclear
 
 		enum port_type_t
 		{
-			CONTROL = 1,
+			NONE,
+			CONTROL,
 			AUDIO,
 			MIDI
-		}
+		};
 
 		class mapper
 		{
 		public:
 			virtual nuclear::string_t uri() = 0;
-			virtual port_type_t port_type(nuclear::uint32_t index) = 0;
+			virtual nuclear::lv2::port_type_t port_type(nuclear::uint32_t index) = 0;
 		};
 
 	} // !namespace lv2
