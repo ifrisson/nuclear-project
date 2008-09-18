@@ -106,7 +106,6 @@ namespace nuclear {
 			static void connect_port(LADSPA_Handle instance, unsigned long port, LADSPA_Data* data_location) 
 			{
 				nuclear::engine* plugin = static_cast<nuclear::engine*>(instance);
-				plugin->connect_port(port, data_location);
 			}
 			
 			static int get_midi_controller_for_port(LADSPA_Handle instance, unsigned long port)
