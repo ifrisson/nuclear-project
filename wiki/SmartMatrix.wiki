@@ -22,8 +22,6 @@ Coding the SM class will be somewhat complicated, especially if it is to automat
 
 Polyphony handling will be a separate object, which will instantiate a number of SM objects, each of which will be a voice. Most synths have a voice section and a global section. The global section will simply be its own SM object for the audio to run through after the voices are summed.
 
-The polyphony manager should be its own wiki article, and in fact, I think it was.
-
 = Conclusion =
 
 By using dumb nodes with a smarter matrix-based object, an extremely versatile and easy-to-use DSP engine can be created for any kind of synth and effect under the sun. For now, this document is sparse and describes only the high-level concepts. In the future, it will be modified as the SM idea is fleshed out.
