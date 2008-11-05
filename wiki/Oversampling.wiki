@@ -1,5 +1,5 @@
 #summary How oversampling is implemented.
-#labels Phase-Requirements,Node
+#labels Phase-Requirements,Node,Deprecated
 
 = Introduction =
 
